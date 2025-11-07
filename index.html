@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NoCapsAI – AI Automation Specialist</title>
+  <meta name="description" content="NoCapsAI helps real businesses eliminate busywork with practical AI automation. Your business, but 10X faster and 90% less manual."/>
+  <link rel="icon" href="assets/favicon.ico"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header role="banner" aria-label="NoCapsAI site header">
+    <div class="container bar">
+      <div class="brand" aria-label="NoCapsAI brand">
+        <div class="logo" aria-hidden="true">
+          <img src="assets/logo-mark.png" alt="NoCapsAI logo mark" />
+        </div>
+        <h1>NoCapsAI</h1>
+      </div>
+      <div class="pill" aria-label="header tagline">AI Automation Specialist</div>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <section class="hero" aria-label="Hero">
+      <div class="kicker pill">“Why crawl when you can fly?”</div>
+      <div class="hero-grid">
+        <div>
+          <h2 class="title">Your business, but <span style="white-space:nowrap">10X faster</span> and <span style="white-space:nowrap">90% less manual</span>.</h2>
+          <p class="subtitle">I build practical automations that wipe out repetitive work: intake → processing → follow‑ups → reports. No hype. Just output.</p>
+          <div class="cta" role="group" aria-label="Primary calls to action">
+            <a class="btn primary" href="#quote">Request a Quote</a>
+            <a class="btn" href="#contact">Contact</a>
+            <a class="btn" href="assets/ai-audit-checklist.pdf" download>Free AI Audit (PDF)</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Brand image">
+          <div class="image-wrap">
+            <img src="assets/brand-hero.webp" alt="Symbolic brand image: speed riding strength – a horse atop an elephant."/>
+          </div>
+          <p class="caption">Speed on top of strength. Traditional operations + smart automation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" aria-labelledby="services-title">
+      <h2 id="services-title">Services & Pricing</h2>
+      <p class="meta">Straightforward packages. Clear deliverables. Built to save time the first week, not the tenth.</p>
+      <div class="cards" role="list">
+        <article class="card" role="listitem" aria-labelledby="card1-title">
+          <h3 id="card1-title">Starter — "Stop the Bleeding"</h3>
+          <p>Quick wins that instantly remove manual tasks. Email triage, spreadsheet automations, canned responses, and basic chatbot intake.</p>
+          <p class="meta">Deliverables: 3 automations • 1 intake bot • SOP updates • 14‑day support</p>
+        </article>
+        <article class="card" role="listitem" aria-labelledby="card2-title">
+          <h3 id="card2-title">Pro — "Systemize the Core"</h3>
+          <p>Workflow redesign with AI in the loop: CRM updates, lead routing, follow‑ups, reporting. Connects apps (Zapier/Make/APIs) with guardrails.</p>
+          <p class="meta">Deliverables: 6–8 automations • CRM flows • metrics dashboard • 30‑day support</p>
+        </article>
+        <article class="card" role="listitem" aria-labelledby="card3-title">
+          <h3 id="card3-title">Enterprise — "Automation Ops"</h3>
+          <p>End‑to‑end automation ops with documentation, permissions, audits, and monthly iteration cycles. Scales across teams.</p>
+          <p class="meta">Deliverables: ongoing roadmap • governance • custom APIs • monthly optimization</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="quote" aria-labelledby="quote-title">
+      <h2 id="quote-title">Request a Quote</h2>
+      <p class="meta">Tell me your top 3 pain points and what tools you use today.</p>
+      <form id="quoteForm">
+        <div>
+          <label for="qname">Name</label><br/>
+          <input id="qname" name="name" required/>
+        </div>
+        <div>
+          <label for="qemail">Email</label><br/>
+          <input id="qemail" name="email" type="email" required/>
+        </div>
+        <div>
+          <label for="qtools">Current tools (CRM, email, spreadsheets, etc.)</label><br/>
+          <input id="qtools" name="tools" required/>
+        </div>
+        <div>
+          <label for="qpain">Top 3 pain points</label><br/>
+          <textarea id="qpain" name="pain" rows="4" required></textarea>
+        </div>
+        <button class="btn primary" type="submit">Send Request</button>
+        <span id="qstatus" class="pill" style="display:none;margin-left:.5rem"></span>
+      </form>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <form id="contactForm">
+        <div>
+          <label for="cname">Name</label><br/>
+          <input id="cname" name="name" required/>
+        </div>
+        <div>
+          <label for="cemail">Email</label><br/>
+          <input id="cemail" name="email" type="email" required/>
+        </div>
+        <div>
+          <label for="cmsg">Message</label><br/>
+          <textarea id="cmsg" name="message" rows="4" required></textarea>
+        </div>
+        <button class="btn primary" type="submit">Send Message</button>
+        <span id="cstatus" class="pill" style="display:none;margin-left:.5rem"></span>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container footgrid">
+      <div class="footbrand">
+        <div class="logo" aria-hidden="true"><img src="assets/logo-mark.png" alt=""/></div>
+        <div>
+          <strong>NoCapsAI</strong> — AI Automation Specialist
+          <div class="meta">“Your business, but 10X faster and 90% less manual.” • Why crawl when you can fly?</div>
+        </div>
+      </div>
+      <div class="meta">© <span id="y"></span> NoCapsAI • All rights reserved</div>
+    </div>
+  </footer>
+
+  <!-- Simple chatbot placeholder -->
+  <script>
+    (function(){
+      const b = document.createElement('button');
+      b.textContent = 'Chat with NoCapsAI (coming soon)';
+      Object.assign(b.style, {position:'fixed', right:'16px', bottom:'16px', padding:'10px 14px', borderRadius:'12px', border:'1px solid #2a2a2a', background:'#1a1a1a', color:'#fff', zIndex:9999});
+      b.onclick = ()=> alert('This will connect to your future chatbot. For now, email hello@nocapsai.com');
+      document.body.appendChild(b);
+    })();
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    async function postJSON(url, data){
+      return fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    }
+    // Quote form handler
+    document.getElementById('quoteForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const s = document.getElementById('qstatus'); s.style.display='inline-flex'; s.textContent='Sending...';
+      const payload = {
+        name: document.getElementById('qname').value,
+        email: document.getElementById('qemail').value,
+        tools: document.getElementById('qtools').value,
+        pain: document.getElementById('qpain').value
+      };
+      try{
+        const r = await postJSON('/api/quote', payload);
+        s.textContent = r.ok ? 'Sent!' : 'Error — try again';
+      }catch(err){ s.textContent='Network error'; }
+    });
+    // Contact form handler
+    document.getElementById('contactForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const s = document.getElementById('cstatus'); s.style.display='inline-flex'; s.textContent='Sending...';
+      const payload = {
+        name: document.getElementById('cname').value,
+        email: document.getElementById('cemail').value,
+        message: document.getElementById('cmsg').value
+      };
+      try{
+        const r = await postJSON('/api/contact', payload);
+        s.textContent = r.ok ? 'Sent!' : 'Error — try again';
+      }catch(err){ s.textContent='Network error'; }
+    });
+  </script>
+</body>
+</html>
