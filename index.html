@@ -1,131 +1,173 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NoCapsAI – AI Automation Specialist</title>
-  <meta name="description" content="NoCapsAI helps real businesses eliminate busywork with practical AI automation. Your business, but 10X faster and 90% less manual."/>
-  <link rel="icon" href="assets/favicon.ico"/>
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>NoCapsAI – AI Automation Specialist</title>
+<meta content="NoCapsAI helps real businesses eliminate busywork with practical AI automation. Your business, but 10X faster and 90% less manual." name="description"/>
+<link href="assets/favicon.ico" rel="icon"/>
+<link href="styles.css" rel="stylesheet"/>
 </head>
-<body>
-  <header role="banner" aria-label="NoCapsAI site header">
-    <div class="container bar">
-      <div class="brand" aria-label="NoCapsAI brand">
-        <div class="logo" aria-hidden="true">
-          <img src="assets/logo-mark.png" alt="NoCapsAI logo mark" />
-        </div>
-        <h1>NoCapsAI</h1>
-      </div>
-      <div class="pill" aria-label="header tagline">AI Automation Specialist</div>
-    </div>
-  </header>
+<body id="top">
+<header>
+<div class="container bar">
+<a class="brand" href="#top">
+<span aria-hidden="true" class="logo">N</span>
+<span class="brand-name">NoCapsAI</span>
+</a>
+<nav aria-label="Primary" class="nav">
+<a href="#services">Services</a>
+<a href="#who">Who It’s For</a>
+<a href="#how">How It Works</a>
+<a href="#contact">Contact</a>
+<a class="btn outline" href="#quote">Get Started</a>
+</nav>
+</div>
+</header>
+<main class="container" id="main" role="main">
+<section aria-label="Hero" class="hero">
+<div class="kicker pill">“Why crawl when you can fly?”</div>
+<div aria-label="Brand marks" class="logo-row">
+<div class="logo-badge"><img alt="NoCapsAI mark 1" src="assets/logo-1.png"/></div>
+<div class="logo-badge"><img alt="NoCapsAI mark 2" src="assets/logo-2.png"/></div>
+<div class="logo-badge"><img alt="NoCapsAI mark 3" src="assets/logo-3.png"/></div>
+</div>
 
-  <main id="main" class="container" role="main">
-    <section class="hero" aria-label="Hero">
-      <div class="kicker pill">“Why crawl when you can fly?”</div>
-      <div class="hero-grid">
-        <div>
-          <h2 class="title">Your business, but <span style="white-space:nowrap">10X faster</span> and <span style="white-space:nowrap">90% less manual</span>.</h2>
-          <p class="subtitle">I build practical automations that wipe out repetitive work: intake → processing → follow‑ups → reports. No hype. Just output.</p>
-          <div class="cta" role="group" aria-label="Primary calls to action">
-            <a class="btn primary" href="#quote">Request a Quote</a>
-            <a class="btn" href="#contact">Contact</a>
-            <a class="btn" href="assets/ai-audit-checklist.pdf" download>Free AI Audit (PDF)</a>
-          </div>
-        </div>
-        <div class="hero-card" aria-label="Brand image">
-          <div class="image-wrap">
-            <img src="assets/brand-hero.webp" alt="Symbolic brand image: speed riding strength – a horse atop an elephant."/>
-          </div>
-          <p class="caption">Speed on top of strength. Traditional operations + smart automation.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" aria-labelledby="services-title">
-      <h2 id="services-title">Services & Pricing</h2>
-      <p class="meta">Straightforward packages. Clear deliverables. Built to save time the first week, not the tenth.</p>
-      <div class="cards" role="list">
-        <article class="card" role="listitem" aria-labelledby="card1-title">
-          <h3 id="card1-title">Starter — "Stop the Bleeding"</h3>
-          <p>Quick wins that instantly remove manual tasks. Email triage, spreadsheet automations, canned responses, and basic chatbot intake.</p>
-          <p class="meta">Deliverables: 3 automations • 1 intake bot • SOP updates • 14‑day support</p>
-        </article>
-        <article class="card" role="listitem" aria-labelledby="card2-title">
-          <h3 id="card2-title">Pro — "Systemize the Core"</h3>
-          <p>Workflow redesign with AI in the loop: CRM updates, lead routing, follow‑ups, reporting. Connects apps (Zapier/Make/APIs) with guardrails.</p>
-          <p class="meta">Deliverables: 6–8 automations • CRM flows • metrics dashboard • 30‑day support</p>
-        </article>
-        <article class="card" role="listitem" aria-labelledby="card3-title">
-          <h3 id="card3-title">Enterprise — "Automation Ops"</h3>
-          <p>End‑to‑end automation ops with documentation, permissions, audits, and monthly iteration cycles. Scales across teams.</p>
-          <p class="meta">Deliverables: ongoing roadmap • governance • custom APIs • monthly optimization</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="quote" aria-labelledby="quote-title">
-      <h2 id="quote-title">Request a Quote</h2>
-      <p class="meta">Tell me your top 3 pain points and what tools you use today.</p>
-      <form id="quoteForm">
-        <div>
-          <label for="qname">Name</label><br/>
-          <input id="qname" name="name" required/>
-        </div>
-        <div>
-          <label for="qemail">Email</label><br/>
-          <input id="qemail" name="email" type="email" required/>
-        </div>
-        <div>
-          <label for="qtools">Current tools (CRM, email, spreadsheets, etc.)</label><br/>
-          <input id="qtools" name="tools" required/>
-        </div>
-        <div>
-          <label for="qpain">Top 3 pain points</label><br/>
-          <textarea id="qpain" name="pain" rows="4" required></textarea>
-        </div>
-        <button class="btn primary" type="submit">Send Request</button>
-        <span id="qstatus" class="pill" style="display:none;margin-left:.5rem"></span>
-      </form>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <form id="contactForm">
-        <div>
-          <label for="cname">Name</label><br/>
-          <input id="cname" name="name" required/>
-        </div>
-        <div>
-          <label for="cemail">Email</label><br/>
-          <input id="cemail" name="email" type="email" required/>
-        </div>
-        <div>
-          <label for="cmsg">Message</label><br/>
-          <textarea id="cmsg" name="message" rows="4" required></textarea>
-        </div>
-        <button class="btn primary" type="submit">Send Message</button>
-        <span id="cstatus" class="pill" style="display:none;margin-left:.5rem"></span>
-      </form>
-    </section>
-  </main>
-
-  <footer role="contentinfo">
-    <div class="container footgrid">
-      <div class="footbrand">
-        <div class="logo" aria-hidden="true"><img src="assets/logo-mark.png" alt=""/></div>
-        <div>
-          <strong>NoCapsAI</strong> — AI Automation Specialist
+<div class="hero-grid">
+<div>
+<h2 class="title">Your business, but <span style="white-space:nowrap">10X faster</span> and <span style="white-space:nowrap">90% less manual</span>.</h2>
+<p class="subtitle">I build practical automations that wipe out repetitive work: intake → processing → follow‑ups → reports. No hype. Just output.</p>
+<div aria-label="Primary calls to action" class="cta" role="group">
+<a class="btn primary" href="#quote">Request a Quote</a>
+<a class="btn" href="#contact">Contact</a>
+<a class="btn" download="" href="assets/ai-audit-checklist.pdf">Free AI Audit (PDF)</a>
+</div>
+</div>
+<div aria-label="Brand image" class="hero-card">
+<div class="image-wrap">
+<img alt="Symbolic brand image: speed riding strength – a horse atop an elephant." src="assets/brand-hero.webp"/>
+</div>
+<p class="caption">Speed on top of strength. Traditional operations + smart automation.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="services-title" id="services">
+<h2 id="services-title">Services &amp; Pricing</h2>
+<p class="meta">Straightforward packages. Clear deliverables. Built to save time the first week, not the tenth.</p>
+<div class="cards" role="list">
+<article aria-labelledby="card1-title" class="card" role="listitem">
+<h3 id="card1-title">Starter — "Stop the Bleeding"</h3>
+<p>Quick wins that instantly remove manual tasks. Email triage, spreadsheet automations, canned responses, and basic chatbot intake.</p>
+<p class="meta">Deliverables: 3 automations • 1 intake bot • SOP updates • 14‑day support</p>
+</article>
+<article aria-labelledby="card2-title" class="card" role="listitem">
+<h3 id="card2-title">Pro — "Systemize the Core"</h3>
+<p>Workflow redesign with AI in the loop: CRM updates, lead routing, follow‑ups, reporting. Connects apps (Zapier/Make/APIs) with guardrails.</p>
+<p class="meta">Deliverables: 6–8 automations • CRM flows • metrics dashboard • 30‑day support</p>
+</article>
+<article aria-labelledby="card3-title" class="card" role="listitem">
+<h3 id="card3-title">Enterprise — "Automation Ops"</h3>
+<p>End‑to‑end automation ops with documentation, permissions, audits, and monthly iteration cycles. Scales across teams.</p>
+<p class="meta">Deliverables: ongoing roadmap • governance • custom APIs • monthly optimization</p>
+</article>
+</div>
+</section><section class="section" id="who">
+<div class="container">
+<h2>Who It’s For</h2>
+<p class="sub">NoCapsAI is built for busy service businesses that want cleaner scheduling, faster follow-ups, and fewer dropped balls.</p>
+<div class="cards">
+<div class="card">
+<h3>Owner-operators</h3>
+<p>You’re juggling jobs, calls, and paperwork. Automations keep the work moving without you babysitting every step.</p>
+</div>
+<div class="card">
+<h3>Small teams</h3>
+<p>Dispatch, techs, and office staff stay aligned with simple handoffs, reminders, and status updates.</p>
+</div>
+<div class="card">
+<h3>High-trust trades</h3>
+<p>HVAC, plumbing, roofing, and home services where speed and professionalism win reviews and repeat customers.</p>
+</div>
+</div>
+</div>
+</section><section class="section" id="how">
+<div class="container">
+<h2>How It Works</h2>
+<div class="cards">
+<div class="card">
+<h3>1) Quick intake</h3>
+<p>We map your current workflow: calls, forms, quotes, scheduling, invoicing, and follow-up.</p>
+</div>
+<div class="card">
+<h3>2) Build + connect</h3>
+<p>We wire automations into the tools you already use (or recommend a lean stack if you’re starting fresh).</p>
+</div>
+<div class="card">
+<h3>3) Measure + improve</h3>
+<p>We track what matters: response time, booked jobs, no-shows, and follow-up completion. Then we tighten the loop.</p>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="quote-title" id="quote">
+<h2 id="quote-title">Request a Quote</h2>
+<p class="meta">Tell me your top 3 pain points and what tools you use today.</p>
+<form id="quoteForm">
+<div>
+<label for="qname">Name</label><br/>
+<input id="qname" name="name" required=""/>
+</div>
+<div>
+<label for="qemail">Email</label><br/>
+<input id="qemail" name="email" required="" type="email"/>
+</div>
+<div>
+<label for="qtools">Current tools (CRM, email, spreadsheets, etc.)</label><br/>
+<input id="qtools" name="tools" required=""/>
+</div>
+<div>
+<label for="qpain">Top 3 pain points</label><br/>
+<textarea id="qpain" name="pain" required="" rows="4"></textarea>
+</div>
+<button class="btn primary" type="submit">Send Request</button>
+<span class="pill" id="qstatus" style="display:none;margin-left:.5rem"></span>
+</form>
+</section>
+<section aria-labelledby="contact-title" id="contact">
+<h2 id="contact-title">Contact</h2>
+<form id="contactForm">
+<div>
+<label for="cname">Name</label><br/>
+<input id="cname" name="name" required=""/>
+</div>
+<div>
+<label for="cemail">Email</label><br/>
+<input id="cemail" name="email" required="" type="email"/>
+</div>
+<div>
+<label for="cmsg">Message</label><br/>
+<textarea id="cmsg" name="message" required="" rows="4"></textarea>
+</div>
+<button class="btn primary" type="submit">Send Message</button>
+<span class="pill" id="cstatus" style="display:none;margin-left:.5rem"></span>
+</form>
+</section>
+</main>
+<footer role="contentinfo">
+<div class="container footgrid">
+<div class="footbrand">
+<div aria-hidden="true" class="logo"><img alt="" src="assets/logo-mark.png"/></div>
+<div>
+<strong>NoCapsAI</strong> — AI Automation Specialist
           <div class="meta">“Your business, but 10X faster and 90% less manual.” • Why crawl when you can fly?</div>
-        </div>
-      </div>
-      <div class="meta">© <span id="y"></span> NoCapsAI • All rights reserved</div>
-    </div>
-  </footer>
-
-  <!-- Simple chatbot placeholder -->
-  <script>
+</div>
+</div>
+<div class="meta">© <span id="y"></span> NoCapsAI • All rights reserved</div>
+</div>
+</footer>
+<!-- Simple chatbot placeholder -->
+<script>
     (function(){
       const b = document.createElement('button');
       b.textContent = 'Chat with NoCapsAI (coming soon)';

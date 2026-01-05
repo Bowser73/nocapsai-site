@@ -46,3 +46,105 @@ footer{border-top:1px solid var(--line); padding:1.5rem 0; color:var(--muted)}
 .footbrand{display:flex; align-items:center; gap:.75rem}
 .footbrand strong{color:var(--fg)}
 @media (max-width:960px){.hero-grid{grid-template-columns:1fr} .cards{grid-template-columns:1fr} .cta-band{flex-direction:column; align-items:flex-start}}
+
+/* ===== NoCapsAI top nav + logo row additions ===== */
+.nav{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.nav a{
+  color:var(--text);
+  opacity:.9;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+}
+.nav a:hover{opacity:1}
+
+.btn.outline{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--accent);
+  box-shadow:none;
+}
+.btn.outline:hover{
+  border-color:var(--accent);
+}
+
+.logo-row{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin:26px 0 6px;
+}
+.logo-badge{
+  width:92px;
+  height:92px;
+  border-radius:999px;
+  overflow:hidden;
+  border:3px solid rgba(94,234,212,.55);
+  box-shadow:0 0 0 6px rgba(94,234,212,.10);
+  background:rgba(255,255,255,.04);
+}
+.logo-badge img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+@media(max-width:900px){
+  .nav{gap:12px; justify-content:flex-end}
+  .logo-row{gap:14px}
+  .logo-badge{width:74px; height:74px}
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.brand-logos img {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(40, 255, 160, 0.55);
+  box-shadow: 0 0 18px rgba(40, 255, 160, 0.18);
+}
+
+/* ===== end additions ===== */
+/* --- TEMP FIX: FORCE HEADER TO SHOW ON TOP --- */
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.80);
+  backdrop-filter: blur(10px);
+}
+
+body{
+  padding-top: 84px; /* makes room for the fixed header */
+}
+
+.fixed-hero{
+  z-index: 0 !important; /* keep the big hero art behind */
+}
+
+main{
+  position: relative;
+  z-index: 1;
+}
+/* --- END TEMP FIX --- */
+
