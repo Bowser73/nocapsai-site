@@ -2,3 +2,10 @@
 *.bak.*
 *.bak.html
 *.bak.css
+
+# local-only
+.env
+.azure/
+_backup_*/
+*.bak*
+

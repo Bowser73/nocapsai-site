@@ -1,150 +1,548 @@
-
-:root{
-  --bg:#0b0b0b; --fg:#f3f3f3; --muted:#b5b5b5; --card:#141414; --line:#2a2a2a;
-  --radius:16px; --shadow:0 8px 24px rgba(0,0,0,.35);
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:linear-gradient(180deg,#0a0a0a 0%,#0e0e0e 100%); color:var(--fg); line-height:1.55}
-a{color:var(--fg); text-decoration:none}
-.container{width:min(1120px,92vw); margin-inline:auto}
-.pill{display:inline-flex; gap:.5rem; align-items:center; padding:.4rem .8rem;
-  border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:.85rem}
-header{position:sticky; top:0; z-index:50; background:rgba(10,10,10,.7);
-  backdrop-filter:saturate(130%) blur(8px); border-bottom:1px solid var(--line)}
-.bar{display:flex; align-items:center; justify-content:space-between; padding:.9rem 0}
-.brand{display:flex; align-items:center; gap:.9rem}
-.logo{width:44px; height:44px; border-radius:12px; background:#121212; display:grid; place-items:center;
-  box-shadow:var(--shadow); border:1px solid var(--line); overflow:hidden}
-.logo img{width:100%; height:100%; object-fit:cover}
-.brand h1{margin:0; font-size:1.05rem; letter-spacing:.6px}
-.hero{padding: clamp(3rem, 6vw, 5rem) 0 3rem;}
-.hero-grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:2rem; align-items:center}
-.kicker{margin:.25rem 0 1rem}
-.title{font-size:clamp(2rem, 4.5vw, 3.2rem); line-height:1.1; margin:.25rem 0 .75rem}
-.subtitle{color:var(--muted); max-width:60ch}
-.cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.25rem}
-.btn{padding:.85rem 1.1rem; border-radius:12px; border:1px solid var(--line); background:#121212; color:#fff; font-weight:600}
-.btn.primary{background:#1a1a1a; border-color:#2f2f2f}
-.btn:hover{transform:translateY(-1px)}
-.hero-card{background: radial-gradient(120% 120% at 100% 0%, #161616 0%, #0f0f0f 60%);
-  border:1px solid var(--line); border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)}
-.image-wrap{aspect-ratio:1/1; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);
-  background:#0c0c0c; display:grid; place-items:center}
-.image-wrap img{width:100%; height:100%; object-fit:cover; display:block}
-.caption{margin:.6rem 0 0; color:var(--muted); font-size:.9rem}
-section{padding:3rem 0; border-top:1px solid var(--line)}
-.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
-.card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem; box-shadow:var(--shadow)}
-.card h3{margin:.2rem 0 .5rem}
-.meta{color:var(--muted); font-size:.9rem}
-.cta-band{background:linear-gradient(180deg, #101010, #0c0c0c); border:1px solid var(--line); border-radius:var(--radius);
-  padding:1.25rem; display:flex; align-items:center; justify-content:space-between; gap:1rem}
-footer{border-top:1px solid var(--line); padding:1.5rem 0; color:var(--muted)}
-.footgrid{display:grid; grid-template-columns: 1fr auto; gap:1rem; align-items:center}
-.footbrand{display:flex; align-items:center; gap:.75rem}
-.footbrand strong{color:var(--fg)}
-@media (max-width:960px){.hero-grid{grid-template-columns:1fr} .cards{grid-template-columns:1fr} .cta-band{flex-direction:column; align-items:flex-start}}
-
-/* ===== NoCapsAI top nav + logo row additions ===== */
-.nav{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  flex-wrap:wrap;
-}
-.nav a{
-  color:var(--text);
-  opacity:.9;
-  text-decoration:none;
-  font-weight:600;
-  font-size:14px;
-}
-.nav a:hover{opacity:1}
-
-.btn.outline{
-  background:transparent;
-  border:1px solid var(--line);
-  color:var(--accent);
-  box-shadow:none;
-}
-.btn.outline:hover{
-  border-color:var(--accent);
+/* GENERAL STYLES */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #001a33;
+    color: #ffffff;
+    line-height: 1.6em;
 }
 
-.logo-row{
-  display:flex;
-  justify-content:center;
-  gap:22px;
-  margin:26px 0 6px;
-}
-.logo-badge{
-  width:92px;
-  height:92px;
-  border-radius:999px;
-  overflow:hidden;
-  border:3px solid rgba(94,234,212,.55);
-  box-shadow:0 0 0 6px rgba(94,234,212,.10);
-  background:rgba(255,255,255,.04);
-}
-.logo-badge img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+/* HEADER */
+header {
+    background-color: #003366;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 2px solid #00ff7f;
 }
 
-@media(max-width:900px){
-  .nav{gap:12px; justify-content:flex-end}
-  .logo-row{gap:14px}
-  .logo-badge{width:74px; height:74px}
+.logo-center {
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 80px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px limegreen;
 }
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-logos {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 10px;
+/* New header layout additions */
+.header-left, .header-center, .header-right {
+  flex: 1;
+  text-align: center;
 }
 
-.brand-logos img {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  object-fit: cover;
-  border: 2px solid rgba(40, 255, 160, 0.55);
-  box-shadow: 0 0 18px rgba(40, 255, 160, 0.18);
+.header-left {
+  text-align: left;
 }
 
-/* ===== end additions ===== */
-/* --- TEMP FIX: FORCE HEADER TO SHOW ON TOP --- */
-.site-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: rgba(0,0,0,0.80);
-  backdrop-filter: blur(10px);
+.header-right {
+  text-align: right;
 }
 
-body{
-  padding-top: 84px; /* makes room for the fixed header */
+.logo-small {
+  width: 55px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px limegreen;
 }
 
-.fixed-hero{
-  z-index: 0 !important; /* keep the big hero art behind */
+
+nav a {
+    color: #00ff7f;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-main{
+nav a:hover {
+    color: #ffffff;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  /* image + subtle dark vignette */
+  background:
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, #001f33 100%),
+    url('/assets/brand-hero.png') center center / contain no-repeat;
+  background-color: #001f33;  /* fallback */
+  background-attachment: scroll, fixed;
+  text-align: center;
+  padding: 160px 24px 200px;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+
+/* darken the sides a bit but keep image visible */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center,
+                              rgba(0,0,0,0) 60%,
+                              rgba(0,0,0,0.8) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* keep text above overlay */
+.hero > * {
   position: relative;
   z-index: 1;
 }
-/* --- END TEMP FIX --- */
+
+
+/* by default put hero children above overlay */
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* container to keep floating words behind text, not on top of it */
+.floating-words {
+  position: absolute;
+  inset: 0;
+  z-index: 0;              /* BEHIND h1/p/button */
+  pointer-events: none;
+}
+
+/* Floating integration words */
+.floating-words .floating-word {
+  position: absolute;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgba(0,255,200,0.35);
+  text-shadow: 0 0 8px rgba(0,255,255,0.25);
+  animation: drift 14s linear infinite;
+}
+
+@keyframes drift {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg);     opacity: 0.6; }
+  50%  { transform: translateY(-40px) translateX(20px) rotate(5deg); opacity: 0.9; }
+  100% { transform: translateY(0) translateX(0) rotate(0deg);     opacity: 0.6; }
+}
+
+/* Slightly larger and crisper on bigger screens */
+@media (min-width: 800px) {
+  .floating-words .floating-word { font-size: 1.8rem; }
+}
+
+/* HERO TEXT */
+.hero h1 {
+  font-size: 2.5em;              /* matches what you’re seeing now */
+  color: #00ff7f;
+  text-shadow: 0 0 15px #003366;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 20px auto;
+  color: #ffffff;
+  font-size: 1.1em;
+}
+
+/* hero button (if you ever use <button> inside hero) */
+.hero button {
+  background-color: #00ff7f;
+  color: #001a33;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  background-color: #003366;
+  color: #00ff7f;
+}
+
+/* primary CTA link style */
+.cta-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2.5rem;
+  border-radius: 9999px;
+  border: 2px solid #00ff9a;
+  background: #00ff9a;
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 0 30px rgba(0, 255, 154, 0.6);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(0, 255, 154, 0.85);
+  background: #001622;
+  color: #00ff9a;
+}
+
+
+
+/* EXPLAIN SECTION */
+.explain {
+    background-color: #001a33;
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 2px solid #00ff7f;
+}
+
+.explain h2 {
+    color: #00ff7f;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.explain p {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1.1em;
+    line-height: 1.6em;
+}
+
+.points {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.point {
+    background-color: #000;
+    border: 2px solid #00ff7f;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 0 15px #003366;
+}
+
+.point h3 {
+    color: #00ff7f;
+    margin-bottom: 10px;
+}
+
+/* Pricing row: lay cards out in a flex row and stretch them */
+.pricing {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;   /* makes all .plan cards same height */
+  flex-wrap: nowrap;
+
+}
+
+.pricing-section h2 {
+  color: #00ff7f;
+  font-size: 2em;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Individual plan cards */
+.plan {
+  background-color: #000;
+  border: 2px solid #00ff7f;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 15px;
+  box-shadow: 0 0 20px #003366;
+
+  /* make all cards same height and line up nicely */
+  flex: 0 1 320px;          /* don’t stretch full width, base width ~320px */
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.plan h3 {
+    color: #00ff7f;
+    font-size: 1.5em;
+}
+
+.plan button {
+    background-color: #00ff7f;
+    color: #001a33;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.plan button:hover {
+    background-color: #003366;
+    color: #00ff7f;
+}
+/* Plan CTA buttons */
+.plan-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  background: #00ff9a;
+  color: #001f33;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid #00ff9a;
+  box-shadow: 0 0 18px rgba(0, 255, 154, 0.55);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.plan-cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: transparent;
+  color: #00ff9a;
+  box-shadow: 0 0 24px rgba(0, 255, 154, 0.85);
+}
+
+/* --- Floating AI Tech Names --- */
+.floating-tech {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-tech span {
+  position: absolute;
+  color: rgba(0, 255, 153, 0.2);
+  font-size: 20px;
+  font-weight: bold;
+  animation: float 30s linear infinite;
+  text-shadow: 0 0 8px #00ff99;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100vw);
+    opacity: 0.2;
+  }
+}
+
+/* Randomly scatter text */
+.floating-tech span:nth-child(odd) {
+  animation-duration: 25s;
+}
+.floating-tech span:nth-child(even) {
+  animation-duration: 35s;
+}
+.floating-tech span:nth-child(3n) {
+  animation-delay: 5s;
+}
+.floating-tech span:nth-child(4n) {
+  animation-delay: 10s;
+}
+
+/* FOOTER SECTION */
+footer {
+    background-color: #000;
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 20px;
+    border-top: 2px solid #00ff7f;
+}
+
+footer h2 {
+    color: #00ff7f;
+    margin-bottom: 15px;
+}
+
+footer input[type="email"] {
+    padding: 10px;
+    width: 250px;
+    border: 2px solid #00ff7f;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+footer button {
+    background-color: #00ff7f;
+    color: #001a33;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+footer button:hover {
+    background-color: #003366;
+    color: #00ff7f;
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #00ff7f;
+}
+.ai-integrations {
+    background: linear-gradient(180deg, #001a33, #002b4d);
+    text-align: center;
+    padding: 50px 20px;
+    color: #00ff99;
+    border-top: 2px solid limegreen;
+    border-bottom: 2px solid limegreen;
+}
+
+.ai-integrations h3 {
+    font-size: 24px;
+    color: #00ff99;
+    margin-bottom: 20px;
+}
+
+.ai-logos a {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid #00ff9a;
+  background: rgba(0, 255, 154, 0.06);
+  color: #00ff9a;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 16px rgba(0, 255, 154, 0.35);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.ai-logos a:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: #00ff9a;
+  color: #001f33;
+  box-shadow: 0 0 24px rgba(0, 255, 154, 0.75);
+}
+
+
+/* Header partner logos (3 icons) */
+.header-logos{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.header-logos img{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  filter: drop-shadow(0 0 10px rgba(0,255,150,0.55));
+}
+.header-kicker{
+  display:inline-block;
+  margin-top:6px;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid rgba(0,255,150,0.55);
+  color: rgba(0,255,150,0.95);
+  font-size:12px;
+  line-height:1;
+}
+@media (max-width:700px){
+  .header-logos img{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  filter: drop-shadow(0 0 10px rgba(0,255,150,0.55));
+}
+.header-kicker{
+  display:inline-block;
+  margin-top:6px;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid rgba(0,255,150,0.55);
+  color: rgba(0,255,150,0.95);
+  font-size:12px;
+  line-height:1;
+}
+}
+
+
+
+/* Tighten spacing between logo-3 and logo-1 */
+.header-logos img.logo-tight-right{ margin-right:-6px; }
+.header-logos img.logo-tight-left{  margin-left:-6px; }
+
+
+/* === NoCapsAI HEADER LOGOS TUNING (AUTO) === */
+.header-logos{
+  display:flex;
+  align-items:center;
+  gap:10px; /* general spacing */
+}
+
+/* Glow on all three */
+.header-logos img{
+  border-radius:999px;
+  filter: drop-shadow(0 0 10px rgba(0,255,160,.75));
+}
+
+/* Make logo-3 hug logo-1 (after reorder, logo-3 becomes the 1st img) */
+.header-logos img:nth-child(1){
+  margin-right:-8px; /* adjust -6 to -14 if you want tighter/looser */
+}
+
+
+
+/* Header partner logos (3 icons) */
+.header-logos{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.header-logos img{
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  object-fit:cover;
+  display:block;
+}
+@media (max-width:700px){
+  .header-logos img{ width:28px; height:28px; }
+}
+
+
+
+.footer-tagline{
+  margin-top: 18px;
+  text-align: center;
+  opacity: .9;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* NOCAPSAI_FOOTER_TWEAKS */
+footer, .site-footer {
+  background-color: #001a33;
+  color: #ffffff;
+  border-top: 2px solid #00ff7f;
+}
+
+footer#contact { padding: 50px 20px; }
+.site-footer { padding: 30px 20px; border-top: 0; }
 

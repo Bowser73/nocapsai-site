@@ -1,213 +1,187 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>NoCapsAI – AI Automation Specialist</title>
-<meta content="NoCapsAI helps real businesses eliminate busywork with practical AI automation. Your business, but 10X faster and 90% less manual." name="description"/>
-<link href="assets/favicon.ico" rel="icon"/>
-<link href="styles.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoCapsAI | Automate Everything</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body id="top">
+<body>
+
 <header>
-<div class="container bar">
-<a class="brand" href="#top">
-<span aria-hidden="true" class="logo">N</span>
-<span class="brand-name">NoCapsAI</span>
-</a>
-<nav aria-label="Primary" class="nav">
-<a href="#services">Services</a>
-<a href="#who">Who It’s For</a>
-<a href="#how">How It Works</a>
-<a href="#contact">Contact</a>
-<a class="btn outline" href="#quote">Get Started</a>
-</nav>
+  <div class="header-logos" aria-label="Partner logos">
+  <img src="assets/logo-3.png" alt="Partner logo 3" loading="lazy" class="p-logo p-logo-3">
+  <img src="assets/logo-1.png" alt="Partner logo 1" loading="lazy" class="p-logo p-logo-1">
+  <img src="assets/logo-2.png" alt="Partner logo 2" loading="lazy" class="p-logo p-logo-2">
 </div>
+<nav class="header-right">
+    <a href="#">Home</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
-<main class="container" id="main" role="main">
-<section aria-label="Hero" class="hero">
-<div class="kicker pill">“Why crawl when you can fly?”</div>
-<div aria-label="Brand marks" class="logo-row">
-<div class="logo-badge"><img alt="NoCapsAI mark 1" src="assets/logo-1.png"/></div>
-<div class="logo-badge"><img alt="NoCapsAI mark 2" src="assets/logo-2.png"/></div>
-<div class="logo-badge"><img alt="NoCapsAI mark 3" src="assets/logo-3.png"/></div>
-</div>
 
-<div class="hero-grid">
-<div>
-<h2 class="title">Your business, but <span style="white-space:nowrap">10X faster</span> and <span style="white-space:nowrap">90% less manual</span>.</h2>
-<p class="subtitle">I build practical automations that wipe out repetitive work: intake → processing → follow‑ups → reports. No hype. Just output.</p>
-<div aria-label="Primary calls to action" class="cta" role="group">
-<a class="btn primary" href="#quote">Request a Quote</a>
-<a class="btn" href="#contact">Contact</a>
-<a class="btn" download="" href="assets/ai-audit-checklist.pdf">Free AI Audit (PDF)</a>
-</div>
-</div>
-<div aria-label="Brand image" class="hero-card">
-<div class="image-wrap">
-<img alt="Symbolic brand image: speed riding strength – a horse atop an elephant." src="assets/brand-hero.webp"/>
-</div>
-<p class="caption">Speed on top of strength. Traditional operations + smart automation.</p>
-</div>
-</div>
+
+<!-- HERO SECTION -->
+
+<section class="hero" id="home">
+  <!-- Floating brand and partner words -->
+  <div class="floating-words">
+    <div class="floating-word" style="top:12%;left:10%;--speed:20s;">Zapier</div>
+    <div class="floating-word" style="top:18%;left:22%;--speed:22s;">Notion</div>
+    <div class="floating-word" style="top:10%;left:75%;--speed:25s;">OpenAI</div>
+    <div class="floating-word" style="top:20%;left:82%;--speed:27s;">LangChain</div>
+    <div class="floating-word" style="top:26%;left:42%;--speed:29s;">Claude</div>
+    <div class="floating-word" style="top:14%;left:58%;--speed:31s;">Hugging Face</div>
+    <div class="floating-word" style="top:22%;left:64%;--speed:34s;">Runway ML</div>
+    <div class="floating-word" style="top:16%;left:30%;--speed:33s;">ElevenLabs</div>
+    <div class="floating-word"
+         style="top:38%;left:50%;
+                font-size:clamp(3rem,8vw,8rem);
+                color:rgba(0,255,150,0.05);
+                transform:translate(-50%,-50%);
+                text-shadow:0 0 40px rgba(0,255,180,0.12);
+                animation:drift 40s ease-in-out infinite alternate;">
+      NoCapsAI
+    </div>
+  </div>
+
+  <!-- Main hero copy -->
+  <h1>Automate Everything with NoCapsAI</h1>
+  <p>Turn your ideas into smart, fast-moving systems that save time, reduce manual work, and boost profits. Let AI handle the grind while you focus on growth.</p>
+  <a href="#pricing" class="cta-button">Get Started</a>
 </section>
-<section aria-labelledby="services-title" id="services">
-<h2 id="services-title">Services &amp; Pricing</h2>
-<p class="meta">Straightforward packages. Clear deliverables. Built to save time the first week, not the tenth.</p>
-<div class="cards" role="list">
-<article aria-labelledby="card1-title" class="card" role="listitem">
-<h3 id="card1-title">Starter — "Stop the Bleeding"</h3>
-<p>Quick wins that instantly remove manual tasks. Email triage, spreadsheet automations, canned responses, and basic chatbot intake.</p>
-<p class="meta">Deliverables: 3 automations • 1 intake bot • SOP updates • 14‑day support</p>
-</article>
-<article aria-labelledby="card2-title" class="card" role="listitem">
-<h3 id="card2-title">Pro — "Systemize the Core"</h3>
-<p>Workflow redesign with AI in the loop: CRM updates, lead routing, follow‑ups, reporting. Connects apps (Zapier/Make/APIs) with guardrails.</p>
-<p class="meta">Deliverables: 6–8 automations • CRM flows • metrics dashboard • 30‑day support</p>
-</article>
-<article aria-labelledby="card3-title" class="card" role="listitem">
-<h3 id="card3-title">Enterprise — "Automation Ops"</h3>
-<p>End‑to‑end automation ops with documentation, permissions, audits, and monthly iteration cycles. Scales across teams.</p>
-<p class="meta">Deliverables: ongoing roadmap • governance • custom APIs • monthly optimization</p>
-</article>
-</div>
-</section><section class="section" id="who">
-<div class="container">
-<h2>Who It’s For</h2>
-<p class="sub">NoCapsAI is built for busy service businesses that want cleaner scheduling, faster follow-ups, and fewer dropped balls.</p>
-<div class="cards">
-<div class="card">
-<h3>Owner-operators</h3>
-<p>You’re juggling jobs, calls, and paperwork. Automations keep the work moving without you babysitting every step.</p>
-</div>
-<div class="card">
-<h3>Small teams</h3>
-<p>Dispatch, techs, and office staff stay aligned with simple handoffs, reminders, and status updates.</p>
-</div>
-<div class="card">
-<h3>High-trust trades</h3>
-<p>HVAC, plumbing, roofing, and home services where speed and professionalism win reviews and repeat customers.</p>
-</div>
-</div>
-</div>
-</section><section class="section" id="how">
-<div class="container">
-<h2>How It Works</h2>
-<div class="cards">
-<div class="card">
-<h3>1) Quick intake</h3>
-<p>We map your current workflow: calls, forms, quotes, scheduling, invoicing, and follow-up.</p>
-</div>
-<div class="card">
-<h3>2) Build + connect</h3>
-<p>We wire automations into the tools you already use (or recommend a lean stack if you’re starting fresh).</p>
-</div>
-<div class="card">
-<h3>3) Measure + improve</h3>
-<p>We track what matters: response time, booked jobs, no-shows, and follow-up completion. Then we tighten the loop.</p>
-</div>
-</div>
-</div>
+
+
+
+
+
+
+
+
+<section class="ai-integrations">
+  <h3>Integrates Seamlessly With</h3>
+  <div class="ai-logos">
+    <a href="https://openai.com" target="_blank" rel="noopener noreferrer">OpenAI</a>
+    <a href="https://zapier.com" target="_blank" rel="noopener noreferrer">Zapier</a>
+    <a href="https://www.notion.so/product/ai" target="_blank" rel="noopener noreferrer">Notion AI</a>
+    <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">ChatGPT</a>
+    <a href="https://cloud.google.com" target="_blank" rel="noopener noreferrer">Google Cloud</a>
+    <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">Anthropic</a>
+    <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Claude</a>
+    <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+    <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a>
+    <a href="https://runwayml.com" target="_blank" rel="noopener noreferrer">Runway ML</a>
+    <a href="https://elevenlabs.io" target="_blank" rel="noopener noreferrer">ElevenLabs</a>
+    <a href="https://replicate.com" target="_blank" rel="noopener noreferrer">Replicate</a>
+    <a href="https://www.langchain.com" target="_blank" rel="noopener noreferrer">LangChain</a>
+  </div>
 </section>
-<section aria-labelledby="quote-title" id="quote">
-<h2 id="quote-title">Request a Quote</h2>
-<p class="meta">Tell me your top 3 pain points and what tools you use today.</p>
-<form id="quoteForm">
-<div>
-<label for="qname">Name</label><br/>
-<input id="qname" name="name" required=""/>
-</div>
-<div>
-<label for="qemail">Email</label><br/>
-<input id="qemail" name="email" required="" type="email"/>
-</div>
-<div>
-<label for="qtools">Current tools (CRM, email, spreadsheets, etc.)</label><br/>
-<input id="qtools" name="tools" required=""/>
-</div>
-<div>
-<label for="qpain">Top 3 pain points</label><br/>
-<textarea id="qpain" name="pain" required="" rows="4"></textarea>
-</div>
-<button class="btn primary" type="submit">Send Request</button>
-<span class="pill" id="qstatus" style="display:none;margin-left:.5rem"></span>
-</form>
+
+
+<!-- EXPLAIN SECTION -->
+<section class="explain">
+    <h2>What We Actually Do</h2>
+    <p>
+        NoCapsAI builds custom automations that make your tools work together like a full team —
+        without you lifting a finger. We connect apps like Gmail, Notion, Google Sheets, and ChatGPT
+        so your emails, content, data, and reports move automatically between them.
+    </p>
+
+    <div class="points">
+        <div class="point">
+            <h3>✅ Real AI Workflows</h3>
+            <p>We use advanced AI prompts and APIs to do the repetitive work — writing, sorting, replying, and analyzing — faster than any human could.</p>
+        </div>
+        <div class="point">
+            <h3>⚙️ Seamless Automation</h3>
+            <p>Your data, leads, and projects flow automatically between tools — no manual uploads, no endless copy/paste.</p>
+        </div>
+        <div class="point">
+            <h3>📈 Built for Speed & Scale</h3>
+            <p>Once your systems are in place, everything runs 24/7. That means faster output, lower costs, and more time to focus on growth.</p>
+        </div>
+    </div>
 </section>
-<section aria-labelledby="contact-title" id="contact">
-<h2 id="contact-title">Contact</h2>
-<form id="contactForm">
-<div>
-<label for="cname">Name</label><br/>
-<input id="cname" name="name" required=""/>
-</div>
-<div>
-<label for="cemail">Email</label><br/>
-<input id="cemail" name="email" required="" type="email"/>
-</div>
-<div>
-<label for="cmsg">Message</label><br/>
-<textarea id="cmsg" name="message" required="" rows="4"></textarea>
-</div>
-<button class="btn primary" type="submit">Send Message</button>
-<span class="pill" id="cstatus" style="display:none;margin-left:.5rem"></span>
-</form>
-</section>
-</main>
-<footer role="contentinfo">
-<div class="container footgrid">
-<div class="footbrand">
-<div>
-<strong>NoCapsAI</strong> — AI Automation Specialist
-          <div class="meta">“Your business, but 10X faster and 90% less manual.” • Why crawl when you can fly?</div>
-</div>
-</div>
-<div class="meta">© <span id="y"></span> NoCapsAI • All rights reserved</div>
-</div>
+
+
+<!-- PRICING SECTION -->
+  <section id="pricing" class="pricing-section">
+  <h2>Choose Your Plan</h2>
+
+  <div class="pricing">
+  <div class="plan">
+    <h3>Free Audit</h3>
+    <p>Perfect if you’re just exploring automation and want to see what’s possible.</p>
+    <p><strong>$0 – Free Automation Audit</strong></p>
+    <a href="#contact" class="plan-cta">Book My Free Audit</a>
+  </div>
+
+  <div class="plan">
+    <h3>Starter Build</h3>
+    <p>For small teams who want one core workflow built and running end-to-end.</p>
+    <p><strong>From $297 (one-time)</strong></p>
+    <a href="#contact" class="plan-cta">Talk to Us</a>
+  </div>
+
+  <div class="plan">
+    <h3>Growth Systems</h3>
+    <p>For businesses ready for multiple workflows and ongoing tweaks each month.</p>
+    <p><strong>From $997/mo</strong></p>
+    <a href="#contact" class="plan-cta">Request Starter Build</a>
+  </div>
+  </section>
+
+
+
+
+
+
+
+<!-- FOOTER SECTION -->
+<footer id="contact">
+  <h2>Stay in the Loop</h2>
+  <p>Get simple, practical automation tips and ready-to-use workflows, directly in your inbox.</p>
+  <form>
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">Sign Up</button>
+  </form>
+  <div class="copyright">
+    © <span data-year></span> NoCapsAI. All rights reserved.
+  </div>
 </footer>
-<!-- Simple chatbot placeholder -->
-<script>
-    (function(){
-      const b = document.createElement('button');
-      b.textContent = 'Chat with NoCapsAI (coming soon)';
-      Object.assign(b.style, {position:'fixed', right:'16px', bottom:'16px', padding:'10px 14px', borderRadius:'12px', border:'1px solid #2a2a2a', background:'#1a1a1a', color:'#fff', zIndex:9999});
-      b.onclick = ()=> alert('This will connect to your future chatbot. For now, email hello@nocapsai.com');
-      document.body.appendChild(b);
-    })();
-    document.getElementById('y').textContent = new Date().getFullYear();
 
-    async function postJSON(url, data){
-      return fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
-    }
-    // Quote form handler
-    document.getElementById('quoteForm').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const s = document.getElementById('qstatus'); s.style.display='inline-flex'; s.textContent='Sending...';
-      const payload = {
-        name: document.getElementById('qname').value,
-        email: document.getElementById('qemail').value,
-        tools: document.getElementById('qtools').value,
-        pain: document.getElementById('qpain').value
-      };
-      try{
-        const r = await postJSON('/api/quote', payload);
-        s.textContent = r.ok ? 'Sent!' : 'Error — try again';
-      }catch(err){ s.textContent='Network error'; }
-    });
-    // Contact form handler
-    document.getElementById('contactForm').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const s = document.getElementById('cstatus'); s.style.display='inline-flex'; s.textContent='Sending...';
-      const payload = {
-        name: document.getElementById('cname').value,
-        email: document.getElementById('cemail').value,
-        message: document.getElementById('cmsg').value
-      };
-      try{
-        const r = await postJSON('/api/contact', payload);
-        s.textContent = r.ok ? 'Sent!' : 'Error — try again';
-      }catch(err){ s.textContent='Network error'; }
-    });
-  </script>
+
+
+<!-- NOCAPSAI_FOOTER_BLOCK -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">NoCapsAI</div>
+    <div class="footer-copy">
+      AI agents • workflow automation • lead capture • CRM follow-up • scheduling • voice/SMS • dashboards • integrations
+    </div>
+    <div class="footer-tagline">
+      Turn ideas into systems that save time, reduce manual work, and boost profit.
+    </div>
+  </div>
+</footer>
+
+<!-- NOCAPSAI_YEAR_SCRIPT -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const y = new Date().getFullYear();
+  document.querySelectorAll('[data-year]').forEach(el => el.textContent = y);
+});
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
