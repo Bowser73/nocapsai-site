@@ -546,3 +546,18 @@ footer, .site-footer {
 footer#contact { padding: 50px 20px; }
 .site-footer { padding: 30px 20px; border-top: 0; }
 
+
+/* footer-accent-fix v1 */
+/* Force footer text to match accent green */
+footer, footer * { color: var(--accent, #00ff88) !important; }
+
+/* Keep inputs readable */
+footer input, footer textarea { color: #111 !important; }
+footer input::placeholder, footer textarea::placeholder { color: #666 !important; }
+
+/* Keep footer buttons readable */
+footer button, footer .btn, footer a.btn { color: #111 !important; }
+
+/* Nice scroll position when jumping to #contact */
+#contact { scroll-margin-top: 120px; }
+
