@@ -653,3 +653,22 @@ body {
 /* keep headings already styled */
 h1, h2, h3 { /* leave as-is if already correct */ }
 
+
+
+  /* key change: give it a real surface */
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(0,255,154,0.65);
+  color: #00ff9a;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+
+  box-shadow: 0 0 16px rgba(0,255,154,0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+
+
