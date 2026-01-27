@@ -127,18 +127,27 @@ nav a:hover {
 }
 
 /* HERO TEXT */
+/* HERO TEXT */
 .hero h1 {
-  font-size: 2.5em;              /* matches what you’re seeing now */
-  color: #00ff7f;
-  text-shadow: 0 0 15px #003366;
+  font-size: 2.5em;              /* keep your current size */
+  color: #00ff7f;                /* keep your green */
+  text-shadow: 0 3px 22px rgba(0,0,0,0.80);
 }
 
-.hero p {
-  max-width: 700px;
-  margin: 20px auto;
-  color: #ffffff;
+.hero p{
+  max-width: 720px;
+  margin: 18px auto 0;
   font-size: 1.1em;
+  color: #00ff7f;                 /* matches your green theme */
+  text-shadow: 0 3px 22px rgba(0,0,0,0.85);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
 }
+
+
+
 
 /* hero button (if you ever use <button> inside hero) */
 .hero button {
@@ -560,4 +569,87 @@ footer button, footer .btn, footer a.btn { color: #111 !important; }
 
 /* Nice scroll position when jumping to #contact */
 #contact { scroll-margin-top: 120px; }
+
+.plan.featured{
+  border: 2px solid rgba(0,255,150,0.7);
+  box-shadow: 0 0 28px rgba(0,255,150,0.18);
+  transform: scale(1.03);
+}
+
+.plan.featured .plan-cta{
+  font-weight: 800;
+}
+/* Make hero copy readable over busy images */
+.hero h1{
+  text-shadow: 0 2px 18px rgba(0,0,0,0.85);
+}
+
+.hero p{
+  display: block;               /* no “pill” sizing */
+  max-width: 900px;
+  margin: 20px auto 0;          /* keeps it centered */
+  padding: 0;                   /* removes the box spacing */
+  border-radius: 0;             /* removes the rounded box */
+  background: transparent;      /* removes the black box */
+  backdrop-filter: none;        /* no blur panel */
+  color: #00ff9a;               /* match your neon green theme */
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.9); /* readable on the photo */
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-brand{
+  flex: 1;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #00ff7f;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+  pointer-events: none;
+}
+
+.header-logos,
+.header-right{
+  flex: 0 0 auto;
+}
+.badge{
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,255,150,0.65);
+  background: rgba(0,255,150,0.12);
+  color: #00ff9a;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin: 10px 0 8px;
+  width: auto;          /* key fix */
+  max-width: max-content;
+}
+
+
+p, li{
+  color: #eafff6;
+}
+.plan.featured .plan-cta{
+  background: linear-gradient(90deg, #00ff9a, #a6ff00);
+  border-color: rgba(0,0,0,0.15);
+  color: #001a33;
+  box-shadow: 0 0 38px rgba(0,255,154,0.55);
+}
+
+.plan.featured .plan-cta:hover{
+  box-shadow: 0 0 48px rgba(166,255,0,0.55);
+}
+
+/* global body text (non-hero) */
+body {
+  color: #00ff9a;
+}
+
+/* keep headings already styled */
+h1, h2, h3 { /* leave as-is if already correct */ }
 
