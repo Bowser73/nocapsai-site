@@ -1,19 +1,17 @@
 (function () {
   'use strict';
 
-  const BASE  = 'https://whittaker-nate-7634-resource.services.ai.azure.com/api/projects/whittaker_nate-7634';
-  const KEY   = '5OLhs7oJnxzC0I28ULlThKwxa8UDMsoXJSDxPDDxi0vTfMJeo7tNJQQJ99CAACHYHv6XJ3w3AAAAACOGV9xa';
+  const BASE  = 'https://nocapsai-proxy.azurewebsites.net/api/proxy';
   const AGENT = 'asst_EcRoLhooreP8UEUvTaYhIA';
-  const VER   = '2025-01-01';
 
   let threadId = null;
   let isLoading = false;
 
   /* ── API helpers ─────────────────────────────────────────── */
   async function api(method, path, body) {
-    const res = await fetch(`${BASE}${path}?api-version=${VER}`, {
+    const res = await fetch(`${BASE}${path}`, {
       method,
-      headers: { 'api-key': KEY, 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: body !== undefined ? JSON.stringify(body) : undefined
     });
     if (!res.ok) {
