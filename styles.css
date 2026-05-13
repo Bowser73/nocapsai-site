@@ -72,10 +72,9 @@ nav a:hover {
 .hero {
   position: relative;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(60,255,154,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 50%, rgba(0,180,120,0.06) 0%, transparent 50%),
-    linear-gradient(160deg, #0a1822 0%, #0f2a3a 50%, #001f33 100%);
-  background-color: #0a1822;
+    radial-gradient(circle at center, rgba(0,0,0,0) 40%, rgba(0,31,51,0.85) 100%),
+    url('/assets/brand-hero.png') center center / cover no-repeat;
+  background-color: #001f33;
   text-align: center;
   padding: 160px 24px 200px;
   color: #ffffff;
@@ -84,14 +83,14 @@ nav a:hover {
 }
 
 
-/* subtle green glow overlay */
+/* darken edges so text pops */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 40%,
-                              rgba(60,255,154,0.04) 0%,
-                              rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle at center,
+                              rgba(0,0,0,0) 50%,
+                              rgba(0,0,0,0.6) 100%);
   z-index: 0;
   pointer-events: none;
 }
