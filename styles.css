@@ -71,16 +71,16 @@ nav a:hover {
 /* ===== HERO SECTION ===== */
 .hero {
   position: relative;
-  /* image + subtle dark vignette */
   background:
     radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, #001f33 100%),
-    url('/assets/brand-hero.png') center center / contain no-repeat;
-  background-color: #001f33;  /* fallback */
+    url('/assets/brand-hero.png') center center / cover no-repeat;
+  background-color: #001f33;
   background-attachment: scroll, scroll;
   text-align: center;
   padding: 160px 24px 200px;
   color: #ffffff;
   overflow: hidden;
+  width: 100%;
 }
 
 
@@ -665,17 +665,51 @@ body {
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
 
-  /* Hero: reduce massive padding on small screens */
+  /* Hero: full width, less padding, cover image */
   .hero {
-    padding: 80px 20px 100px;
-    background-attachment: scroll, scroll; /* fixed bg attachment breaks on mobile */
+    padding: 60px 16px 80px;
+    width: 100%;
+    background-size: cover, cover;
   }
 
   .hero h1 {
-    font-size: 1.8em;
+    font-size: 1.7em;
   }
 
-  /* Pricing: stack cards vertically on mobile */
+  .hero p {
+    font-size: 1em;
+  }
+
+  /* Header: wrap so nav doesn't blow out the page width */
+  header {
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .header-brand {
+    font-size: 1rem;
+  }
+
+  /* Nav: wrap to second line and shrink */
+  nav.header-right {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 8px;
+    margin-top: 4px;
+  }
+
+  nav a {
+    margin-left: 0;
+    font-size: 0.82rem;
+    padding: 2px 4px;
+  }
+
+  /* Pricing: stack cards vertically */
   .pricing {
     flex-direction: column;
     align-items: center;
@@ -683,29 +717,13 @@ body {
 
   .plan {
     width: 90%;
-    max-width: 360px;
+    max-width: 380px;
     flex: none;
     margin: 10px 0;
   }
 
   .plan.featured {
-    transform: scale(1); /* remove scale on mobile — wastes space */
-  }
-
-  /* Header: stack or shrink nav on mobile */
-  header {
-    flex-wrap: wrap;
-    padding: 12px 16px;
-    gap: 8px;
-  }
-
-  .header-brand {
-    font-size: 1.1rem;
-  }
-
-  nav a {
-    margin-left: 12px;
-    font-size: 0.9rem;
+    transform: scale(1);
   }
 
   /* Explain points: single column */
@@ -716,10 +734,10 @@ body {
 
   .point {
     width: 90%;
-    max-width: 400px;
+    max-width: 420px;
   }
 
-  /* AI logos: tighter wrapping */
+  /* AI logos wrapping */
   .ai-logos {
     display: flex;
     flex-wrap: wrap;
@@ -727,7 +745,7 @@ body {
     justify-content: center;
   }
 
-  /* Footer email input: full width */
+  /* Footer email: full width */
   footer input[type="email"] {
     width: 100%;
     margin-right: 0;
