@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Services — NoCapsAI | Websites, Apps & Automations</title>
+<meta name="description" content="NoCapsAI builds websites, custom apps, and automations for small businesses. Local to East Central Indiana, serving anyone. Straightforward pricing, real work." />
+<link rel="icon" type="image/png" href="../assets/logo-1.png" />
+<style>
+  :root {
+    --bg:#0a1822;
+    --bg-2:#0f2230;
+    --bg-3:#16313f;
+    --ink:#e8f4ee;
+    --muted:#7ea4a8;
+    --green:#3CFF9A;
+    --green-soft:#7affb9;
+    --line:rgba(60,255,154,0.18);
+    --line-soft:rgba(255,255,255,0.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--green);text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  header{padding:14px 0;border-bottom:1px solid var(--line-soft);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(10,24,34,0.88)}
+  .nav{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .header-left{display:flex;align-items:center;gap:18px}
+  .header-logos{display:flex;align-items:center;gap:10px}
+  .header-logos img{height:34px;width:auto;filter:drop-shadow(0 0 6px rgba(60,255,154,0.18))}
+  .brand{font-weight:800;font-size:20px;color:var(--ink)}
+  .brand span{color:var(--green)}
+  nav a{color:var(--muted);font-size:14px;font-weight:600;margin-left:20px}
+  nav a:hover{color:var(--green)}
+  .nav-cta{background:var(--green);color:#06121a;padding:10px 18px;border-radius:8px;font-weight:700;font-size:14px}
+  .nav-cta:hover{background:var(--green-soft)}
+
+  .page-hero{padding:80px 0 60px;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{display:inline-block;background:rgba(60,255,154,0.1);color:var(--green);padding:6px 14px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:0.12em;margin-bottom:20px;border:1px solid var(--line)}
+  h1{font-size:48px;line-height:1.1;font-weight:800;letter-spacing:-0.02em;margin-bottom:18px}
+  h1 em{color:var(--green);font-style:normal}
+  .sub{font-size:19px;color:var(--muted);max-width:680px;line-height:1.5}
+
+  .services{padding:80px 0}
+  .service-block{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;padding:60px 0;border-bottom:1px solid var(--line-soft)}
+  .service-block:last-child{border-bottom:none}
+  .service-block.flip{direction:rtl}
+  .service-block.flip > *{direction:ltr}
+  @media(max-width:800px){
+    .service-block,.service-block.flip{grid-template-columns:1fr;direction:ltr}
+    h1{font-size:34px}
+  }
+  .tag{display:inline-block;background:rgba(60,255,154,0.1);color:var(--green);font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:14px;letter-spacing:0.1em;border:1px solid var(--line)}
+  h2{font-size:34px;font-weight:800;letter-spacing:-0.01em;margin-bottom:14px}
+  h2 em{color:var(--green);font-style:normal}
+  .service-copy p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:14px}
+  .price-badge{display:inline-block;font-size:28px;font-weight:800;color:var(--ink);margin:16px 0 24px}
+  .price-badge small{font-size:14px;color:var(--muted);font-weight:500;margin-left:6px}
+  .btn{display:inline-block;padding:14px 24px;border-radius:8px;font-weight:700;font-size:15px;text-align:center;transition:all 0.2s}
+  .btn-primary{background:var(--green);color:#06121a;box-shadow:0 0 24px rgba(60,255,154,0.2)}
+  .btn-primary:hover{background:var(--green-soft);transform:translateY(-1px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green)}
+
+  .includes{list-style:none;margin:20px 0 28px}
+  .includes li{padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:15px;color:var(--ink);display:flex;gap:10px;align-items:flex-start}
+  .includes li::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0}
+
+  .service-panel{background:var(--bg-3);border:1px solid var(--line);border-radius:12px;padding:32px}
+  .service-panel h3{font-size:18px;font-weight:700;color:var(--green);margin-bottom:16px}
+  .example-list{list-style:none}
+  .example-list li{padding:8px 0;border-bottom:1px solid var(--line-soft);color:var(--muted);font-size:14px;display:flex;gap:8px}
+  .example-list li::before{content:"→";color:var(--green);flex-shrink:0}
+
+  .cta-strip{background:linear-gradient(135deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-radius:12px;padding:48px 40px;text-align:center;margin:60px 0 0}
+  .cta-strip h2{font-size:32px;margin-bottom:12px}
+  .cta-strip p{color:var(--muted);max-width:580px;margin:0 auto 28px;font-size:16px}
+
+  footer{padding:32px 0;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--line-soft)}
+  footer a{color:var(--green-soft)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="header-left">
+      <div class="header-logos">
+        <img src="../assets/logo-3.png" alt="Logo" loading="lazy">
+        <img src="../assets/logo-1.png" alt="Logo" loading="lazy">
+        <img src="../assets/logo-2.png" alt="Logo" loading="lazy">
+      </div>
+      <a href="/" class="brand">NoCapsAI<span> · Services</span></a>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/services/" style="color:var(--green)">Services</a>
+      <a href="/marketing/">Marketing</a>
+      <a href="mailto:njwhitt@nocapsai.com" class="nav-cta">Get in Touch</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">NOCAPSAI · RUSHVILLE, INDIANA</span>
+    <h1>We build things that <em>make your business money.</em></h1>
+    <p class="sub">Websites, custom apps, and automations. Local tradesmen to multi-state companies — if you've got a problem worth solving, we'll build the solution.</p>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+
+    <!-- SERVICE 1: WEBSITES -->
+    <div class="service-block">
+      <div class="service-copy">
+        <span class="tag">WEBSITES · FROM $1,000</span>
+        <h2>A site that works as hard <em>as you do.</em></h2>
+        <p>Most small business websites are embarrassing. Bad mobile layout, slow load times, no clear call to action. Customers land and leave in 8 seconds.</p>
+        <p>We build clean, fast, mobile-first websites that tell the right story and turn visitors into leads. No page builders, no monthly "hosting fees" from us, no fluff.</p>
+        <ul class="includes">
+          <li>5-page site (Home, Services, About, Gallery/Portfolio, Contact)</li>
+          <li>Mobile-first — looks right on any screen</li>
+          <li>Contact form wired to your email</li>
+          <li>Google Business Profile linked</li>
+          <li>Basic SEO setup (title tags, meta, schema)</li>
+          <li>Hosted on your own domain — you own it</li>
+          <li>Delivered in 7 business days or less</li>
+        </ul>
+        <div class="price-badge">From $1,000 <small>one-time · you own everything</small></div>
+        <a href="mailto:njwhitt@nocapsai.com?subject=Website Build Inquiry" class="btn btn-primary">Talk to Nate about your site →</a>
+      </div>
+      <div>
+        <div class="service-panel">
+          <h3>Good fit for:</h3>
+          <ul class="example-list">
+            <li>HVAC, plumbing, electrical, roofing contractors</li>
+            <li>Lawn care and landscaping companies</li>
+            <li>Painters, handymen, remodelers</li>
+            <li>Any local service business with no site or a terrible one</li>
+            <li>Startups that need something live fast</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 2: APPS & AUTOMATIONS -->
+    <div class="service-block flip">
+      <div class="service-copy">
+        <span class="tag">APPS & AUTOMATIONS · CUSTOM QUOTE</span>
+        <h2>Kill the manual work. <em>Build the system.</em></h2>
+        <p>Got a process that takes 4 hours a week and shouldn't? A spreadsheet that 3 people have to touch before anything happens? A business idea that needs a real tool behind it?</p>
+        <p>We scope it, build it, and hand it off. Python, AI, databases, APIs — whatever the job calls for. You don't need to know the tech. You just need to know what you want the system to do.</p>
+        <ul class="includes">
+          <li>Free scoping call — we figure out exactly what to build</li>
+          <li>Flat-rate quote before any work starts</li>
+          <li>Built with Python, AI APIs, or web tech depending on the job</li>
+          <li>Full handoff — you get the code and documentation</li>
+          <li>Optional monthly retainer for updates and support</li>
+        </ul>
+        <div class="price-badge">Custom quote <small>scoping call is free</small></div>
+        <a href="mailto:njwhitt@nocapsai.com?subject=App or Automation Inquiry" class="btn btn-primary">Tell us what you need →</a>
+      </div>
+      <div>
+        <div class="service-panel">
+          <h3>Things we've built:</h3>
+          <ul class="example-list">
+            <li>Lead scraping + cold email pipelines</li>
+            <li>AI-generated video and content systems</li>
+            <li>Customer intake and onboarding automations</li>
+            <li>Weekly business reporting tools</li>
+            <li>Local prospect databases with enrichment</li>
+            <li>Custom web apps for internal use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 3: CONTENT -->
+    <div class="service-block">
+      <div class="service-copy">
+        <span class="tag">DONE-FOR-YOU CONTENT · $297/MO</span>
+        <h2>30 days of posts and videos. <em>You do nothing.</em></h2>
+        <p>30 social media posts, 4 short AI videos, and a monthly newsletter — all written for your specific business and delivered every month. Built for HVAC, plumbing, lawn, and roofing pros across East Central Indiana.</p>
+        <p>No contract. Cancel anytime. You own everything we deliver.</p>
+        <ul class="includes">
+          <li>30 daily social posts (Facebook, Instagram, Google Business)</li>
+          <li>4 short AI-generated videos with voiceover</li>
+          <li>1 monthly customer newsletter draft</li>
+          <li>Your town, your industry, your voice — not generic</li>
+          <li>Direct text access to Nate for same-day changes</li>
+        </ul>
+        <div class="price-badge">$297<small>/month · no contract</small></div>
+        <a href="/marketing/" class="btn btn-primary">See the full marketing page →</a>
+      </div>
+      <div>
+        <div class="service-panel">
+          <h3>Built for:</h3>
+          <ul class="example-list">
+            <li>HVAC companies under 200 Google reviews</li>
+            <li>Plumbers who haven't posted in 6 weeks</li>
+            <li>Lawn care businesses with no social presence</li>
+            <li>Roofers who want more storm season leads</li>
+            <li>Any home service pro in East Central Indiana</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="padding:0 0 80px;">
+  <div class="wrap">
+    <div class="cta-strip">
+      <h2>Not sure which one fits?</h2>
+      <p>Email Nate directly. Tell him what your business does and what's frustrating you. He'll tell you honestly whether we can help and what it would cost — no sales pitch, no runaround.</p>
+      <a href="mailto:njwhitt@nocapsai.com?subject=NoCapsAI Inquiry" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">njwhitt@nocapsai.com →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    NoCapsAI LLC · Rushville, Indiana · Serving small businesses everywhere<br/>
+    <a href="/">← Back to nocapsai.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
