@@ -2,7 +2,7 @@
   'use strict';
 
   const BASE  = 'https://nocapsai-proxy.azurewebsites.net/api/proxy';
-  const AGENT = 'asst_EcRoLhooreP8UEUvTaYhIA';
+  const AGENT = 'asst_EctRolLhzorePFUEUVTaTYlA';
 
   let threadId = null;
   let isLoading = false;
