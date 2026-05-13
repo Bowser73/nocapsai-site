@@ -73,7 +73,7 @@ nav a:hover {
   position: relative;
   background:
     radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, #001f33 100%),
-    url('/assets/brand-hero.png') center center / cover no-repeat;
+    url('/assets/brand-hero.png') center center / auto 100% no-repeat;
   background-color: #001f33;
   background-attachment: scroll, scroll;
   text-align: center;
