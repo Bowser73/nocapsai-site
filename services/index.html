@@ -3,109 +3,182 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Services — NoCapsAI | Websites, Apps & Automations</title>
+<title>Services — NoCapsAI | Websites, Apps &amp; Automations</title>
 <meta name="description" content="NoCapsAI builds websites, custom apps, and automations for small businesses. Local to East Central Indiana, serving anyone. Straightforward pricing, real work." />
 <link rel="icon" type="image/png" href="../assets/logo-1.png" />
+<link rel="stylesheet" href="../styles.css" />
 <style>
-  :root {
-    --bg:#0a1822;
-    --bg-2:#0f2230;
-    --bg-3:#16313f;
-    --ink:#e8f4ee;
-    --muted:#7ea4a8;
-    --green:#3CFF9A;
-    --green-soft:#7affb9;
-    --line:rgba(60,255,154,0.18);
-    --line-soft:rgba(255,255,255,0.08);
+  /* Margin/padding reset */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ---- Page Hero ---- */
+  .page-hero {
+    position: relative;
+    background:
+      radial-gradient(circle at center, rgba(0,0,0,0) 60%, #001f33 100%),
+      url('/assets/brand-hero.png') center center / cover no-repeat;
+    background-color: #001f33;
+    text-align: center;
+    padding: 85px 24px 95px;
+    overflow: hidden;
+    width: 100%;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-  a{color:var(--green);text-decoration:none}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-
-  header{padding:14px 0;border-bottom:1px solid var(--line-soft);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(10,24,34,0.88)}
-  .nav{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-  .header-left{display:flex;align-items:center;gap:18px}
-  .header-logos{display:flex;align-items:center;gap:10px}
-  .header-logos img{height:34px;width:auto;filter:drop-shadow(0 0 6px rgba(60,255,154,0.18))}
-  .brand{font-weight:800;font-size:20px;color:var(--ink)}
-  .brand span{color:var(--green)}
-  nav a{color:var(--muted);font-size:14px;font-weight:600;margin-left:20px}
-  nav a:hover{color:var(--green)}
-  .nav-cta{background:var(--green);color:#06121a;padding:10px 18px;border-radius:8px;font-weight:700;font-size:14px}
-  .nav-cta:hover{background:var(--green-soft)}
-
-  .page-hero{padding:80px 0 60px;border-bottom:1px solid var(--line-soft)}
-  .eyebrow{display:inline-block;background:rgba(60,255,154,0.1);color:var(--green);padding:6px 14px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:0.12em;margin-bottom:20px;border:1px solid var(--line)}
-  h1{font-size:48px;line-height:1.1;font-weight:800;letter-spacing:-0.02em;margin-bottom:18px}
-  h1 em{color:var(--green);font-style:normal}
-  .sub{font-size:19px;color:var(--muted);max-width:680px;line-height:1.5}
-
-  .services{padding:80px 0}
-  .service-block{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;padding:60px 0;border-bottom:1px solid var(--line-soft)}
-  .service-block:last-child{border-bottom:none}
-  .service-block.flip{direction:rtl}
-  .service-block.flip > *{direction:ltr}
-  @media(max-width:800px){
-    .service-block,.service-block.flip{grid-template-columns:1fr;direction:ltr}
-    h1{font-size:34px}
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.82) 100%);
+    z-index: 0;
+    pointer-events: none;
   }
-  .tag{display:inline-block;background:rgba(60,255,154,0.1);color:var(--green);font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:14px;letter-spacing:0.1em;border:1px solid var(--line)}
-  h2{font-size:34px;font-weight:800;letter-spacing:-0.01em;margin-bottom:14px}
-  h2 em{color:var(--green);font-style:normal}
-  .service-copy p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:14px}
-  .price-badge{display:inline-block;font-size:28px;font-weight:800;color:var(--ink);margin:16px 0 24px}
-  .price-badge small{font-size:14px;color:var(--muted);font-weight:500;margin-left:6px}
-  .btn{display:inline-block;padding:14px 24px;border-radius:8px;font-weight:700;font-size:15px;text-align:center;transition:all 0.2s}
-  .btn-primary{background:var(--green);color:#06121a;box-shadow:0 0 24px rgba(60,255,154,0.2)}
-  .btn-primary:hover{background:var(--green-soft);transform:translateY(-1px)}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--green);color:var(--green)}
+  .page-hero .wrap { position: relative; z-index: 1; }
 
-  .includes{list-style:none;margin:20px 0 28px}
-  .includes li{padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:15px;color:var(--ink);display:flex;gap:10px;align-items:flex-start}
-  .includes li::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0}
+  .eyebrow {
+    display: inline-block;
+    background: rgba(60,255,154,0.1);
+    color: var(--green);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    border: 1px solid var(--line);
+  }
+  .page-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    color: var(--green);
+    text-shadow: 0 3px 22px rgba(0,0,0,.88);
+  }
+  .page-hero .sub {
+    font-size: 19px;
+    color: var(--green-soft);
+    max-width: 680px;
+    line-height: 1.5;
+    margin: 0 auto 28px;
+    text-shadow: 0 3px 22px rgba(0,0,0,.88);
+  }
 
-  .service-panel{background:var(--bg-3);border:1px solid var(--line);border-radius:12px;padding:32px}
-  .service-panel h3{font-size:18px;font-weight:700;color:var(--green);margin-bottom:16px}
-  .example-list{list-style:none}
-  .example-list li{padding:8px 0;border-bottom:1px solid var(--line-soft);color:var(--muted);font-size:14px;display:flex;gap:8px}
-  .example-list li::before{content:"→";color:var(--green);flex-shrink:0}
+  /* ---- Services Sections ---- */
+  .services { padding: 80px 0; }
+  .service-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    padding: 60px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .service-block:last-child { border-bottom: none; }
+  .service-block.flip { direction: rtl; }
+  .service-block.flip > * { direction: ltr; }
 
-  .cta-strip{background:linear-gradient(135deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-radius:12px;padding:48px 40px;text-align:center;margin:60px 0 0}
-  .cta-strip h2{font-size:32px;margin-bottom:12px}
-  .cta-strip p{color:var(--muted);max-width:580px;margin:0 auto 28px;font-size:16px}
+  .tag {
+    display: inline-block;
+    background: rgba(60,255,154,0.1);
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--line);
+  }
+  h2 { font-size: 34px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 14px; color: var(--ink); }
+  h2 em { color: var(--green); font-style: normal; }
+  .service-copy p { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 14px; }
+  .price-badge { display: inline-block; font-size: 28px; font-weight: 800; color: var(--ink); margin: 16px 0 24px; }
+  .price-badge small { font-size: 14px; color: var(--muted); font-weight: 500; margin-left: 6px; }
 
-  footer{padding:32px 0;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--line-soft)}
-  footer a{color:var(--green-soft)}
+  .btn {
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--green); color: #06121a; box-shadow: 0 0 24px rgba(60,255,154,0.2); }
+  .btn-primary:hover { background: var(--green-soft); transform: translateY(-1px); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+  .includes { list-style: none; margin: 20px 0 28px; }
+  .includes li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 15px;
+    color: var(--ink);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .includes li::before { content: "✓"; color: var(--green); font-weight: 800; flex-shrink: 0; }
+
+  .service-panel { background: var(--bg-3); border: 1px solid var(--line); border-radius: 12px; padding: 32px; }
+  .service-panel h3 { font-size: 18px; font-weight: 700; color: var(--green); margin-bottom: 16px; }
+  .example-list { list-style: none; }
+  .example-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--muted);
+    font-size: 14px;
+    display: flex;
+    gap: 8px;
+  }
+  .example-list li::before { content: "→"; color: var(--green); flex-shrink: 0; }
+
+  .cta-strip {
+    background: linear-gradient(135deg, var(--bg-3), var(--bg-2));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 48px 40px;
+    text-align: center;
+    margin: 60px 0 0;
+  }
+  .cta-strip h2 { font-size: 32px; margin-bottom: 12px; }
+  .cta-strip p { color: var(--muted); max-width: 580px; margin: 0 auto 28px; font-size: 16px; }
+
+  @media (max-width: 800px) {
+    .service-block, .service-block.flip { grid-template-columns: 1fr; direction: ltr; }
+  }
+  @media (max-width: 768px) {
+    .page-hero { padding: 80px 16px 80px; }
+    .cta-strip { padding: 32px 20px; }
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap nav">
-    <div class="header-left">
-      <div class="header-logos">
-        <img src="../assets/logo-3.png" alt="Logo" loading="lazy">
-        <img src="../assets/logo-1.png" alt="Logo" loading="lazy">
-        <img src="../assets/logo-2.png" alt="Logo" loading="lazy">
-      </div>
-      <a href="/" class="brand">NoCapsAI<span> · Services</span></a>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/services/" style="color:var(--green)">Services</a>
-      <a href="/marketing/">Marketing</a>
-      <a href="mailto:info@nocapsai.com" class="nav-cta">Get in Touch</a>
-    </nav>
+  <div class="header-logos" aria-label="Partner logos">
+    <img src="../assets/logo-3.png" alt="Partner logo 3" loading="lazy" class="p-logo p-logo-3">
+    <img src="../assets/logo-1.png" alt="Partner logo 1" loading="lazy" class="p-logo p-logo-1">
+    <img src="../assets/logo-2.png" alt="Partner logo 2" loading="lazy" class="p-logo p-logo-2">
   </div>
+  <div class="header-brand">NoCapsAI</div>
+  <nav class="header-right">
+    <a href="/">Home</a>
+    <a href="/services/" style="color:var(--green)">Services</a>
+    <a href="/marketing/">Marketing</a>
+    <a href="#pricing">Pricing</a>
+    <a href="mailto:info@nocapsai.com?subject=NoCapsAI Inquiry" class="nav-cta-home">Get in Touch</a>
+  </nav>
 </header>
 
 <section class="page-hero">
   <div class="wrap">
     <span class="eyebrow">NOCAPSAI · RUSHVILLE, INDIANA</span>
-    <h1>We build things that <em>make your business money.</em></h1>
+    <h1>We build things that make your business money.</h1>
     <p class="sub">Websites, custom apps, and automations. Local tradesmen to multi-state companies — if you've got a problem worth solving, we'll build the solution.</p>
+    <a href="mailto:info@nocapsai.com?subject=NoCapsAI Inquiry" class="cta-button">Talk to Nate →</a>
   </div>
 </section>
 
@@ -148,7 +221,7 @@
     <!-- SERVICE 2: APPS & AUTOMATIONS -->
     <div class="service-block flip">
       <div class="service-copy">
-        <span class="tag">APPS & AUTOMATIONS · CUSTOM QUOTE</span>
+        <span class="tag">APPS &amp; AUTOMATIONS · CUSTOM QUOTE</span>
         <h2>Kill the manual work. <em>Build the system.</em></h2>
         <p>Got a process that takes 4 hours a week and shouldn't? A spreadsheet that 3 people have to touch before anything happens? A business idea that needs a real tool behind it?</p>
         <p>We scope it, build it, and hand it off. Python, AI, databases, APIs — whatever the job calls for. You don't need to know the tech. You just need to know what you want the system to do.</p>
@@ -211,7 +284,7 @@
   </div>
 </section>
 
-<section style="padding:0 0 80px;">
+<section id="pricing" style="padding:0 0 80px;">
   <div class="wrap">
     <div class="cta-strip">
       <h2>Not sure which one fits?</h2>
@@ -224,11 +297,10 @@
 <footer>
   <div class="wrap">
     NoCapsAI LLC · Rushville, Indiana · Serving small businesses everywhere<br/>
-    <a href="/">← Back to nocapsai.com</a>
+    <a href="/">&#8592; Back to nocapsai.com</a>
   </div>
 </footer>
 
 <script src="/assets/js/chat-widget.js" defer></script>
 </body>
 </html>
-
