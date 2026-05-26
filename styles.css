@@ -1,23 +1,7 @@
-/* =============================================
-   NoCapsAI — Shared Stylesheet
-   ============================================= */
-
-/* ---- Design Tokens ---- */
-:root {
-  --bg:         #0a1822;
-  --bg-2:       #0f2230;
-  --bg-3:       #16313f;
-  --ink:        #e8f4ee;
-  --muted:      #7ea4a8;
-  --green:      #3CFF9A;
-  --green-soft: #7affb9;
-  --green-dim:  rgba(60, 255, 154, 0.12);
-  --line:       rgba(60, 255, 154, 0.22);
-  --line-soft:  rgba(255, 255, 255, 0.08);
+/* GENERAL STYLES */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
-
-/* ---- Reset ---- */
-*, *::before, *::after { box-sizing: border-box; }
 
 html {
   overflow-x: hidden;
@@ -25,201 +9,187 @@ html {
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--ink);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #001a33;
+    color: #ffffff;
+    line-height: 1.6em;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
 }
 
-a { color: var(--green); text-decoration: none; }
-p  { color: var(--ink); }
-li { color: var(--ink); }
-
-/* ---- Utility ---- */
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-/* =============================================
-   HEADER
-   ============================================= */
+/* HEADER */
 header {
-  background: rgba(10, 24, 34, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 30px;
-  border-bottom: 1px solid var(--line);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  width: 100%;
+    background-color: #003366;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 2px solid #00ff7f;
 }
 
-.header-logos {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
+.logo-center {
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 80px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px limegreen;
 }
-
-.header-logos img,
-.header-logos .p-logo {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  object-fit: cover;
-  display: block;
-  filter: drop-shadow(0 0 8px rgba(60, 255, 154, 0.55));
-}
-
-.header-brand {
+/* New header layout additions */
+.header-left, .header-center, .header-right {
   flex: 1;
   text-align: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  color: var(--green);
-  pointer-events: none;
 }
 
-.header-right,
-nav.header-right {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 4px 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+.header-left {
+  text-align: left;
 }
+
+.header-right {
+  text-align: right;
+}
+
+.logo-small {
+  width: 55px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px limegreen;
+}
+
 
 nav a {
-  color: var(--muted);
-  margin-left: 14px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.88rem;
-  transition: color 0.2s;
+    color: #00ff7f;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-nav a:hover { color: var(--green); }
-
-/* Header CTA pill (homepage "Free Snapshot" button) */
-.nav-cta-home {
-  display: inline-block;
-  margin-left: 10px;
-  padding: 8px 16px;
-  border-radius: 8px;
-  background: var(--green);
-  color: #06121a !important;
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-decoration: none;
-  box-shadow: 0 0 18px rgba(60, 255, 154, 0.28);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-}
-.nav-cta-home:hover {
-  background: var(--green-soft);
-  box-shadow: 0 0 28px rgba(60, 255, 154, 0.5);
-  transform: translateY(-1px);
-  color: #06121a !important;
+nav a:hover {
+    color: #ffffff;
 }
 
-/* =============================================
-   HERO SECTION
-   ============================================= */
+/* ===== HERO SECTION ===== */
 .hero {
   position: relative;
-  background-image:
-    radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.72) 100%),
-    url('/assets/brand-hero.png');
-  background-size: cover, cover;
-  background-position: center, center;
-  /* gradient scrolls with page; image fixed = scroll-over / parallax */
-  background-attachment: scroll, fixed;
+  background:
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, #001f33 100%),
+    url('/assets/brand-hero.png') center center / auto 100% no-repeat;
   background-color: #001f33;
+  background-attachment: scroll, scroll;
   text-align: center;
   padding: 160px 24px 200px;
-  color: var(--ink);
+  color: #ffffff;
+  overflow: hidden;
   width: 100%;
 }
 
+
+/* darken the sides a bit but keep image visible */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center,
-    rgba(0, 0, 0, 0) 55%,
-    rgba(0, 0, 0, 0.82) 100%);
+                              rgba(0,0,0,0) 60%,
+                              rgba(0,0,0,0.8) 100%);
   z-index: 0;
   pointer-events: none;
 }
 
-.hero > * { position: relative; z-index: 1; }
+/* keep text above overlay */
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
 
+
+/* by default put hero children above overlay */
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* container to keep floating words behind text, not on top of it */
 .floating-words {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 0;              /* BEHIND h1/p/button */
   pointer-events: none;
 }
 
+/* Floating integration words */
 .floating-words .floating-word {
   position: absolute;
   font-size: 1.4rem;
   font-weight: 600;
-  color: rgba(0, 255, 200, 0.32);
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  color: rgba(0,255,200,0.35);
+  text-shadow: 0 0 8px rgba(0,255,255,0.25);
   animation: drift 14s linear infinite;
 }
 
 @keyframes drift {
-  0%   { transform: translateY(0)     translateX(0)    rotate(0deg); opacity: 0.6; }
+  0%   { transform: translateY(0) translateX(0) rotate(0deg);     opacity: 0.6; }
   50%  { transform: translateY(-40px) translateX(20px) rotate(5deg); opacity: 0.9; }
-  100% { transform: translateY(0)     translateX(0)    rotate(0deg); opacity: 0.6; }
+  100% { transform: translateY(0) translateX(0) rotate(0deg);     opacity: 0.6; }
 }
 
+/* Slightly larger and crisper on bigger screens */
 @media (min-width: 800px) {
   .floating-words .floating-word { font-size: 1.8rem; }
 }
 
+/* HERO TEXT */
+/* HERO TEXT */
 .hero h1 {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 800;
-  color: var(--green);
-  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.88);
-  margin-bottom: 1rem;
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 2.5em;              /* keep your current size */
+  color: #00ff7f;                /* keep your green */
+  text-shadow: 0 3px 22px rgba(0,0,0,0.80);
 }
 
-.hero p {
+.hero p{
   max-width: 720px;
-  margin: 0 auto;
+  margin: 18px auto 0;
   font-size: 1.1em;
-  color: var(--green-soft);
-  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.88);
+  color: #00ff7f;                 /* matches your green theme */
+  text-shadow: 0 3px 22px rgba(0,0,0,0.85);
   background: transparent;
   padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
 }
 
-/* Primary hero CTA */
+
+
+
+/* hero button (if you ever use <button> inside hero) */
+.hero button {
+  background-color: #00ff7f;
+  color: #001a33;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  background-color: #003366;
+  color: #00ff7f;
+}
+
+/* primary CTA link style */
 .cta-button {
   display: inline-block;
-  margin-top: 1.6rem;
+  margin-top: 1.5rem;
   padding: 0.9rem 2.5rem;
   border-radius: 9999px;
-  border: 2px solid var(--green);
-  background: var(--green);
+  border: 2px solid #00ff9a;
+  background: #00ff9a;
   color: #000;
   font-weight: 700;
-  font-size: 1rem;
   text-decoration: none;
-  box-shadow: 0 0 30px rgba(60, 255, 154, 0.55);
+  box-shadow: 0 0 30px rgba(0, 255, 154, 0.6);
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
@@ -229,209 +199,124 @@ nav a:hover { color: var(--green); }
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 42px rgba(60, 255, 154, 0.85);
-  background: var(--bg);
-  color: var(--green);
+  box-shadow: 0 0 40px rgba(0, 255, 154, 0.85);
+  background: #001622;
+  color: #00ff9a;
 }
 
-/* =============================================
-   AI INTEGRATIONS SECTION
-   ============================================= */
-.ai-integrations {
-  background: linear-gradient(180deg, var(--bg), var(--bg-2));
-  text-align: center;
-  padding: 54px 20px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
 
-.ai-integrations h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--green);
-  margin-bottom: 24px;
-  letter-spacing: 0.02em;
-}
 
-.ai-logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.ai-logos a {
-  display: inline-block;
-  padding: 0.55rem 1.3rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--green-dim);
-  color: var(--green);
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  box-shadow: 0 0 14px rgba(60, 255, 154, 0.12);
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    background 0.18s ease,
-    color 0.18s ease;
-}
-
-.ai-logos a:hover {
-  transform: translateY(-2px) scale(1.03);
-  background: var(--green);
-  color: #001f33;
-  box-shadow: 0 0 24px rgba(60, 255, 154, 0.6);
-}
-
-/* =============================================
-   EXPLAIN / WHAT WE DO SECTION
-   ============================================= */
+/* EXPLAIN SECTION */
 .explain {
-  background-color: var(--bg);
-  padding: 80px 20px;
-  text-align: center;
-  border-top: 1px solid var(--line);
+    background-color: #001a33;
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 2px solid #00ff7f;
 }
 
 .explain h2 {
-  color: var(--green);
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  font-weight: 800;
-  margin-bottom: 24px;
+    color: #00ff7f;
+    font-size: 2em;
+    margin-bottom: 30px;
 }
 
-.explain > p {
-  max-width: 800px;
-  margin: 0 auto 44px;
-  font-size: 1.05em;
-  color: var(--muted);
-  line-height: 1.7;
+.explain p {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1.1em;
+    line-height: 1.6em;
 }
 
 .points {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
 }
 
 .point {
-  background: var(--bg-2);
-  border: 1px solid var(--line-soft);
-  border-radius: 10px;
-  width: 300px;
-  padding: 24px;
-  text-align: left;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.point:hover {
-  border-color: var(--line);
-  transform: translateY(-2px);
+    background-color: #000;
+    border: 2px solid #00ff7f;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 0 15px #003366;
 }
 
 .point h3 {
-  color: var(--green);
-  font-size: 1rem;
-  margin-bottom: 10px;
+    color: #00ff7f;
+    margin-bottom: 10px;
 }
 
-.point p {
-  color: var(--muted);
-  font-size: 0.93rem;
-  line-height: 1.65;
-}
-
-/* =============================================
-   PRICING SECTION
-   ============================================= */
-.pricing-section {
-  padding: 80px 20px;
-  text-align: center;
-  background: var(--bg-2);
-  border-top: 1px solid var(--line);
-}
-
-.pricing-section h2 {
-  color: var(--green);
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  font-weight: 800;
-  margin-bottom: 44px;
-}
-
+/* Pricing row: lay cards out in a flex row and stretch them */
 .pricing {
   display: flex;
   gap: 2rem;
   justify-content: center;
-  align-items: stretch;
+  align-items: stretch;   /* makes all .plan cards same height */
   flex-wrap: wrap;
+
 }
 
+.pricing-section h2 {
+  color: #00ff7f;
+  font-size: 2em;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Individual plan cards */
 .plan {
-  background: var(--bg);
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-  padding: 28px;
-  flex: 0 1 320px;
+  background-color: #000;
+  border: 2px solid #00ff7f;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 15px;
+  box-shadow: 0 0 20px #003366;
+
+  /* make all cards same height and line up nicely */
+  flex: 0 1 320px;          /* don’t stretch full width, base width ~320px */
   max-width: 340px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
-.plan:hover {
-  border-color: var(--line);
-  box-shadow: 0 0 28px rgba(60, 255, 154, 0.12);
-}
 
 .plan h3 {
-  color: var(--green);
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 12px;
+    color: #00ff7f;
+    font-size: 1.5em;
 }
 
-.plan p {
-  color: var(--muted);
-  font-size: 0.93rem;
-  margin-bottom: 8px;
+.plan button {
+    background-color: #00ff7f;
+    color: #001a33;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.plan p strong { color: var(--ink); }
-
-.plan.featured {
-  border-color: rgba(60, 255, 154, 0.55);
-  box-shadow: 0 0 32px rgba(60, 255, 154, 0.18);
-  transform: scale(1.03);
+.plan button:hover {
+    background-color: #003366;
+    color: #00ff7f;
 }
-
-.badge {
-  display: inline-block;
-  padding: 5px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--green-dim);
-  color: var(--green);
-  font-weight: 800;
-  font-size: 0.8rem;
-  margin: 8px 0;
-  max-width: max-content;
-}
-
+/* Plan CTA buttons */
 .plan-cta {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.75rem 1.75rem;
   border-radius: 999px;
-  background: var(--green);
+  background: #00ff9a;
   color: #001f33;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
-  border: 1px solid var(--green);
-  box-shadow: 0 0 18px rgba(60, 255, 154, 0.4);
+  border: 2px solid #00ff9a;
+  box-shadow: 0 0 18px rgba(0, 255, 154, 0.55);
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
@@ -442,134 +327,432 @@ nav a:hover { color: var(--green); }
 .plan-cta:hover {
   transform: translateY(-2px) scale(1.03);
   background: transparent;
-  color: var(--green);
-  box-shadow: 0 0 26px rgba(60, 255, 154, 0.75);
+  color: #00ff9a;
+  box-shadow: 0 0 24px rgba(0, 255, 154, 0.85);
 }
 
-.plan.featured .plan-cta {
-  background: linear-gradient(90deg, var(--green), #a6ff00);
-  border-color: transparent;
-  color: #001a33;
-  font-weight: 800;
-  box-shadow: 0 0 38px rgba(60, 255, 154, 0.55);
+/* --- Floating AI Tech Names --- */
+.floating-tech {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.plan.featured .plan-cta:hover {
-  box-shadow: 0 0 50px rgba(166, 255, 0, 0.55);
+.floating-tech span {
+  position: absolute;
+  color: rgba(0, 255, 153, 0.2);
+  font-size: 20px;
+  font-weight: bold;
+  animation: float 30s linear infinite;
+  text-shadow: 0 0 8px #00ff99;
 }
 
-/* =============================================
-   FOOTER
-   ============================================= */
+@keyframes float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100vw);
+    opacity: 0.2;
+  }
+}
+
+/* Randomly scatter text */
+.floating-tech span:nth-child(odd) {
+  animation-duration: 25s;
+}
+.floating-tech span:nth-child(even) {
+  animation-duration: 35s;
+}
+.floating-tech span:nth-child(3n) {
+  animation-delay: 5s;
+}
+.floating-tech span:nth-child(4n) {
+  animation-delay: 10s;
+}
+
+/* FOOTER SECTION */
 footer {
-  background: var(--bg);
-  color: var(--muted);
-  text-align: center;
-  padding: 60px 20px;
-  border-top: 1px solid var(--line);
+    background-color: #000;
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 20px;
+    border-top: 2px solid #00ff7f;
 }
 
 footer h2 {
-  color: var(--green);
-  font-size: 1.6rem;
-  margin-bottom: 14px;
+    color: #00ff7f;
+    margin-bottom: 15px;
 }
-
-footer p { color: var(--muted); }
-footer a { color: var(--green); }
 
 footer input[type="email"] {
-  padding: 10px 14px;
-  width: 250px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  margin-right: 10px;
-  background: var(--bg-2);
-  color: var(--ink);
-  font-size: 0.95rem;
+    padding: 10px;
+    width: 250px;
+    border: 2px solid #00ff7f;
+    border-radius: 5px;
+    margin-right: 10px;
 }
-
-footer input[type="email"]::placeholder { color: var(--muted); }
 
 footer button {
-  background: var(--green);
-  color: #001a33;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 22px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: background 0.2s;
+    background-color: #00ff7f;
+    color: #001a33;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-footer button:hover { background: var(--green-soft); }
+footer button:hover {
+    background-color: #003366;
+    color: #00ff7f;
+}
 
 .copyright {
-  margin-top: 40px;
-  font-size: 0.88em;
-  color: var(--muted);
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #00ff7f;
+}
+.ai-integrations {
+    background: linear-gradient(180deg, #001a33, #002b4d);
+    text-align: center;
+    padding: 50px 20px;
+    color: #00ff99;
+    border-top: 2px solid limegreen;
+    border-bottom: 2px solid limegreen;
 }
 
-#contact { scroll-margin-top: 100px; }
+.ai-integrations h3 {
+    font-size: 24px;
+    color: #00ff99;
+    margin-bottom: 20px;
+}
 
-/* =============================================
-   MOBILE — max-width 768px
-   ============================================= */
+.ai-logos a {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid #00ff9a;
+  background: rgba(0, 255, 154, 0.06);
+  color: #00ff9a;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 16px rgba(0, 255, 154, 0.35);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.ai-logos a:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: #00ff9a;
+  color: #001f33;
+  box-shadow: 0 0 24px rgba(0, 255, 154, 0.75);
+}
+
+
+/* Header partner logos (3 icons) */
+.header-logos{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.header-logos img{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  filter: drop-shadow(0 0 10px rgba(0,255,150,0.55));
+}
+.header-kicker{
+  display:inline-block;
+  margin-top:6px;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid rgba(0,255,150,0.55);
+  color: rgba(0,255,150,0.95);
+  font-size:12px;
+  line-height:1;
+}
+@media (max-width:700px){
+  .header-logos img{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  filter: drop-shadow(0 0 10px rgba(0,255,150,0.55));
+}
+.header-kicker{
+  display:inline-block;
+  margin-top:6px;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid rgba(0,255,150,0.55);
+  color: rgba(0,255,150,0.95);
+  font-size:12px;
+  line-height:1;
+}
+}
+
+
+
+/* Tighten spacing between logo-3 and logo-1 */
+.header-logos img.logo-tight-right{ margin-right:-6px; }
+.header-logos img.logo-tight-left{  margin-left:-6px; }
+
+
+/* === NoCapsAI HEADER LOGOS TUNING (AUTO) === */
+.header-logos{
+  display:flex;
+  align-items:center;
+  gap:10px; /* general spacing */
+}
+
+/* Glow on all three */
+.header-logos img{
+  border-radius:999px;
+  filter: drop-shadow(0 0 10px rgba(0,255,160,.75));
+}
+
+/* Make logo-3 hug logo-1 (after reorder, logo-3 becomes the 1st img) */
+.header-logos img:nth-child(1){
+  margin-right:-8px; /* adjust -6 to -14 if you want tighter/looser */
+}
+
+
+
+/* Header partner logos (3 icons) */
+.header-logos{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.header-logos img{
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  object-fit:cover;
+  display:block;
+}
+@media (max-width:700px){
+  .header-logos img{ width:28px; height:28px; }
+}
+
+
+
+.footer-tagline{
+  margin-top: 18px;
+  text-align: center;
+  opacity: .9;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* NOCAPSAI_FOOTER_TWEAKS */
+footer, .site-footer {
+  background-color: #001a33;
+  color: #ffffff;
+  border-top: 2px solid #00ff7f;
+}
+
+footer#contact { padding: 50px 20px; }
+.site-footer { padding: 30px 20px; border-top: 0; }
+
+
+/* footer-accent-fix v1 */
+/* Force footer text to match accent green */
+footer, footer * { color: var(--accent, #00ff88) !important; }
+
+/* Keep inputs readable */
+footer input, footer textarea { color: #111 !important; }
+footer input::placeholder, footer textarea::placeholder { color: #666 !important; }
+
+/* Keep footer buttons readable */
+footer button, footer .btn, footer a.btn { color: #111 !important; }
+
+/* Nice scroll position when jumping to #contact */
+#contact { scroll-margin-top: 120px; }
+
+.plan.featured{
+  border: 2px solid rgba(0,255,150,0.7);
+  box-shadow: 0 0 28px rgba(0,255,150,0.18);
+  transform: scale(1.03);
+}
+
+.plan.featured .plan-cta{
+  font-weight: 800;
+}
+/* Make hero copy readable over busy images */
+.hero h1{
+  text-shadow: 0 2px 18px rgba(0,0,0,0.85);
+}
+
+.hero p{
+  display: block;               /* no “pill” sizing */
+  max-width: 900px;
+  margin: 20px auto 0;          /* keeps it centered */
+  padding: 0;                   /* removes the box spacing */
+  border-radius: 0;             /* removes the rounded box */
+  background: transparent;      /* removes the black box */
+  backdrop-filter: none;        /* no blur panel */
+  color: #00ff9a;               /* match your neon green theme */
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.9); /* readable on the photo */
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-brand{
+  flex: 1;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #00ff7f;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+  pointer-events: none;
+}
+
+.header-logos,
+.header-right{
+  flex: 0 0 auto;
+}
+.badge{
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,255,150,0.65);
+  background: rgba(0,255,150,0.12);
+  color: #00ff9a;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin: 10px 0 8px;
+  width: auto;          /* key fix */
+  max-width: max-content;
+}
+
+
+p, li{
+  color: #eafff6;
+}
+.plan.featured .plan-cta{
+  background: linear-gradient(90deg, #00ff9a, #a6ff00);
+  border-color: rgba(0,0,0,0.15);
+  color: #001a33;
+  box-shadow: 0 0 38px rgba(0,255,154,0.55);
+}
+
+.plan.featured .plan-cta:hover{
+  box-shadow: 0 0 48px rgba(166,255,0,0.55);
+}
+
+/* global body text (non-hero) */
+body {
+  color: #00ff9a;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+
+  /* Hero: full width, less padding, cover image */
+  .hero {
+    padding: 60px 16px 80px;
+    width: 100%;
+    background-size: cover, cover;
+  }
+
+  .hero h1 {
+    font-size: 1.7em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  /* Header: wrap so nav doesn't blow out the page width */
   header {
     flex-wrap: wrap;
     padding: 10px 14px;
     gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .header-brand { font-size: 0.95rem; }
+  .header-brand {
+    font-size: 1rem;
+  }
 
+  /* Nav: wrap to second line and shrink */
   nav.header-right {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 4px 8px;
     margin-top: 4px;
   }
 
   nav a {
     margin-left: 0;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     padding: 2px 4px;
   }
 
-  .header-logos img,
-  .header-logos .p-logo {
-    width: 28px;
-    height: 28px;
+  /* Pricing: stack cards vertically */
+  .pricing {
+    flex-direction: column;
+    align-items: center;
   }
-
-  .hero {
-    padding: 60px 16px 80px;
-    background-size: cover, cover;
-    background-attachment: scroll, scroll; /* no fixed on mobile -- Safari bug */
-  }
-
-  .hero h1 { font-size: 1.65rem; }
-  .hero p  { font-size: 1rem; }
-
-  .pricing { flex-direction: column; align-items: center; }
 
   .plan {
     width: 90%;
     max-width: 380px;
     flex: none;
-    margin: 8px 0;
+    margin: 10px 0;
   }
 
-  .plan.featured { transform: scale(1); }
+  .plan.featured {
+    transform: scale(1);
+  }
 
-  .points { flex-direction: column; align-items: center; }
+  /* Explain points: single column */
+  .points {
+    flex-direction: column;
+    align-items: center;
+  }
 
-  .point { width: 90%; max-width: 420px; }
+  .point {
+    width: 90%;
+    max-width: 420px;
+  }
 
+  /* AI logos wrapping */
+  .ai-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  /* Footer email: full width */
   footer input[type="email"] {
     width: 100%;
     margin-right: 0;
     margin-bottom: 10px;
+    box-sizing: border-box;
   }
 }
+
+
+
