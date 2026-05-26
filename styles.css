@@ -133,14 +133,17 @@ nav a:hover { color: var(--green); }
    ============================================= */
 .hero {
   position: relative;
-  background:
-    radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, #001f33 100%),
-    url('/assets/brand-hero.png') center center / auto 100% no-repeat;
+  background-image:
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.72) 100%),
+    url('/assets/brand-hero.png');
+  background-size: cover, cover;
+  background-position: center, center;
+  /* gradient scrolls with page; image fixed = scroll-over / parallax */
+  background-attachment: scroll, fixed;
   background-color: #001f33;
   text-align: center;
   padding: 160px 24px 200px;
   color: var(--ink);
-  overflow: hidden;
   width: 100%;
 }
 
@@ -543,6 +546,7 @@ footer button:hover { background: var(--green-soft); }
   .hero {
     padding: 60px 16px 80px;
     background-size: cover, cover;
+    background-attachment: scroll, scroll; /* no fixed on mobile -- Safari bug */
   }
 
   .hero h1 { font-size: 1.65rem; }
