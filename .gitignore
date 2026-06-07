@@ -9,3 +9,4 @@
 _backup_*/
 *.bak*
 
+.claude/
