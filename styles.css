@@ -913,6 +913,51 @@ body{ background-color: transparent; }
   color: var(--np-accent);
   background: rgba(0,255,150,0.06);
 }
+/* clickable proof chips — keep the glassy pill, make it act like a link */
+.np-case-tags li.is-link{
+  padding: 0;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+/* force NoCapsAI green in every link state — no default blue/purple */
+.np-case-tags li.is-link a,
+.np-case-tags li.is-link a:link,
+.np-case-tags li.is-link a:visited{
+  display: block;
+  padding: 6px 14px;
+  color: var(--np-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.np-case-tags li.is-link a::after{
+  content: " ↗";
+  opacity: 0.7;
+}
+/* obvious clickable affordance on hover OR keyboard focus: green fill, dark text */
+.np-case-tags li.is-link:hover,
+.np-case-tags li.is-link:focus-within{
+  transform: translateY(-2px);
+  border-color: rgba(0,255,150,0.85);
+  background: rgba(0,255,150,0.85);
+  box-shadow: 0 0 18px rgba(0,255,150,0.35);
+}
+.np-case-tags li.is-link:hover a,
+.np-case-tags li.is-link a:hover,
+.np-case-tags li.is-link a:focus-visible{
+  color: #001a33;
+  text-decoration: underline;
+}
+/* keep a visible keyboard focus ring */
+.np-case-tags li.is-link a:focus-visible{
+  outline: 2px solid #001a33;
+  outline-offset: 2px;
+}
+/* CTA row under the proof/case study */
+.np-case-cta{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
 
 /* pricing extras */
 .pricing-section{ padding: 78px 20px; border-top: 1px solid rgba(0,255,150,0.18); }
