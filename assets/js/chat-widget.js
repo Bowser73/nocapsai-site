@@ -8,11 +8,12 @@
   let isLoading = false;
 
   /* ── API helpers ─────────────────────────────────────────── */
-  async function api(method, path, body) {
+  async function api(method, path, body, signal) {
     const res = await fetch(`${BASE}${path}`, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body: body !== undefined ? JSON.stringify(body) : undefined
+      body: body !== undefined ? JSON.stringify(body) : undefined,
+      signal
     });
     if (!res.ok) {
       const err = await res.text();
@@ -21,21 +22,22 @@
     return res.json();
   }
 
-  async function chat(userText) {
+  async function chat(userText, signal) {
     if (!threadId) {
-      const t = await api('POST', '/threads', {});
+      const t = await api('POST', '/threads', {}, signal);
       threadId = t.id;
     }
-    await api('POST', `/threads/${threadId}/messages`, { role: 'user', content: userText });
-    const run = await api('POST', `/threads/${threadId}/runs`, { assistant_id: AGENT });
+    await api('POST', `/threads/${threadId}/messages`, { role: 'user', content: userText }, signal);
+    const run = await api('POST', `/threads/${threadId}/runs`, { assistant_id: AGENT }, signal);
     let runStatus = run.status;
     while (runStatus === 'queued' || runStatus === 'in_progress') {
-      await new Promise(r => setTimeout(r, 1200));
-      const polled = await api('GET', `/threads/${threadId}/runs/${run.id}`);
+      if (signal && signal.aborted) throw new DOMException('Aborted', 'AbortError');
+      await new Promise(r => setTimeout(r, 900));
+      const polled = await api('GET', `/threads/${threadId}/runs/${run.id}`, undefined, signal);
       runStatus = polled.status;
     }
     if (runStatus !== 'completed') throw new Error(`Run ended with status: ${runStatus}`);
-    const msgs = await api('GET', `/threads/${threadId}/messages`);
+    const msgs = await api('GET', `/threads/${threadId}/messages`, undefined, signal);
     const latest = msgs.data.find(m => m.role === 'assistant');
     return latest ? latest.content.map(c => c.text?.value || '').join('') : '(no response)';
   }
@@ -238,6 +240,11 @@
     return div;
   }
 
+  // How long to wait before giving up on a single response (ms).
+  const RESPONSE_TIMEOUT_MS = 13000;
+  // When to reassure the user the request is still in flight (ms).
+  const STILL_WORKING_MS = 4000;
+
   async function handleSend() {
     const text = inputEl.value.trim();
     if (!text || isLoading) return;
@@ -245,19 +252,45 @@
     inputEl.value = '';
     sendBtn.disabled = true;
     addMessage(text, 'user');
-    const typing = addMessage('Thinking…', 'agent typing');
+
+    // Instant, animated "typing" indicator so the user gets feedback immediately.
+    const typing = addMessage('Thinking', 'agent typing');
+    let label = 'Thinking';
+    let dots = 0;
+    const dotTimer = setInterval(() => {
+      dots = (dots + 1) % 4;
+      typing.textContent = label + '.'.repeat(dots);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }, 400);
+
+    // After a few seconds, switch the message so it doesn't feel stuck.
+    const stillTimer = setTimeout(() => { label = 'Still working on it'; }, STILL_WORKING_MS);
+
+    // Hard timeout: abort the in-flight request if it runs too long.
+    const controller = new AbortController();
+    const timeoutTimer = setTimeout(() => controller.abort(), RESPONSE_TIMEOUT_MS);
+
     try {
-      const reply = await chat(text);
+      const reply = await chat(text, controller.signal);
       typing.textContent = reply;
       typing.classList.remove('typing');
     } catch (e) {
-      typing.textContent = 'Sorry, something went wrong. Try again in a moment.';
+      if (e && e.name === 'AbortError') {
+        typing.textContent = "This is taking longer than usual — the assistant may be busy. Please try again in a moment.";
+      } else {
+        typing.textContent = 'Sorry, something went wrong. Try again in a moment.';
+        console.error('NoCapsAI chat error:', e);
+      }
       typing.classList.remove('typing');
-      console.error('NoCapsAI chat error:', e);
+    } finally {
+      clearInterval(dotTimer);
+      clearTimeout(stillTimer);
+      clearTimeout(timeoutTimer);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      isLoading = false;
+      sendBtn.disabled = false;
+      inputEl.focus();
     }
-    isLoading = false;
-    sendBtn.disabled = false;
-    inputEl.focus();
   }
 
   bubble.addEventListener('click', togglePanel);
