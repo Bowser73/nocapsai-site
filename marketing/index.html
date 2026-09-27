@@ -137,25 +137,26 @@
   footer{padding:36px 0;text-align:center;color:var(--muted);font-size:14px;background:var(--bg);border-top:1px solid var(--line-soft)}
   footer a{color:var(--green-soft)}
 </style>
+<link rel="stylesheet" href="/assets/site-header.css">
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <div class="header-left">
-      <div class="header-logos" aria-label="Partner logos">
-        <img src="../assets/logo-3.png" alt="Partner logo 3" loading="lazy" class="p-logo p-logo-3">
-        <img src="../assets/logo-1.png" alt="Partner logo 1" loading="lazy" class="p-logo p-logo-1">
-        <img src="../assets/logo-2.png" alt="Partner logo 2" loading="lazy" class="p-logo p-logo-2">
-      </div>
-      <a href="/" class="header-brand">NoCapsAI<span class="sub"> · Marketing</span></a>
-    </div>
-    <nav class="header-right-nav">
-      <a href="/" class="text-link">Home</a>
-      <a href="#pricing" class="text-link">Pricing</a>
-      <a href="https://buy.stripe.com/6oU00kac6chtdqWegP48001" class="nav-cta" target="_blank">Get Started — $297/mo</a>
-    </nav>
-  </div>
+<header class="site-header">
+  <a class="site-identity" href="/" aria-label="NoCapsAI Home">
+    <span class="site-logos" aria-hidden="true">
+      <img src="/assets/logo-3.png" alt="">
+      <img src="/assets/logo-1.png" alt="">
+      <img src="/assets/logo-2.png" alt="">
+    </span>
+    <span class="site-name">NoCapsAI</span>
+  </a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/">Home</a>
+    <a href="/services/">Services</a>
+    <a href="/marketing/">Marketing</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/#contact">Contact</a>
+  </nav>
 </header>
 
 <section class="hero">
