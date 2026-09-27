@@ -109,26 +109,26 @@
   footer{padding:32px 0;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--line-soft)}
   footer a{color:var(--green-soft)}
 </style>
+<link rel="stylesheet" href="/assets/site-header.css">
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <div class="header-left">
-      <div class="header-logos">
-        <img src="../assets/logo-3.png" alt="Logo" loading="lazy">
-        <img src="../assets/logo-1.png" alt="Logo" loading="lazy">
-        <img src="../assets/logo-2.png" alt="Logo" loading="lazy">
-      </div>
-      <a href="/" class="brand">NoCapsAI<span> · Services</span></a>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/services/" style="color:var(--green)">Services</a>
-      <a href="/marketing/">Marketing</a>
-      <a href="mailto:info@nocapsai.com?subject=Start%20a%20nonprofit%20project" class="nav-cta">Get in Touch</a>
-    </nav>
-  </div>
+<header class="site-header">
+  <a class="site-identity" href="/" aria-label="NoCapsAI Home">
+    <span class="site-logos" aria-hidden="true">
+      <img src="/assets/logo-3.png" alt="">
+      <img src="/assets/logo-1.png" alt="">
+      <img src="/assets/logo-2.png" alt="">
+    </span>
+    <span class="site-name">NoCapsAI</span>
+  </a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/">Home</a>
+    <a href="/services/">Services</a>
+    <a href="/marketing/">Marketing</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/#contact">Contact</a>
+  </nav>
 </header>
 
 <section class="page-hero">
