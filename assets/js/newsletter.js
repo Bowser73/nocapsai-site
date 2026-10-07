@@ -43,23 +43,43 @@ const NEWSLETTER_SECRET = "591A446526EED06744ABFD9A328EDB09BD05467448D3EA83";
     root.appendChild(status);
   }
 
+  status.id = status.id || "newsletter-status";
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  status.setAttribute("aria-atomic", "true");
+  const describedBy = emailInput.getAttribute("aria-describedby") || "";
+  emailInput.setAttribute("aria-describedby", `${describedBy} ${status.id}`.trim());
+  if (!emailInput.getAttribute("aria-label") && !emailInput.labels?.length) {
+    emailInput.setAttribute("aria-label", "Email address");
+  }
+  emailInput.setAttribute("autocomplete", "email");
+  let inFlight = false;
+
   const setStatus = (msg, ok = true) => {
     status.textContent = msg;
     status.style.opacity = "1";
-    status.style.color = ok ? "#7CFFB2" : "#FF9A9A";
+    status.style.color = ok ? "#eafff6" : "#FF9A9A";
   };
 
   const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(String(s || "").trim());
 
   async function submitNewsletter() {
+    if (inFlight) return;
     const email = String(emailInput.value || "").trim();
+    emailInput.value = email;
 
-    if (!isEmail(email)) {
+    if (!isEmail(email) || !emailInput.checkValidity()) {
+      emailInput.setAttribute("aria-invalid", "true");
       setStatus("Enter a valid email address.", false);
       emailInput.focus();
       return;
     }
 
+    emailInput.removeAttribute("aria-invalid");
+    inFlight = true;
+    signUpBtn.setAttribute("aria-disabled", "true");
+    root.setAttribute("aria-busy", "true");
+    setStatus("Sending signup request...");
     const oldText = signUpBtn.textContent;
     signUpBtn.style.pointerEvents = "none";
     signUpBtn.style.opacity = "0.75";
@@ -85,18 +105,28 @@ const NEWSLETTER_SECRET = "591A446526EED06744ABFD9A328EDB09BD05467448D3EA83";
         body: payload.toString()
       });
 
-      // If the request is sent successfully, fetch resolves.
-      setStatus("✅ You’re signed up. Check your inbox (and spam) for the confirmation.");
-      emailInput.value = "";
+      // A no-cors response is opaque: it cannot confirm server acceptance.
+      setStatus("Signup request sent, but we cannot confirm your subscription here. If you need help, email info@nocapsai.com.");
     } catch (err) {
       console.error("[newsletter] request failed:", err);
       setStatus("Network error. Please try again.", false);
     } finally {
+      inFlight = false;
+      signUpBtn.removeAttribute("aria-disabled");
+      root.removeAttribute("aria-busy");
       signUpBtn.style.pointerEvents = "";
       signUpBtn.style.opacity = "";
       if (signUpBtn.tagName.toLowerCase() === "button") signUpBtn.disabled = false;
       signUpBtn.textContent = oldText;
     }
+  }
+
+  const form = emailInput.closest("form");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      submitNewsletter();
+    });
   }
 
   signUpBtn.addEventListener("click", (e) => {
