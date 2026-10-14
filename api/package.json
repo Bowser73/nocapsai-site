@@ -1,0 +1,11 @@
+{
+  "name": "nocapsai-site-api",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@azure/functions": "^4.7.2",
+    "@sendgrid/mail": "^8.1.6"
+  }
+}

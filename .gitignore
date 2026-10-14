@@ -10,3 +10,4 @@ _backup_*/
 *.bak*
 
 .claude/
+node_modules/

@@ -10,6 +10,7 @@
 - `assets/ai-audit-checklist.pdf` — free download
 - `api/contact/index.js` — Azure Function (SendGrid email)
 - `api/quote/index.js` — Azure Function (email + optional Google Sheets webhook)
+- `api/newsletter/index.js` — Turnstile-verified newsletter proxy; the Apps Script secret remains server-side
 
 ## Quick Deploy (Azure Static Web Apps — Free)
 1. Create GitHub repo (e.g., `nocapsai-site`) and add these files.
@@ -40,6 +41,10 @@
   - `TO_EMAIL` (your inbox)
   - `FROM_EMAIL` (verified sender in SendGrid)
   - `SHEETS_WEBHOOK_URL` (optional Apps Script endpoint)
+  - `NEWSLETTER_APPS_SCRIPT_URL`
+  - `NEWSLETTER_FORM_SECRET` (same value as the Apps Script `FORM_SECRET` Script Property)
+  - `TURNSTILE_SITE_KEY`
+  - `TURNSTILE_SECRET_KEY`
 - Deploy the `api/` folder with your SWA or Functions app.
 
 ### Google Sheets Webhook (optional)
@@ -48,5 +53,6 @@
 
 ## Notes
 - Monochrome style is easy to re-theme later.
+- Follow `docs/newsletter-security-deployment.md` for coordinated secret rotation and verification.
 - Replace `assets/brand-hero.webp` with any image; keep it square.
 - All pages include header/footer branding as requested.
