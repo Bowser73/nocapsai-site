@@ -3,11 +3,12 @@
 const APPS_SCRIPT_ENDPOINT =
   "https://script.google.com/macros/s/AKfycbzgcasvT2I-_TTlYdR_38_w2bFvkuJhkseF4ulLMWjScHwp3gS9yBmZj511xlwtpjxrZg/exec";
 
-// IMPORTANT:
-// This MUST match your Apps Script Script Property that your Code.gs checks.
-// In your Code.gs earlier, that property name was FORM_SECRET.
-// So set Script Properties: FORM_SECRET = this token.
-const NEWSLETTER_SECRET = "591A446526EED06744ABFD9A328EDB09BD05467448D3EA83";
+// Form key for the Apps Script endpoint (rotated 2026-10-14).
+// This value is visible to anyone who views the page, so it is NOT a security control on its own.
+// Abuse protection lives server-side in Code.gs: fill-time and honeypot checks, rate limits,
+// duplicate prevention, validation, and no automatic emails to the submitted address.
+const NEWSLETTER_SECRET = "23DDDDA126981E83136C51E30ED4D60279CABD8AF7048FC9";
+const PAGE_LOADED_AT = Date.now();
 
 (() => {
   const heading = Array.from(document.querySelectorAll("h1,h2,h3,h4"))
@@ -33,6 +34,16 @@ const NEWSLETTER_SECRET = "591A446526EED06744ABFD9A328EDB09BD05467448D3EA83";
     console.warn("[newsletter] email input or sign up button not found.");
     return;
   }
+
+  // Honeypot: hidden from people and screen readers; automated form-fillers tend to fill it.
+  const honeypot = document.createElement("input");
+  honeypot.type = "text";
+  honeypot.name = "company_website";
+  honeypot.tabIndex = -1;
+  honeypot.autocomplete = "off";
+  honeypot.setAttribute("aria-hidden", "true");
+  honeypot.style.cssText = "position:absolute;left:-10000px;width:1px;height:1px;opacity:0;";
+  root.appendChild(honeypot);
 
   let status = root.querySelector(".newsletter-status");
   if (!status) {
@@ -90,6 +101,8 @@ const NEWSLETTER_SECRET = "591A446526EED06744ABFD9A328EDB09BD05467448D3EA83";
       const payload = new URLSearchParams({
         kind: "newsletter",
         secret: NEWSLETTER_SECRET,
+        t: String(Date.now() - PAGE_LOADED_AT),
+        hp: honeypot.value || "",
         name: "Newsletter",
         email,
         message: "Newsletter signup",
