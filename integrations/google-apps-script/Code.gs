@@ -83,7 +83,7 @@ function handleNewsletter_(p, svc) {
     var g = Number(svc.cacheGet('nl:global') || 0);
     if (g >= GLOBAL_LIMIT_PER_10_MIN) return { ok: false, error: 'rate_limited' };
     svc.cachePut('nl:global', String(g + 1), 600);
-    var ek = 'nl:e:' + email;
+    var ek = 'nl:e:' + email.slice(0, 200); // CacheService keys max 250 chars
     if (svc.cacheGet(ek)) return { ok: true, duplicate: true }; // same address seconds ago
 
     return svc.withLock(function () {
@@ -100,8 +100,8 @@ function handleNewsletter_(p, svc) {
           .createTextFinder(email).matchEntireCell(true).matchCase(false).findNext();
         if (match) return { ok: true, duplicate: true };
       }
-      var values = { timestamp: svc.now(), email: email, name: 'Newsletter',
-                     message: 'Newsletter signup', page: String(p.page || '').slice(0, 500),
+      var values = { timestamp: svc.now(), email: cell_(email), name: 'Newsletter',
+                     message: 'Newsletter signup', page: cell_(String(p.page || '').slice(0, 500)),
                      source: 'website' };
       sheet.appendRow(headers.map(function (h) {
         return Object.prototype.hasOwnProperty.call(values, h) ? values[h] : '';
@@ -130,6 +130,12 @@ function verifyTurnstile_(token, secret, svc) {
   var allowed = String(svc.prop('TURNSTILE_ALLOWED_HOSTS') || 'nocapsai.com,www.nocapsai.com')
     .split(',').map(function (h) { return h.trim().toLowerCase(); });
   return allowed.indexOf(String(body.hostname || '').toLowerCase()) !== -1;
+}
+
+// Text from the internet is stored as text, never as a spreadsheet formula.
+function cell_(v) {
+  v = String(v);
+  return /^[=+\-@\t\r]/.test(v) ? "'" + v : v;
 }
 
 function json_(body) {

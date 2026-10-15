@@ -91,6 +91,19 @@ test('global rate limit caps verified signups', () => {
   assert.deepEqual(H(good({ email: 'p99@example.com' }), s), { ok: false, error: 'rate_limited' });
 });
 
+test('submitted text cannot become a spreadsheet formula', () => {
+  const s = svc();
+  assert.equal(H(good({ email: '=cmd@evil.co', page: '=IMPORTXML("x")' }), s).ok, true);
+  assert.equal(s.sh.appended[0][2], "'=cmd@evil.co");
+  assert.equal(s.sh.appended[0][4], "'=IMPORTXML(\"x\")");
+});
+
+test('very long addresses still dedupe within cache key limits', () => {
+  const s = svc(); const long = 'a'.repeat(240) + '@example.com';
+  assert.equal(H(good({ email: long }), s).duplicate, false);
+  assert.equal(H(good({ email: long }), s).duplicate, true);
+});
+
 test('the receiver never sends email', () => {
   assert.doesNotMatch(SRC, /MailApp|GmailApp|sendEmail/);
 });
