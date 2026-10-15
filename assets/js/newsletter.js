@@ -1,13 +1,19 @@
 // assets/js/newsletter.js
+//
+// Newsletter signup for the "Stay in the Loop" form.
+// Bot protection is Cloudflare Turnstile, verified server-side by the Apps Script receiver
+// (integrations/google-apps-script/Code.gs). Nothing secret lives in this file: the Turnstile
+// SITE key is public by design; the Turnstile SECRET key exists only in Apps Script
+// Script Properties. Fill-time and honeypot fields are extra, cheap signals for the server.
 
 const APPS_SCRIPT_ENDPOINT =
   "https://script.google.com/macros/s/AKfycbzgcasvT2I-_TTlYdR_38_w2bFvkuJhkseF4ulLMWjScHwp3gS9yBmZj511xlwtpjxrZg/exec";
 
-// Form key for the Apps Script endpoint (rotated 2026-10-14).
-// This value is visible to anyone who views the page, so it is NOT a security control on its own.
-// Abuse protection lives server-side in Code.gs: fill-time and honeypot checks, rate limits,
-// duplicate prevention, validation, and no automatic emails to the submitted address.
-const NEWSLETTER_SECRET = "23DDDDA126981E83136C51E30ED4D60279CABD8AF7048FC9";
+// Public Turnstile site key for nocapsai.com (Cloudflare dashboard > Turnstile > widget > Site Key).
+// Left empty, the form fails closed and asks people to email instead.
+const TURNSTILE_SITE_KEY = "";
+const TURNSTILE_ACTION = "newsletter_signup";
+const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 const PAGE_LOADED_AT = Date.now();
 
 (() => {
@@ -45,6 +51,12 @@ const PAGE_LOADED_AT = Date.now();
   honeypot.style.cssText = "position:absolute;left:-10000px;width:1px;height:1px;opacity:0;";
   root.appendChild(honeypot);
 
+  // Container for the Turnstile widget, placed with the form.
+  const widgetBox = document.createElement("div");
+  widgetBox.className = "newsletter-turnstile";
+  widgetBox.style.marginTop = "10px";
+  root.appendChild(widgetBox);
+
   let status = root.querySelector(".newsletter-status");
   if (!status) {
     status = document.createElement("div");
@@ -64,7 +76,10 @@ const PAGE_LOADED_AT = Date.now();
     emailInput.setAttribute("aria-label", "Email address");
   }
   emailInput.setAttribute("autocomplete", "email");
+
   let inFlight = false;
+  let widgetId = null;
+  let token = "";
 
   const setStatus = (msg, ok = true) => {
     status.textContent = msg;
@@ -74,6 +89,48 @@ const PAGE_LOADED_AT = Date.now();
 
   const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(String(s || "").trim());
 
+  const unavailable = () =>
+    setStatus("Newsletter signup is temporarily unavailable. Please email info@nocapsai.com to join.", false);
+
+  function renderWidget() {
+    if (!TURNSTILE_SITE_KEY || !window.turnstile || widgetId !== null) return;
+    widgetId = window.turnstile.render(widgetBox, {
+      sitekey: TURNSTILE_SITE_KEY,
+      action: TURNSTILE_ACTION,
+      callback: (t) => { token = t; },
+      "expired-callback": () => { token = ""; },
+      "error-callback": () => { token = ""; }
+    });
+  }
+
+  function resetWidget() {
+    token = "";
+    if (window.turnstile && widgetId !== null) window.turnstile.reset(widgetId);
+  }
+
+  if (TURNSTILE_SITE_KEY) {
+    if (window.turnstile) {
+      renderWidget();
+    } else {
+      const s = document.createElement("script");
+      s.src = TURNSTILE_SCRIPT;
+      s.async = true;
+      s.defer = true;
+      s.onload = renderWidget;
+      s.onerror = unavailable;
+      (document.head || root).appendChild(s);
+    }
+  }
+
+  const MESSAGES = {
+    subscribed: "Thanks! You're on the list.",
+    duplicate: "You're already on the list. Thanks!",
+    verification: "We couldn't verify the request. Please complete the check and try again.",
+    invalid: "Enter a valid email address.",
+    unavailable: "Newsletter signup is temporarily unavailable. Please email info@nocapsai.com to join.",
+    failed: "Something went wrong saving your signup. Please try again or email info@nocapsai.com."
+  };
+
   async function submitNewsletter() {
     if (inFlight) return;
     const email = String(emailInput.value || "").trim();
@@ -81,12 +138,18 @@ const PAGE_LOADED_AT = Date.now();
 
     if (!isEmail(email) || !emailInput.checkValidity()) {
       emailInput.setAttribute("aria-invalid", "true");
-      setStatus("Enter a valid email address.", false);
+      setStatus(MESSAGES.invalid, false);
       emailInput.focus();
       return;
     }
-
     emailInput.removeAttribute("aria-invalid");
+
+    if (!TURNSTILE_SITE_KEY) { unavailable(); return; }
+    if (!token) {
+      setStatus("Please complete the verification check above, then press Sign Up.", false);
+      return;
+    }
+
     inFlight = true;
     signUpBtn.setAttribute("aria-disabled", "true");
     root.setAttribute("aria-busy", "true");
@@ -100,30 +163,36 @@ const PAGE_LOADED_AT = Date.now();
     try {
       const payload = new URLSearchParams({
         kind: "newsletter",
-        secret: NEWSLETTER_SECRET,
+        turnstileToken: token,
         t: String(Date.now() - PAGE_LOADED_AT),
         hp: honeypot.value || "",
-        name: "Newsletter",
         email,
-        message: "Newsletter signup",
         page: window.location.href,
         source: "website"
       });
 
-      // NOTE: no-cors because Apps Script usually doesn't send CORS headers.
-      await fetch(APPS_SCRIPT_ENDPOINT, {
+      // A simple (form-encoded) POST: no preflight. Apps Script answers with JSON and
+      // Access-Control-Allow-Origin: *, so the result can be shown honestly.
+      const response = await fetch(APPS_SCRIPT_ENDPOINT, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
         body: payload.toString()
       });
+      const result = await response.json().catch(() => ({}));
 
-      // A no-cors response is opaque: it cannot confirm server acceptance.
-      setStatus("Signup request sent, but we cannot confirm your subscription here. If you need help, email info@nocapsai.com.");
+      if (result.ok === true) {
+        setStatus(result.duplicate ? MESSAGES.duplicate : MESSAGES.subscribed);
+        emailInput.value = "";
+      } else {
+        const key = { verification_failed: "verification", invalid_email: "invalid",
+                      unavailable: "unavailable" }[result.error] || "failed";
+        setStatus(MESSAGES[key], false);
+      }
     } catch (err) {
       console.error("[newsletter] request failed:", err);
       setStatus("Network error. Please try again.", false);
     } finally {
+      resetWidget(); // Turnstile tokens are single-use.
       inFlight = false;
       signUpBtn.removeAttribute("aria-disabled");
       root.removeAttribute("aria-busy");
