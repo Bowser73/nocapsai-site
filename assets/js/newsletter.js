@@ -11,7 +11,7 @@ const APPS_SCRIPT_ENDPOINT =
 
 // Public Turnstile site key for nocapsai.com (Cloudflare dashboard > Turnstile > widget > Site Key).
 // Left empty, the form fails closed and asks people to email instead.
-const TURNSTILE_SITE_KEY = "";
+const TURNSTILE_SITE_KEY = "0x4AAAAAAFYBEpJyv5cYOfkM";
 const TURNSTILE_ACTION = "newsletter_signup";
 const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 const PAGE_LOADED_AT = Date.now();

@@ -3,7 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const RAW = fs.readFileSync('assets/js/newsletter.js', 'utf8');
-const withKey = RAW.replace('const TURNSTILE_SITE_KEY = "";', 'const TURNSTILE_SITE_KEY = "1x00000000000000000000AA";');
+const withKey = RAW.replace(/const TURNSTILE_SITE_KEY = "[^"]*";/, 'const TURNSTILE_SITE_KEY = "1x00000000000000000000AA";');
+const noKey = RAW.replace(/const TURNSTILE_SITE_KEY = "[^"]*";/, 'const TURNSTILE_SITE_KEY = "";');
 
 function setup(fetch, { source = withKey, token = 'tok-123' } = {}) {
   function element(textContent = '') {
@@ -59,7 +60,7 @@ test('invalid email never sends', () => {
 
 test('without a site key the form fails closed and points to email', () => {
   let calls = 0;
-  const ui = setup(() => { calls++; }, { source: RAW });
+  const ui = setup(() => { calls++; }, { source: noKey });
   ui.input.value = 'person@example.test';
   ui.click();
   assert.equal(calls, 0);
