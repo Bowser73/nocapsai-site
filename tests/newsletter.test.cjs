@@ -7,15 +7,18 @@ const withKey = RAW.replace(/const TURNSTILE_SITE_KEY = "[^"]*";/, 'const TURNST
 const noKey = RAW.replace(/const TURNSTILE_SITE_KEY = "[^"]*";/, 'const TURNSTILE_SITE_KEY = "";');
 
 function setup(fetch, { source = withKey, token = 'tok-123' } = {}) {
+  const placed = [];
   function element(textContent = '') {
     return { textContent, style: {}, attrs: {}, handlers: {}, value: '',
       setAttribute(k, v) { this.attrs[k] = v; },
       getAttribute(k) { return this.attrs[k] || null; },
       removeAttribute(k) { delete this.attrs[k]; },
       addEventListener(k, fn) { this.handlers[k] = fn; },
-      appendChild() {}, focus() { this.focused = true; } };
+      appendChild() {}, focus() { this.focused = true; },
+      after(el) { placed.push(el); el.parentNode = this; } };
   }
   const input = element(), button = element('Sign Up'), form = element(), root = element();
+
   button.tagName = 'BUTTON';
   input.checkValidity = () => true;
   input.closest = () => form;
@@ -33,7 +36,8 @@ function setup(fetch, { source = withKey, token = 'tok-123' } = {}) {
     window: { location: { href: 'https://nocapsai.com/' }, turnstile: ts },
     URLSearchParams, fetch, console: { warn() {}, error() {} }, Date
   });
-  root.status = appended.find(e => e.className === 'newsletter-status');
+  root.status = placed.concat(appended).find(e => e.className === 'newsletter-status');
+  root.placed = placed;
   const click = () => button.handlers.click({ preventDefault() {} });
   const enter = () => input.handlers.keydown({ key: 'Enter', preventDefault() {} });
   const submit = () => form.handlers.submit({ preventDefault() {} });
@@ -111,4 +115,9 @@ test('network failure keeps the address and allows retry', async () => {
   assert.equal(ui.input.value, 'person@example.test');
   ui.click(); await settle();
   assert.equal(calls, 2);
+});
+
+test('widget and status are placed right after the form, not at the end of the footer', () => {
+  const ui = setup(() => {});
+  assert.deepEqual(ui.root.placed.map(e => e.className), ['newsletter-turnstile', 'newsletter-status']);
 });
