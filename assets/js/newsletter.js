@@ -184,8 +184,8 @@ const PAGE_LOADED_AT = Date.now();
         setStatus(result.duplicate ? MESSAGES.duplicate : MESSAGES.subscribed);
         emailInput.value = "";
       } else {
-        const key = { verification_failed: "verification", invalid_email: "invalid",
-                      unavailable: "unavailable" }[result.error] || "failed";
+        const key = { verification_failed: "verification", "invalid email": "invalid",
+                      "server not configured": "unavailable" }[result.error] || "failed";
         setStatus(MESSAGES[key], false);
       }
     } catch (err) {

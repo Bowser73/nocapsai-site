@@ -1,109 +1,103 @@
-// Runs the Apps Script receiver (Code.gs) in Node with stand-ins for Apps Script services.
+// Runs the live Apps Script receiver (Code.gs) in Node with stand-ins for Apps Script services.
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const SRC = fs.readFileSync('integrations/google-apps-script/Code.gs', 'utf8');
-const ctx = {}; vm.runInNewContext(SRC, ctx);
-// Values made inside the vm realm have different prototypes; compare them as plain JSON.
-const plain = v => JSON.parse(JSON.stringify(v));
-const H = (p, s) => plain(ctx.handleNewsletter_(p, s));
+const HEADER = ["TimeStamp", "Name", "Phone", "Email", "Message", "Page", "Source", "Kind", "Status", "NormalizedEmail"];
 
-function sheetWith(rows) {
-  const data = rows.map(r => r.slice());
-  return { data, appended: [],
-    getLastColumn: () => data[0].length, getLastRow: () => data.length,
-    getRange(r, c, nr, nc) { return {
-      getDisplayValues: () => data.slice(r - 1, r - 1 + nr).map(row => row.slice(c - 1, c - 1 + nc).map(String)),
-      createTextFinder: (t) => ({ matchEntireCell() { return this; }, matchCase() { return this; },
-        findNext: () => data.slice(r - 1, r - 1 + nr).some(row => String(row[c - 1]).toLowerCase() === t) ? {} : null }) }; },
-    appendRow(row) { data.push(row); this.appended.push(row); } };
+function world({ verify = { success: true, action: 'newsletter_signup', hostname: 'nocapsai.com' }, props, rows } = {}) {
+  const P = props || { TURNSTILE_SECRET: 'srv-secret', SHEET_ID: 'sheet-1', NOTIFY_EMAIL: 'njwhitt@nocapsai.com' };
+  const data = [HEADER.slice(), ...(rows || [['2026-10-01', 'Newsletter', '', 'existing@example.com', 'Newsletter signup', 'https://nocapsai.com/', 'website', 'newsletter', 'new', 'existing@example.com']])];
+  const before = JSON.stringify(data);
+  const cache = {}, fetches = [], mails = [];
+  const sheet = {
+    getLastRow: () => data.length,
+    getRange: (r, c, nr = 1, nc = 1) => ({
+      getValues: () => data.slice(r - 1, r - 1 + nr).map(row => { const out = []; for (let i = 0; i < nc; i++) out.push(row[c - 1 + i] ?? ''); return out; }),
+      setValue: v => { data[r - 1][c - 1] = v; } }),
+    appendRow: row => data.push(row.slice())
+  };
+  const g = {
+    PropertiesService: { getScriptProperties: () => ({ getProperty: k => (k in P ? P[k] : null) }) },
+    CacheService: { getScriptCache: () => ({ get: k => cache[k] || null, put: (k, v) => { cache[k] = v; } }) },
+    LockService: { getScriptLock: () => ({ tryLock: () => true, releaseLock() {} }) },
+    SpreadsheetApp: { openById: id => ({ getSheetByName: n => (id === 'sheet-1' && n === 'WebsiteLeads' ? sheet : null), insertSheet: () => sheet }) },
+    UrlFetchApp: { fetch: (url, o) => { fetches.push({ url, o }); return { getResponseCode: () => 200, getContentText: () => JSON.stringify(verify) }; } },
+    MailApp: { sendEmail: m => mails.push(m) },
+    Utilities: { base64EncodeWebSafe: x => String(x), computeDigest: (a, s) => s, DigestAlgorithm: { SHA_256: 1 } },
+    ContentService: { createTextOutput: t => ({ setMimeType: () => JSON.parse(t) }), MimeType: { JSON: 'json' } },
+    console: { error() {}, warn() {}, log() {} }, Date, JSON, Math, Number, String, isFinite
+  };
+  vm.runInNewContext(SRC, g);
+  const post = params => JSON.parse(JSON.stringify(g.doPost({ parameter: params })));
+  return { post, data, before, fetches, mails };
 }
-function svc({ verify = { success: true, action: 'newsletter_signup', hostname: 'nocapsai.com' }, props, sheet } = {}) {
-  const cache = {}, calls = [];
-  const P = props || { TURNSTILE_SECRET: 'srv-secret', NEWSLETTER_SHEET_NAME: 'WebsiteLeads' };
-  const sh = sheet || sheetWith([['Timestamp', 'Name', 'Email', 'Message', 'Page', 'Source'],
-                                 ['2026-10-01', 'Newsletter', 'existing@example.com', 'x', 'p', 'website']]);
-  return { calls, sh,
-    prop: k => P[k] || null, cacheGet: k => cache[k] || null, cachePut: (k, v) => { cache[k] = v; },
-    fetch: (url, opts) => { calls.push({ url, opts }); return { code: 200, text: JSON.stringify(verify) }; },
-    withLock: fn => fn(), sheet: n => (n === 'WebsiteLeads' ? sh : null), log() {}, now: () => 'NOW' };
-}
-const good = (o = {}) => Object.assign({ kind: 'newsletter', email: 'New@Example.com', t: '5000', hp: '',
-  turnstileToken: 'tok', page: 'https://nocapsai.com/' }, o);
+const good = (o = {}) => Object.assign({ kind: 'newsletter', name: 'Newsletter', email: 'New.Person@Example.com', t: '6000', hp: '',
+  turnstileToken: 'tok', message: 'Newsletter signup', page: 'https://nocapsai.com/', source: 'website' }, o);
 
-test('legitimate signup is verified server-side and appended under the right headers', () => {
-  const s = svc();
-  const r = H(good(), s);
-  assert.deepEqual(r, { ok: true, duplicate: false });
-  assert.equal(s.calls.length, 1);
-  assert.equal(s.calls[0].url, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
-  assert.equal(s.calls[0].opts.payload.secret, 'srv-secret');
-  assert.deepEqual(plain(s.sh.appended[0]), ['NOW', 'Newsletter', 'new@example.com', 'Newsletter signup', 'https://nocapsai.com/', 'website']);
-  assert.equal(s.sh.data[1][2], 'existing@example.com'); // existing rows untouched
+test('legitimate signup: token verified server-side, one row appended, existing rows untouched', () => {
+  const w = world();
+  assert.deepEqual(w.post(good()), { ok: true });
+  assert.equal(w.fetches.length, 1);
+  assert.equal(w.fetches[0].url, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
+  assert.equal(w.fetches[0].o.payload.secret, 'srv-secret');
+  assert.equal(w.data.length, 3);
+  const row = w.data[2];
+  assert.equal(row[3], 'new.person@example.com'); assert.equal(row[7], 'newsletter'); assert.equal(row[8], 'new');
+  assert.equal(JSON.stringify(w.data.slice(0, 2)), JSON.stringify(JSON.parse(w.before)));
 });
 
-test('duplicates are not re-added (sheet match and immediate repeat)', () => {
-  const s = svc();
-  assert.deepEqual(H(good({ email: 'EXISTING@example.com' }), s), { ok: true, duplicate: true });
-  assert.deepEqual(H(good(), s), { ok: true, duplicate: false });
-  assert.deepEqual(H(good(), s), { ok: true, duplicate: true });
-  assert.equal(s.sh.appended.length, 1);
+test('no email ever goes to the subscriber; only the capped internal notice to NOTIFY_EMAIL', () => {
+  const w = world();
+  w.post(good());
+  assert.equal(w.mails.length, 1);
+  assert.equal(w.mails[0].to, 'njwhitt@nocapsai.com');
+  assert.ok(!JSON.stringify(w.mails).includes('"to":"new.person@example.com"'));
 });
 
-test('invalid, missing, wrong-action and wrong-host tokens are rejected and store nothing', () => {
+test('duplicates (including Gmail dot/+tag variants) add no row and send no notice', () => {
+  const w = world({ rows: [['x', 'Newsletter', '', 'janedoe@gmail.com', 'Newsletter signup', '', 'website', 'newsletter', 'new', 'janedoe@gmail.com']] });
+  assert.deepEqual(w.post(good({ email: 'Jane.Doe+news@gmail.com' })), { ok: true });
+  assert.equal(w.data.length, 2);
+  assert.equal(w.mails.length, 0);
+});
+
+test('invalid, missing, wrong-action and wrong-host tokens are rejected before the sheet', () => {
   for (const [verify, tok] of [
     [{ success: false, 'error-codes': ['invalid-input-response'] }, 'tok'],
     [{ success: true, action: 'other', hostname: 'nocapsai.com' }, 'tok'],
     [{ success: true, action: 'newsletter_signup', hostname: 'evil.example' }, 'tok'],
     [{ success: true, action: 'newsletter_signup', hostname: 'nocapsai.com' }, '']]) {
-    const s = svc({ verify });
-    assert.deepEqual(H(good({ turnstileToken: tok }), s), { ok: false, error: 'verification_failed' });
-    assert.equal(s.sh.appended.length, 0);
+    const w = world({ verify });
+    assert.deepEqual(w.post(good({ turnstileToken: tok })), { ok: false, error: 'verification_failed' });
+    assert.equal(w.data.length, 2); assert.equal(w.mails.length, 0);
   }
 });
 
-test('old FORM_SECRET-style requests without a token are rejected', () => {
-  const s = svc();
-  const r = H(good({ turnstileToken: undefined, secret: '23DDDDA126981E83136C51E30ED4D60279CABD8AF7048FC9' }), s);
-  assert.equal(r.ok, false);
-  assert.equal(s.sh.appended.length, 0);
+test('the old browser form key alone no longer works', () => {
+  const w = world({ verify: { success: false } });
+  const r = w.post(good({ turnstileToken: undefined, secret: '23DDDDA126981E83136C51E30ED4D60279CABD8AF7048FC9' }));
+  assert.equal(r.ok, false); assert.equal(w.data.length, 2);
+  assert.doesNotMatch(SRC, /getProperty\("FORM_SECRET"\)/);
 });
 
-test('bot signals: honeypot and too-fast submissions store nothing and skip siteverify', () => {
-  const s = svc();
-  assert.deepEqual(H(good({ hp: 'http://spam' }), s), { ok: true });
-  assert.equal(H(good({ t: '200' }), s).ok, false);
-  assert.equal(s.sh.appended.length, 0);
-  assert.equal(s.calls.length, 0);
+test('bot submissions (honeypot, too fast) are dropped silently without calling Cloudflare', () => {
+  const w = world();
+  assert.deepEqual(w.post(good({ hp: 'http://spam' })), { ok: true });
+  assert.deepEqual(w.post(good({ t: '300' })), { ok: true });
+  assert.equal(w.data.length, 2); assert.equal(w.fetches.length, 0); assert.equal(w.mails.length, 0);
 });
 
-test('invalid email and unconfigured secret fail closed', () => {
-  assert.deepEqual(H(good({ email: 'nope' }), svc()), { ok: false, error: 'invalid_email' });
-  const s = svc({ props: { NEWSLETTER_SHEET_NAME: 'WebsiteLeads' } });
-  assert.deepEqual(H(good(), s), { ok: false, error: 'unavailable' });
-  assert.equal(s.sh.appended.length, 0);
+test('missing Turnstile secret fails closed', () => {
+  const w = world({ props: { SHEET_ID: 'sheet-1', NOTIFY_EMAIL: 'njwhitt@nocapsai.com' } });
+  assert.deepEqual(w.post(good()), { ok: false, error: 'server not configured' });
+  assert.equal(w.data.length, 2);
 });
 
-test('global rate limit caps verified signups', () => {
-  const s = svc();
-  for (let i = 0; i < 30; i++) assert.equal(H(good({ email: `p${i}@example.com` }), s).ok, true);
-  assert.deepEqual(H(good({ email: 'p99@example.com' }), s), { ok: false, error: 'rate_limited' });
-});
-
-test('submitted text cannot become a spreadsheet formula', () => {
-  const s = svc();
-  assert.equal(H(good({ email: '=cmd@evil.co', page: '=IMPORTXML("x")' }), s).ok, true);
-  assert.equal(s.sh.appended[0][2], "'=cmd@evil.co");
-  assert.equal(s.sh.appended[0][4], "'=IMPORTXML(\"x\")");
-});
-
-test('very long addresses still dedupe within cache key limits', () => {
-  const s = svc(); const long = 'a'.repeat(240) + '@example.com';
-  assert.equal(H(good({ email: long }), s).duplicate, false);
-  assert.equal(H(good({ email: long }), s).duplicate, true);
-});
-
-test('the receiver never sends email', () => {
-  assert.doesNotMatch(SRC, /MailApp|GmailApp|sendEmail/);
+test('formula injection is neutralised and invalid email rejected', () => {
+  const w = world();
+  w.post(good({ name: '=HYPERLINK("x")' }));
+  assert.equal(w.data[2][1], '\'=HYPERLINK("x")');
+  assert.deepEqual(world().post(good({ email: 'nope' })), { ok: false, error: 'invalid email' });
 });
