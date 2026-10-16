@@ -51,11 +51,13 @@ const PAGE_LOADED_AT = Date.now();
   honeypot.style.cssText = "position:absolute;left:-10000px;width:1px;height:1px;opacity:0;";
   root.appendChild(honeypot);
 
-  // Container for the Turnstile widget, placed with the form.
+  // Container for the Turnstile widget, placed directly under the email form so people see it
+  // before pressing Sign Up (falls back to the end of the section if there is no <form>).
   const widgetBox = document.createElement("div");
   widgetBox.className = "newsletter-turnstile";
-  widgetBox.style.marginTop = "10px";
-  root.appendChild(widgetBox);
+  widgetBox.style.cssText = "margin:10px auto 0;display:flex;justify-content:center;";
+  const formEl = emailInput.closest("form");
+  if (formEl && typeof formEl.after === "function") formEl.after(widgetBox); else root.appendChild(widgetBox);
 
   let status = root.querySelector(".newsletter-status");
   if (!status) {
@@ -63,7 +65,7 @@ const PAGE_LOADED_AT = Date.now();
     status.className = "newsletter-status";
     status.style.marginTop = "10px";
     status.style.fontSize = "14px";
-    root.appendChild(status);
+    if (typeof widgetBox.after === "function" && widgetBox.parentNode) widgetBox.after(status); else root.appendChild(status);
   }
 
   status.id = status.id || "newsletter-status";
