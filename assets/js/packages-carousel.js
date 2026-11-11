@@ -1,19 +1,22 @@
-// Packages carousel: arrows, dots, group tabs, and a gentle auto-advance.
-// Without JavaScript the track is still a normal swipe/scroll row.
+// Carousels (packages, funding tools): arrows, dots, optional group tabs,
+// and a gentle auto-advance. Without JavaScript each track is still a
+// normal swipe/scroll row.
 (function () {
   'use strict';
-  var root = document.querySelector('[data-carousel]');
-  if (!root) return;
-  var track = root.querySelector('.pkg-track');
-  var cards = Array.prototype.slice.call(track.querySelectorAll('.plan'));
+  Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), setup);
+
+function setup(root) {
+  var track = root.querySelector('[data-carousel-track]');
+  if (!track) return;
+  var cards = Array.prototype.slice.call(track.children);
   var prev = root.querySelector('.pkg-prev');
   var next = root.querySelector('.pkg-next');
   var dotsBox = root.querySelector('.pkg-dots');
   var tabs = Array.prototype.slice.call(root.querySelectorAll('.pkg-tab'));
-  if (!track || cards.length < 2) return;
+  if (cards.length < 2) return;
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var AUTO_MS = 5000;
+  var AUTO_MS = parseInt(root.getAttribute('data-interval'), 10) || 5000;
   var timer = null, userTookOver = false, hovering = false, inView = false, dots = [];
 
   function offsetOf(card) { return card.offsetLeft - cards[0].offsetLeft; }
@@ -54,6 +57,7 @@
     var c = current();
     dots.forEach(function (d, i) { d.classList.toggle('is-active', i === c); });
     // Active tab = group of the card nearest the middle of the visible row.
+    if (!tabs.length) return;
     var mid = track.scrollLeft + track.clientWidth / 2, group = null, bestD = Infinity;
     cards.forEach(function (card) {
       var d = Math.abs(offsetOf(card) + card.offsetWidth / 2 - mid);
@@ -102,7 +106,7 @@
   window.addEventListener('resize', refresh);
 
   // Links elsewhere on the page that point at a package group stop the auto-advance.
-  document.querySelectorAll('a[href="#small-business"], a[href="#nonprofit-packages"]').forEach(function (a) {
+  if (tabs.length) document.querySelectorAll('a[href="#small-business"], a[href="#nonprofit-packages"]').forEach(function (a) {
     a.addEventListener('click', function () {
       takeOver();
       var g = a.getAttribute('href') === '#small-business' ? 'business' : 'nonprofit';
@@ -117,4 +121,5 @@
   } else { inView = true; }
 
   refresh(); start();
+}
 })();

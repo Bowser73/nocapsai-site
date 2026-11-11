@@ -1384,3 +1384,70 @@ footer{ background: rgba(0,10,20,0.78); }
 @media (prefers-reduced-motion: reduce){
   .pkg-track.pricing .plan{ transition: none; }
 }
+
+/* ===== FUNDING TOOLS CAROUSEL ===== */
+.store-carousel{ max-width: 1180px; }
+.store-track.store-grid{
+  --pkg-gap: 22px;
+  display: flex;
+  gap: var(--pkg-gap);
+  max-width: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding: 14px 4px 26px;
+  scrollbar-width: none;
+}
+.store-track.store-grid::-webkit-scrollbar{ display: none; }
+.store-track.store-grid:focus-visible{ outline: 2px solid var(--np-accent); outline-offset: 4px; border-radius: 14px; }
+.store-track.store-grid .product-card{
+  flex: 0 0 calc((100% - 3 * var(--pkg-gap)) / 4);
+  scroll-snap-align: start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.store-track.store-grid .product-card:hover{ transform: translateY(-6px); box-shadow: 0 22px 50px rgba(0,0,0,0.35), 0 0 26px rgba(0,255,150,0.22); }
+@media (max-width: 1100px){
+  .store-track.store-grid .product-card{ flex-basis: calc((100% - var(--pkg-gap)) / 2); }
+}
+@media (max-width: 768px){
+  .store-track.store-grid .product-card{ flex: 0 0 84%; scroll-snap-align: center; }
+}
+
+/* ===== SCROLL-IN MOTION (classes are added by assets/js/motion.js) ===== */
+.reveal{ opacity: 0; }
+.reveal.is-in{
+  opacity: 1;
+  animation: reveal-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+@keyframes reveal-rise{
+  from{ opacity: 0; transform: translateY(26px); }
+  to  { opacity: 1; transform: none; }
+}
+
+/* ===== SLOW DRIFT ON THE BACKDROP PICTURE ===== */
+@keyframes backdrop-drift-cover{
+  from{ transform: scale(1); }
+  to  { transform: scale(1.07) translate3d(-1%, -1%, 0); }
+}
+/* desktop: the picture breathes inward so the whole image stays in view */
+@keyframes backdrop-drift-fit{
+  from{ transform: scale(1); }
+  to  { transform: scale(0.955) translate3d(0.8%, 0, 0); }
+}
+@media (prefers-reduced-motion: no-preference){
+  body::before{
+    animation: backdrop-drift-cover 36s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 769px) and (min-aspect-ratio: 1/1){
+  body::before{
+    transform-origin: center bottom;
+    animation-name: backdrop-drift-fit;
+    animation-duration: 30s;
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1; }
+}
