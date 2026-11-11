@@ -21,9 +21,10 @@
     <meta name="twitter:description" content="NoCapsAI helps small nonprofits, mission-driven organizations, and small businesses in Indiana build credible websites, donation and lead pages, QR campaigns, event pages, and grant-ready digital systems.">
     <meta name="twitter:image" content="https://nocapsai.com/assets/nocapsai-social-preview.png">
 
-    <link rel="stylesheet" href="styles.css?v=20261111">
+    <link rel="stylesheet" href="styles.css?v=20261111b">
     <link rel="stylesheet" href="/assets/site-header.css">
     <script src="assets/js/newsletter.js" defer></script>
+    <script src="assets/js/packages-carousel.js?v=20261111" defer></script>
 
     <!-- Structured data: business -->
     <script type="application/ld+json">
@@ -396,10 +397,17 @@
   <h2>Packages</h2>
   <p class="np-lead np-lead-center">Packages for small nonprofits and small businesses. Pick a starting point, then email us to review your goals, scope, timeline, and total price before paying. Existing clients can use <a href="#payment">Make a payment</a> for an agreed amount.</p>
 
-  <h3 class="pricing-group" id="nonprofit-packages">For nonprofits</h3>
-  <div class="pricing">
+  <div class="pkg-carousel" data-carousel>
+  <div class="pkg-tabs" role="group" aria-label="Jump to a package group">
+    <button type="button" class="pkg-tab is-active" data-group="nonprofit">For nonprofits</button>
+    <button type="button" class="pkg-tab" data-group="business">For small businesses</button>
+  </div>
+  <div class="pkg-stage">
+  <button type="button" class="pkg-arrow pkg-prev" aria-label="Previous package">&#8249;</button>
+  <div class="pricing pkg-track" role="region" aria-label="Packages" tabindex="0">
 
-    <div class="plan">
+    <div class="plan" id="nonprofit-packages" data-group="nonprofit">
+      <span class="plan-tag">Nonprofit</span>
       <h3>Starter Nonprofit Website</h3>
       <p class="plan-price">Starting at $750</p>
       <p>For small organizations that need a credible online home.</p>
@@ -416,7 +424,8 @@
       <a href="https://buy.stripe.com/8x2fZi4RMdlx3QmdcL48004" class="plan-cta">Start with Starter</a>
     </div>
 
-    <div class="plan featured">
+    <div class="plan featured" data-group="nonprofit">
+      <span class="plan-tag">Nonprofit</span>
       <p class="badge">Complete launch package</p>
       <h3>Nonprofit Launch System</h3>
       <p class="plan-price">Starting at $2,500</p>
@@ -437,7 +446,8 @@
       <a href="https://buy.stripe.com/14AdRa1FAchtev02y748002" class="plan-cta">Launch My Nonprofit</a>
     </div>
 
-    <div class="plan">
+    <div class="plan" data-group="nonprofit">
+      <span class="plan-tag">Nonprofit</span>
       <h3>Funding &amp; Growth Support</h3>
       <p class="plan-price">Starting at $750<span class="plan-per">/month</span></p>
       <p>For ongoing support after launch.</p>
@@ -454,12 +464,8 @@
       <a href="https://buy.stripe.com/4gM9AU4RMdlx2Mib4D48000" class="plan-cta" target="_blank">Start Monthly Support</a>
     </div>
 
-  </div>
-
-  <h3 class="pricing-group" id="small-business">For small businesses</h3>
-  <div class="pricing">
-
-    <div class="plan">
+    <div class="plan" id="small-business" data-group="business">
+      <span class="plan-tag">Small business</span>
       <h3>Small Business Starter Website</h3>
       <p class="plan-price">Starting at $750</p>
       <p>For local businesses that need a credible site customers can find and trust.</p>
@@ -476,7 +482,8 @@
       <a href="mailto:info@nocapsai.com?subject=Small%20Business%20Starter%20Website" class="plan-cta">Start My Business Site</a>
     </div>
 
-    <div class="plan featured">
+    <div class="plan featured" data-group="business">
+      <span class="plan-tag">Small business</span>
       <p class="badge">Complete business package</p>
       <h3>Small Business Growth System</h3>
       <p class="plan-price">Starting at $2,500</p>
@@ -496,6 +503,10 @@
       <a href="mailto:info@nocapsai.com?subject=Small%20Business%20Growth%20System" class="plan-cta">Grow My Business</a>
     </div>
 
+  </div>
+  <button type="button" class="pkg-arrow pkg-next" aria-label="Next package">&#8250;</button>
+  </div>
+  <div class="pkg-dots" aria-hidden="true"></div>
   </div>
 
   <p class="np-custom">

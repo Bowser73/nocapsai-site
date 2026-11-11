@@ -1240,28 +1240,6 @@ footer{ background: rgba(0,10,20,0.78); }
   .featured-product img{height:auto;min-height:0}
 }
 
-/* ===== PACKAGE GROUPS (nonprofit / small business) ===== */
-.pricing-group{
-  max-width: 1040px;
-  margin: 46px auto 14px;
-  text-align: center;
-  color: var(--np-accent);
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  scroll-margin-top: 24px;
-}
-.pricing-group::after{
-  content: "";
-  display: block;
-  width: 72px;
-  height: 2px;
-  margin: 10px auto 0;
-  background: var(--np-border);
-}
-.np-lead + .pricing-group{ margin-top: 10px; }
-
 /* "Not just for nonprofits" block inside the audience band */
 .np-also{
   margin-top: 46px;
@@ -1285,4 +1263,124 @@ footer{ background: rgba(0,10,20,0.78); }
   margin-right: auto;
   line-height: 1.2;
   text-wrap: balance;
+}
+
+/* ===== PACKAGES CAROUSEL ===== */
+.pkg-carousel{ max-width: 1180px; margin: 0 auto; }
+.pkg-tabs{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+.pkg-tab{
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--np-border);
+  background: rgba(0,255,150,0.06);
+  color: var(--np-accent);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.pkg-tab:hover{ background: rgba(0,255,150,0.16); }
+.pkg-tab.is-active{
+  background: var(--np-accent);
+  color: #001a33;
+  box-shadow: 0 0 22px rgba(0,255,154,0.45);
+}
+.pkg-stage{ position: relative; }
+.pkg-track.pricing{
+  --pkg-gap: 24px;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: var(--pkg-gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 16px;
+  padding: 30px 16px 34px;       /* room for the card glow and the featured scale */
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.pkg-track.pricing::-webkit-scrollbar{ display: none; }
+.pkg-track.pricing:focus-visible{ outline: 2px solid var(--np-accent); outline-offset: 4px; border-radius: 14px; }
+.pkg-track.pricing .plan{
+  flex: 0 0 calc((100% - 2 * var(--pkg-gap)) / 3);
+  width: auto;
+  max-width: none;
+  margin: 0;
+  scroll-snap-align: start;
+  justify-content: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.pkg-track.pricing .plan .plan-cta{ margin-top: auto; align-self: flex-start; }
+.pkg-track.pricing .plan .plan-list{ margin-bottom: 22px; }
+.pkg-track.pricing .plan:hover{ transform: translateY(-6px); box-shadow: 0 0 34px rgba(0,255,150,0.30); }
+.pkg-track.pricing .plan.featured{ transform: none; }
+.pkg-track.pricing .plan.featured:hover{ transform: translateY(-6px); }
+.plan-tag{
+  align-self: flex-start;
+  margin-bottom: 10px;
+  color: var(--np-accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.pkg-arrow{
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 1px solid var(--np-border);
+  background: rgba(0,16,32,0.88);
+  color: var(--np-accent);
+  font-size: 1.9rem;
+  line-height: 1;
+  padding: 0 0 4px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(0,255,154,0.30);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pkg-arrow:hover{ background: var(--np-accent); color: #001a33; }
+.pkg-prev{ left: -14px; }
+.pkg-next{ right: -14px; }
+.pkg-dots{ display: flex; justify-content: center; gap: 10px; margin-top: 2px; }
+.pkg-dot{
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--np-accent);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.pkg-dot.is-active{ background: var(--np-accent); transform: scale(1.25); }
+.pkg-carousel.is-static .pkg-arrow,
+.pkg-carousel.is-static .pkg-dots{ display: none; }
+
+@media (max-width: 1100px){
+  .pkg-track.pricing .plan{ flex-basis: calc((100% - var(--pkg-gap)) / 2); }
+  .pkg-prev{ left: 2px; }
+  .pkg-next{ right: 2px; }
+}
+@media (max-width: 768px){
+  .pkg-track.pricing{ --pkg-gap: 16px; flex-direction: row; align-items: stretch; }
+  .pkg-track.pricing .plan{ flex: 0 0 84%; width: auto; max-width: none; margin: 0; scroll-snap-align: center; }
+  .pkg-arrow{ display: none; }      /* swipe on phones */
+}
+@media (prefers-reduced-motion: reduce){
+  .pkg-track.pricing .plan{ transition: none; }
 }
