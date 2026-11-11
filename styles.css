@@ -1451,3 +1451,13 @@ footer{ background: rgba(0,10,20,0.78); }
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity: 1; }
 }
+
+/* GrantFlow sign-up buttons */
+.np-grantflow-cta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin: 30px 0 6px;
+}
+.np-band .np-inner .np-grantflow-cta .cta-button{ margin: 0 !important; }
