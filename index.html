@@ -21,7 +21,7 @@
     <meta name="twitter:description" content="Shop funding guides and practical toolkits, organize grants with GrantFlow Pro, or get a website built for your nonprofit or small business.">
     <meta name="twitter:image" content="https://nocapsai.com/assets/nocapsai-social-preview.png">
 
-    <link rel="stylesheet" href="/assets/storefront.css?v=20261112">
+    <link rel="stylesheet" href="/assets/storefront.css?v=20261112-motion">
     <link rel="stylesheet" href="/assets/site-header.css">
     <script src="assets/js/newsletter.js" defer></script>
 
@@ -65,19 +65,20 @@
 <body class="sales-home">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
-  <a class="site-identity" href="/" aria-label="NoCapsAI home"><span class="site-logos" aria-hidden="true"><img src="/assets/logo-3.png" alt=""></span><span class="site-name">NoCapsAI</span></a>
+  <a class="site-identity" href="/" aria-label="NoCapsAI home"><span class="site-logos" aria-hidden="true"><img src="/assets/logo-3.png" alt=""><img src="/assets/logo-1.png" alt=""><img src="/assets/logo-2.png" alt=""></span><span class="site-name">NoCapsAI</span></a>
   <nav class="site-nav" aria-label="Main navigation"><a href="#funding-tools">Shop tools</a><a href="#grantflow">GrantFlow</a><a href="/services/">Services</a><a href="#proof">Our work</a><a href="#contact">Contact</a></nav>
 </header>
 <main id="main">
 <section class="shop-hero" id="home">
+ <div class="hero-orbits" aria-hidden="true"><i></i><i></i><i></i></div><button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
  <div class="hero-copy"><p class="eyebrow">Built for nonprofits &amp; small businesses</p><h1>Less busywork.<br>More forward motion.</h1><p class="hero-intro">Funding tools, grant software, and websites that help your next move happen.</p><div class="actions"><a class="button" href="#funding-tools">Shop tools from $27 <span aria-hidden="true">↗</span></a><a class="text-link" href="#grantflow">Explore GrantFlow Pro →</a></div><p class="quiet">Practical tools. Clear prices. Based in Indiana.</p></div>
- <a class="hero-product" href="https://mrmojo73.gumroad.com/l/indiana-recovery-starter-kit" target="_blank" rel="noopener noreferrer"><span class="eyebrow">A guide. A tracker. A starting point.</span><img src="/assets/products/cover-indiana-starter-kit.webp" alt="Indiana Recovery Nonprofit Starter Kit"><div><span>Indiana Recovery Starter Kit</span><strong>$79 <span aria-hidden="true">↗</span></strong></div></a>
 </section>
 <section class="shop-section" id="funding-tools" aria-labelledby="shop-heading">
  <div class="section-heading"><div><p class="eyebrow">Download. Organize. Get moving.</p><h2 id="shop-heading">Find your next tool.</h2></div><p>One-time purchases.<br>Secure Gumroad checkout + digital delivery.</p></div>
  <div class="shop-filters" role="group" aria-label="Filter products"><button type="button" data-filter="all" aria-pressed="true">All tools</button><button type="button" data-filter="nonprofit" aria-pressed="false">Nonprofits</button><button type="button" data-filter="business" aria-pressed="false">Small business</button><button type="button" data-filter="bundle" aria-pressed="false">Bundles</button></div>
  <p class="sr-only" id="product-count" aria-live="polite">8 products shown</p>
- <div class="product-grid"><article class="product-card" data-category="bundle">
+ <div class="carousel-controls"><span>Explore the collection <span aria-hidden="true">↗</span></span><div><button type="button" data-carousel-prev="products" aria-label="Previous products">←</button><button type="button" data-carousel-next="products" aria-label="Next products">→</button></div></div>
+ <div class="product-grid carousel-track" id="products" tabindex="0" role="region" aria-label="Funding tools carousel"><article class="product-card" data-category="bundle">
       <img src="/assets/products/cover-veteran-small-business-bundle.webp" alt="Veteran and Small Business Funding Toolkit Bundle cover" loading="lazy">
       <div class="product-copy">
         <span class="product-label">Bundle · Save $9</span>
@@ -112,7 +113,7 @@
 </section>
 <section class="shop-section" id="pricing" aria-labelledby="services-heading">
  <div class="section-heading"><div><p class="eyebrow">Want it built for you?</p><h2 id="services-heading">Bring the project. We’ll build it.</h2></div><a class="text-link" href="/services/">Compare service packages →</a></div>
- <div class="service-grid"><article class="service-card" id="small-business"><h3>A website that works</h3><p>Mobile-friendly pages with a clear path to contact, book, or donate.</p><strong>From $750</strong><a class="text-link" href="/services/">Explore website packages →</a></article><article class="service-card"><h3>A complete launch</h3><p>Your website, campaign pages, QR kit, and 30 days of support.</p><strong>From $2,500</strong><a class="text-link" href="/services/">Explore launch packages →</a></article><article class="service-card"><h3>Keep showing up</h3><p>Monthly content and campaign support for your next promotion.</p><strong>$297<span>/month</span></strong><a class="text-link" href="/marketing/">See Outreach Boost →</a></article></div>
+ <div class="carousel-controls"><span>Built around your next move</span><div><button type="button" data-carousel-prev="services" aria-label="Previous services">←</button><button type="button" data-carousel-next="services" aria-label="Next services">→</button></div></div><div class="service-grid carousel-track" id="services" tabindex="0" role="region" aria-label="Services carousel"><article class="service-card" id="small-business"><h3>A website that works</h3><p>Mobile-friendly pages with a clear path to contact, book, or donate.</p><strong>From $750</strong><a class="text-link" href="/services/">Explore website packages →</a></article><article class="service-card"><h3>A complete launch</h3><p>Your website, campaign pages, QR kit, and 30 days of support.</p><strong>From $2,500</strong><a class="text-link" href="/services/">Explore launch packages →</a></article><article class="service-card"><h3>Keep showing up</h3><p>Monthly content and campaign support for your next promotion.</p><strong>$297<span>/month</span></strong><a class="text-link" href="/marketing/">See Outreach Boost →</a></article></div>
  <p class="fine-print">Custom website projects start with an agreed scope and price before payment.</p>
 </section>
 <section class="shop-section proof-section" id="proof" aria-labelledby="proof-heading"><div class="section-heading"><div><p class="eyebrow">Real organizations. Real work.</p><h2 id="proof-heading">See what we’ve built.</h2></div></div><div class="proof-grid"><a class="proof-card" href="/case-studies/twizted-journeys/"><span class="eyebrow">Nonprofit launch</span><h3>Twizted Journeys</h3><p>Website, donations, events, and QR campaigns.</p><span class="text-link">See the build ↗</span></a><a class="proof-card" href="/case-studies/we-help-dads/"><span class="eyebrow">Community impact</span><h3>We Help Dads</h3><p>A clear home for the mission and Dedicated Dads program.</p><span class="text-link">See the build ↗</span></a></div></section>
@@ -121,5 +122,5 @@
 <section class="payment-strip" id="payment"><div><strong>Already working with NoCapsAI?</strong><p>Pay your agreed invoice or deposit.</p></div><a class="text-link" href="https://buy.stripe.com/7sYcN65VQ3KX0Eac8H48005">Make a payment →</a></section>
 </main>
 <footer><div class="footer-top"><div><strong>NoCapsAI LLC</strong><p>Practical tools. Personal support.<br>Rushville, Indiana</p><a href="mailto:info@nocapsai.com">info@nocapsai.com</a></div><div class="newsletter"><h2>Stay in the Loop</h2><p>New tools and practical updates.</p><form><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" type="email" placeholder="Your email address" required><button type="submit">Sign Up</button></form></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> NoCapsAI LLC</span><a href="/services/">Services</a><a href="/marketing/">Marketing</a><a href="#payment">Client payments</a></div></footer>
-<script src="/assets/js/storefront.js?v=20261112" defer></script>
+<script src="/assets/js/storefront.js?v=20261112-motion" defer></script>
 </body></html>

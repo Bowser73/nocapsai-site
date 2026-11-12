@@ -1,2 +1,109 @@
 :root{color-scheme:dark;--bg:#06151c;--panel:#0c222a;--line:#25434a;--ink:#f2f8f5;--muted:#a5bbb9;--accent:#00ec95}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}button,input{font:inherit}button,a,input,summary{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:5px}button,summary{cursor:pointer}img{max-width:100%;display:block}h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.12;letter-spacing:-.035em}h1{font-size:clamp(42px,5.8vw,76px);margin-bottom:24px}h2{font-size:clamp(30px,3.5vw,45px);margin-bottom:16px}h3{font-size:23px}.sales-home .site-header{background:var(--bg);border-bottom:1px solid var(--line);padding:20px max(24px,calc((100vw - 1180px)/2));}.sales-home .site-header .site-nav a{color:var(--ink);font-size:14px}.sales-home .site-header .site-logos img{width:38px;height:38px;filter:none}.sales-home .site-header .site-name{color:var(--ink);text-shadow:none}.eyebrow,.product-label{display:block;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}.eyebrow{margin-bottom:18px}.shop-hero,.shop-section,.grantflow-section,.contact-strip,.payment-strip,footer{max-width:1180px;margin:auto}.shop-hero{display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center;padding:70px 0 76px}.hero-intro{font-size:20px;max-width:520px;color:#c5d6d3}.actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:30px 0 20px}.button,.product-button{display:inline-flex;align-items:center;justify-content:center;gap:18px;background:var(--accent);color:#002319;font-weight:750;border:1px solid var(--accent);border-radius:7px;padding:14px 22px;min-height:48px;text-align:center}.button:hover,.product-button:hover{background:#65ffbe}.text-link{color:var(--accent);font-weight:700;font-size:14px}.text-link:hover{text-decoration:underline;text-underline-offset:4px}.quiet,.fine-print{color:var(--muted);font-size:13px}.hero-product{display:block;border:1px solid var(--line);background:linear-gradient(145deg,#13362e,#0a1e26);border-radius:18px;padding:24px;transform:rotate(2deg);box-shadow:0 20px 65px #0005}.hero-product img{height:245px;width:100%;object-fit:contain;margin:12px auto 22px}.hero-product>div{display:flex;gap:15px;justify-content:space-between;align-items:center;font-size:16px}.hero-product strong{white-space:nowrap;color:var(--accent);font-size:22px}.shop-section{padding:64px 0;border-top:1px solid var(--line)}.section-heading{display:flex;gap:30px;justify-content:space-between;align-items:end;margin-bottom:28px}.section-heading h2{margin-bottom:0}.section-heading>p{font-size:14px;color:var(--muted);margin:0}.shop-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}.shop-filters button{border:1px solid var(--line);background:transparent;border-radius:30px;color:var(--ink);padding:9px 18px;min-height:44px}.shop-filters button[aria-pressed=true]{color:#002319;background:var(--accent);border-color:var(--accent)}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product-card{display:flex;flex-direction:column;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}.product-card[hidden]{display:none}.product-card>img{height:180px;width:100%;object-fit:contain;padding:16px;background:#112c32}.product-copy{padding:20px;display:flex;flex-direction:column;flex:1;gap:12px}.product-copy h3{font-size:19px;line-height:1.22;margin:0;letter-spacing:-.02em}.product-copy>p:not(.product-price){color:#bed0cd;font-size:14px;margin:0}.product-label{font-size:10px;letter-spacing:.055em}.product-price{font-size:25px;font-weight:700;line-height:1.2;margin:auto 0 0;padding-top:8px}.product-price s{color:var(--muted);font-size:16px;font-weight:400;margin-right:6px}.product-button{font-size:13px;padding:10px;gap:0}.shop-section>.fine-print{margin:22px 0 0}.grantflow-section{display:grid;grid-template-columns:1.1fr .9fr;gap:25px 80px;padding:54px;background:linear-gradient(120deg,#12342d,#0a222b);border:1px solid #2d5e4e;border-radius:18px;margin-top:12px;margin-bottom:68px}.grantflow-section h2{font-size:clamp(36px,4vw,54px)}.grantflow-section p{color:#c5d6d3}.benefit-list{padding:0;list-style:none;display:grid;gap:12px;font-size:15px}.benefit-list li:before{content:'✓';margin-right:12px;color:var(--accent)}.subscription-card{align-self:center;border-left:1px solid #38594f;padding-left:48px}.subscription-price{font-size:68px!important;font-weight:750;line-height:1.1;letter-spacing:-.04em;margin:14px 0;color:var(--ink)!important}.subscription-price span{font-size:20px;font-weight:400;letter-spacing:0;color:#bdd1ca}.subscription-card .button{width:100%;margin:8px 0 12px}.subscription-card .fine-print{font-size:12px}.grantflow-disclaimer{grid-column:1/-1;margin:0!important}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.service-card{padding:28px;background:var(--panel);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column}.service-card p{font-size:15px;color:#bed0cd}.service-card strong{font-size:28px;margin:auto 0 18px}.service-card strong span{font-size:15px;font-weight:400}.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.proof-card{display:block;padding:30px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(135deg,#102d35,#0b2026)}.proof-card p{color:var(--muted);font-size:15px}.proof-card:hover{border-color:var(--accent)}.quick-answers{max-width:850px}.quick-answers h2{font-size:32px}.quick-answers details{border-bottom:1px solid var(--line);padding:18px 0}.quick-answers summary{font-weight:700;min-height:28px}.quick-answers details p{color:var(--muted);font-size:15px;max-width:700px;margin:16px 0 0}.quick-answers a{text-decoration:underline}.contact-strip{padding:42px;background:#12362e;border-radius:12px;display:flex;gap:24px;justify-content:space-between;align-items:center;margin-bottom:35px}.contact-strip h2{font-size:32px;margin:0}.contact-strip .eyebrow{margin-bottom:10px}.payment-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0 55px;font-size:14px}.payment-strip p{color:var(--muted);margin:4px 0 0}footer{border-top:1px solid var(--line);padding:45px 0 20px;color:var(--muted);font-size:13px}.footer-top{display:flex;justify-content:space-between;gap:35px}.footer-top strong{font-size:22px;color:var(--ink)}.footer-top p{margin:12px 0}.newsletter h2{font-size:20px;color:var(--ink)}.newsletter form{display:flex;gap:8px;flex-wrap:wrap}.newsletter input{border:1px solid var(--line);border-radius:6px;padding:12px;background:var(--panel);color:var(--ink);min-width:0}.newsletter button{background:var(--accent);color:#002319;border:0;padding:12px 18px;border-radius:6px;font-weight:700}.footer-bottom{border-top:1px solid var(--line);margin-top:30px;padding-top:20px;display:flex;gap:24px;flex-wrap:wrap}.footer-bottom span{margin-right:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:absolute;top:-70px;left:12px;padding:12px;background:var(--accent);color:#002319;z-index:100}.skip-link:focus{top:12px}
 @media(max-width:1240px){.shop-hero,.shop-section,.grantflow-section,.contact-strip,.payment-strip,footer{margin-left:28px;margin-right:28px}.shop-hero{gap:40px}.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:850px){.shop-hero{grid-template-columns:1.15fr .85fr;gap:25px;padding:50px 0}.hero-product{padding:18px}.hero-product img{height:180px}.hero-product>div{font-size:13px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grantflow-section{gap:30px;padding:32px}.subscription-card{padding-left:25px}.service-grid{grid-template-columns:1fr}.service-card{display:grid;grid-template-columns:1fr auto;gap:0 25px}.service-card p{grid-column:1;max-width:500px}.service-card strong{grid-column:2;grid-row:1/3;align-self:center;font-size:24px}.service-card .text-link{grid-column:1/-1}.section-heading{align-items:start}.contact-strip{padding:28px}}@media(max-width:600px){.sales-home .site-header{padding:14px 16px}.sales-home .site-header .site-nav{gap:6px 16px}.sales-home .site-header .site-nav a{font-size:13px;min-height:36px;display:flex;align-items:center}.shop-hero,.shop-section,.grantflow-section,.contact-strip,.payment-strip,footer{margin-left:20px;margin-right:20px}.shop-hero{grid-template-columns:1fr;padding:42px 0;gap:35px}.hero-intro{font-size:18px}.hero-product{transform:none;display:none}.actions{gap:18px}.actions .button{width:100%}.shop-section{padding:40px 0}.section-heading{display:block}.section-heading>p,.section-heading>.text-link{display:block;margin-top:16px}.product-grid{gap:12px}.product-card>img{height:155px;padding:10px}.product-copy{padding:14px;gap:10px}.product-copy h3{font-size:17px}.product-copy>p:not(.product-price){font-size:13px}.product-label{font-size:9px}.product-price{font-size:23px}.product-button{font-size:12px;min-height:44px}.shop-filters{gap:7px}.shop-filters button{font-size:13px;padding:9px 13px}.grantflow-section{grid-template-columns:1fr;padding:28px;margin-bottom:40px}.subscription-card{border-left:0;border-top:1px solid #38594f;padding:28px 0 0}.subscription-price{font-size:58px!important}.service-card{display:flex;padding:24px}.service-card strong{margin:0 0 18px}.proof-grid{grid-template-columns:1fr}.contact-strip,.payment-strip,.footer-top{flex-direction:column;align-items:start}.contact-strip .button{width:100%;font-size:14px}.newsletter{width:100%}.newsletter input{flex:1;width:160px}.footer-bottom{gap:16px}.footer-bottom span{width:100%}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Restore the original NoCapsAI homepage artwork. */
+/* Fixed horse-on-elephant backdrop behind the WHOLE homepage.
+   Uses a fixed pseudo-element (not background-attachment:fixed)
+   so the parallax effect also works on mobile/iOS. */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: #001f33 url('/assets/brand-hero.png') center center / cover no-repeat;
+}
+/* readability veil over the image, still lets the horse/elephant show */
+body::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 35%,
+                              rgba(0,0,0,0.30) 0%,
+                              rgba(0,8,16,0.80) 100%);
+}
+/* let the fixed backdrop show through the page */
+body{ background-color: transparent; }
+
+/* Desktop / landscape screens: the artwork is square, so "cover" on a wide
+   window zooms in and crops off the house roof and the elephant's feet.
+   Here the WHOLE picture is fitted to the window height (below the header),
+   and a blurred, darkened copy fills the space on either side so there are
+   no empty bars. Phones and portrait tablets keep the "cover" framing. */
+@media (min-width: 769px) and (min-aspect-ratio: 1/1){
+  :root{ --hero-top: 68px; --hero-size: calc(100vh - var(--hero-top)); }
+  html::before{
+    content: "";
+    position: fixed;
+    inset: -60px;                      /* bleed so blurred edges never show */
+    z-index: -3;
+    background: #001f33 url('/assets/brand-hero.png') center center / cover no-repeat;
+    filter: blur(30px) brightness(0.85);
+  }
+  body::before{
+    background: url('/assets/brand-hero.png') center bottom / auto var(--hero-size) no-repeat;
+    /* soften the picture's left, right, and top edges into the blurred fill */
+    -webkit-mask-image:
+      linear-gradient(90deg,
+        transparent calc(50% - var(--hero-size) / 2),
+        #000 calc(50% - var(--hero-size) / 2 + 7vh),
+        #000 calc(50% + var(--hero-size) / 2 - 7vh),
+        transparent calc(50% + var(--hero-size) / 2)),
+      linear-gradient(180deg, transparent var(--hero-top), #000 calc(var(--hero-top) + 5vh));
+    mask-image:
+      linear-gradient(90deg,
+        transparent calc(50% - var(--hero-size) / 2),
+        #000 calc(50% - var(--hero-size) / 2 + 7vh),
+        #000 calc(50% + var(--hero-size) / 2 - 7vh),
+        transparent calc(50% + var(--hero-size) / 2)),
+      linear-gradient(180deg, transparent var(--hero-top), #000 calc(var(--hero-top) + 5vh));
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+
+
+
+.shop-hero{display:flex;justify-content:center;min-height:calc(100svh - 85px);padding:100px 24px;text-align:center}
+.hero-copy{max-width:820px;text-shadow:0 2px 18px #000}
+.hero-copy h1{color:var(--accent);font-size:clamp(40px,5.2vw,68px)}
+.hero-intro{margin-left:auto;margin-right:auto;color:#fff}
+.hero-copy .actions{justify-content:center}
+.hero-copy .quiet{color:#e0eeea}
+.hero-copy .button{text-shadow:none}
+@media(max-width:600px){
+ body::before{background-size:auto 100%;background-position:center center}
+ .shop-hero{min-height:calc(100svh - 135px);padding:70px 0}
+ .hero-copy h1{font-size:42px}
+}
+
+/* Kinetic brand stage and touch-friendly collections. */
+.shop-hero{position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0}
+.hero-copy{position:relative;z-index:1}
+.hero-orbits{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.hero-orbits i{position:absolute;left:50%;top:50%;width:min(88vw,1000px);aspect-ratio:1;border:1px solid #00ec9538;border-radius:50%;transform:translate(-50%,-50%) rotateX(60deg) rotate(-25deg);animation:orbit 24s linear infinite}
+.hero-orbits i::after{content:'';position:absolute;top:14%;left:14%;width:9px;height:9px;border-radius:50%;background:#7affca;box-shadow:0 0 24px 6px #00ec9570}
+.hero-orbits i:nth-child(2){width:min(115vw,1300px);animation-direction:reverse;animation-duration:32s;border-color:#a7baff30}
+.hero-orbits i:nth-child(3){width:min(65vw,760px);animation-duration:18s}
+@keyframes orbit{to{transform:translate(-50%,-50%) rotateX(60deg) rotate(335deg)}}
+.motion-toggle{position:absolute;right:24px;bottom:22px;z-index:2;border:1px solid #55766c;border-radius:24px;background:#06151ccc;color:#d2e9e0;padding:8px 14px;font-size:12px}
+.carousel-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0 22px;color:#c8ddd5;font-size:13px}
+.carousel-controls>div{display:flex;gap:8px}
+.carousel-controls button{width:48px;height:48px;border:1px solid #467065;border-radius:50%;background:#0a2526;color:var(--accent);font-size:24px;transition:background .2s,transform .2s}
+.carousel-controls button:hover{background:#164639;transform:translateY(-2px)}
+.carousel-controls button:disabled{opacity:.3;cursor:default;transform:none}
+.carousel-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#00a975 #0b2327;gap:22px;padding:8px 2px 24px;scroll-behavior:smooth}
+.carousel-track>*{flex:0 0 31%;scroll-snap-align:start;min-width:0}
+.product-card{transition:transform .3s,border-color .3s,box-shadow .3s}
+.product-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 18px 36px #0006}
+.product-card>img{height:250px;background:radial-gradient(ellipse at center,#214d49,#0c262e)}
+.service-grid.carousel-track>*{flex-basis:46%;display:flex}
+.shop-section{background:linear-gradient(90deg,#06151cdb,#06151ca8);border-radius:18px;padding-left:24px;padding-right:24px}
+.grantflow-section{box-shadow:0 0 70px #00ec9512}
+.motion-paused .hero-orbits i{animation-play-state:paused}
+@media(max-width:850px){.carousel-track>*{flex-basis:44%}.service-grid.carousel-track>*{flex-basis:70%}}
+@media(max-width:600px){.carousel-track>*{flex-basis:86%}.service-grid.carousel-track>*{flex-basis:88%}.product-card>img{height:230px}.shop-section{padding-left:16px;padding-right:16px}.sales-home .site-header .site-logos img{width:34px;height:34px}.motion-toggle{right:20px;bottom:16px}.hero-orbits i{width:140vw}.hero-orbits i:nth-child(2){width:190vw}.hero-orbits i:nth-child(3){width:100vw}}
+@media(prefers-reduced-motion:reduce){.hero-orbits i{animation:none}.carousel-track{scroll-behavior:auto}.product-card,.carousel-controls button{transition:none}}
+
+@media(max-width:600px){.shop-hero{padding:70px 22px}body::before{background-position:35% center}}
