@@ -1,0 +1,32 @@
+/* NoCapsAI signature effects, shared by every page.
+   Everything here is decorative: pages read fine without it, and visitors who
+   ask for reduced motion get none of the movement. */
+
+/* Scroll progress: a thin mint "signal" line across the top */
+.fx-progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:200;pointer-events:none;
+  transform-origin:0 50%;transform:scaleX(var(--fx-p,0));
+  background:linear-gradient(90deg,#00ec95,#7affca 60%,#a7baff);box-shadow:0 0 12px #00ec95aa}
+
+/* Spotlight cards: a soft light and a lit edge follow the cursor */
+.fx-spot{position:relative}
+.fx-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;z-index:0}
+.fx-glow::before,.fx-glow::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.fx-glow::before{background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),#00ec951c,transparent 45%)}
+.fx-glow::after{padding:1px;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),#00ec95,#7affca66 30%,transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.fx-spot:hover>.fx-glow{opacity:1}
+
+/* Focus-pull reveal: content arrives out of focus and sharpens into place */
+.fx-reveal{opacity:0;transform:translateY(26px) scale(.985);filter:blur(10px);
+  transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1);
+  transition-delay:var(--fx-delay,0ms)}
+.fx-reveal.is-in{opacity:1;transform:none;filter:none}
+
+/* Headline decode: letters resolve from signal noise */
+.fx-decoding .fx-noise{color:#7affca;opacity:.75}
+
+@media (prefers-reduced-motion:reduce){
+  .fx-reveal{opacity:1;transform:none;filter:none;transition:none}
+  .fx-progress{display:none}
+}

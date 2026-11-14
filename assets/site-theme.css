@@ -1,0 +1,144 @@
+/* NoCapsAI shared theme for inner pages (Services, Marketing, case studies).
+   Loaded AFTER each page's own <style>, so it re-skins those pages to match
+   the homepage: same palette, the horse-on-elephant backdrop, same header,
+   buttons, cards and footer. Page layouts stay as they are. */
+
+:root{
+  color-scheme:dark;
+  --bg:#06151c; --bg-2:#0a1d24; --bg-3:#0c222a;
+  --panel:#0c222acc;
+  --ink:#f2f8f5; --muted:#a5bbb9;
+  --green:#00ec95; --green-soft:#00ec95; --green-dim:#12362e;
+  --accent:#00ec95; --accent-ink:#002319;
+  --line:#2d5e4e; --line-soft:#25434a;
+}
+
+html,body{background:transparent;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+
+/* ---- Brand backdrop (same artwork + treatment as the homepage) ---- */
+body::before{content:"";position:fixed;inset:0;z-index:-2;
+  background:#001f33 url('/assets/brand-hero.png') center center / cover no-repeat}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 50% 30%,rgba(0,0,0,.42) 0%,rgba(0,8,16,.88) 100%)}
+@media (min-width:769px) and (min-aspect-ratio:1/1){
+  :root{--hero-top:68px;--hero-size:calc(100vh - var(--hero-top))}
+  html::before{content:"";position:fixed;inset:-60px;z-index:-3;
+    background:#001f33 url('/assets/brand-hero.png') center center / cover no-repeat;
+    filter:blur(30px) brightness(.8)}
+  body::before{background:url('/assets/brand-hero.png') center bottom / auto var(--hero-size) no-repeat;
+    -webkit-mask-image:linear-gradient(90deg,transparent calc(50% - var(--hero-size)/2),#000 calc(50% - var(--hero-size)/2 + 7vh),#000 calc(50% + var(--hero-size)/2 - 7vh),transparent calc(50% + var(--hero-size)/2));
+            mask-image:linear-gradient(90deg,transparent calc(50% - var(--hero-size)/2),#000 calc(50% - var(--hero-size)/2 + 7vh),#000 calc(50% + var(--hero-size)/2 - 7vh),transparent calc(50% + var(--hero-size)/2))}
+}
+@media (max-width:600px){body::before{background-size:auto 100%;background-position:35% center}}
+
+/* ---- Header: identical to the homepage header ---- */
+.site-header{position:sticky;top:0;z-index:60;background:#06151ce6;border-bottom:1px solid var(--line-soft);
+  padding:20px max(24px,calc((100vw - 1180px)/2));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.site-header .site-nav a{color:var(--ink);font-size:14px}
+.site-header .site-nav a:hover,.site-header .site-nav a[aria-current="page"]{color:var(--accent)}
+.site-header .site-logos img{width:38px;height:38px;filter:none}
+.site-header .site-logos img:first-child{margin-right:0}
+.site-header .site-name{color:var(--ink);text-shadow:none}
+@media (max-width:600px){.site-header{padding:14px 16px}.site-header .site-logos img{width:34px;height:34px}
+  .site-header .site-nav a{font-size:13px;min-height:36px;display:flex;align-items:center}}
+
+/* ---- Hero: kinetic orbit stage like the homepage ---- */
+.page-hero,.hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:0;padding-top:96px;padding-bottom:84px}
+.page-hero::before,.hero::before{display:none}
+.page-hero .wrap,.hero .wrap{position:relative;z-index:1;text-shadow:0 2px 18px #000}
+.hero-orbits{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.hero-orbits i{position:absolute;left:62%;top:50%;width:min(88vw,1000px);aspect-ratio:1;border:1px solid #00ec9538;border-radius:50%;
+  transform:translate(-50%,-50%) rotateX(60deg) rotate(-25deg);animation:orbit 24s linear infinite}
+.hero-orbits i::after{content:'';position:absolute;top:14%;left:14%;width:9px;height:9px;border-radius:50%;background:#7affca;box-shadow:0 0 24px 6px #00ec9570}
+.hero-orbits i:nth-child(2){width:min(115vw,1300px);animation-direction:reverse;animation-duration:32s;border-color:#a7baff30}
+.hero-orbits i:nth-child(3){width:min(65vw,760px);animation-duration:18s}
+@keyframes orbit{to{transform:translate(-50%,-50%) rotateX(60deg) rotate(335deg)}}
+.motion-paused .hero-orbits i{animation-play-state:paused}
+h1{font-family:Arial,Helvetica,sans-serif;letter-spacing:-.035em;line-height:1.08}
+h1 em,h2 em{color:var(--accent);text-shadow:none}
+.sub,.lead{color:#d6e6e2}
+
+/* ---- Eyebrows and tags: plain mint caps, like the homepage ---- */
+.eyebrow,.tag,.stack-card .tag,.pkg .badge,.price-card .label,.pain-card .icon{
+  background:none;border:0;padding:0;border-radius:0;color:var(--accent);
+  font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.pkg .badge{margin-bottom:14px}
+
+/* ---- Sections sit on translucent glass panels so the art shows between them ---- */
+section,article.case{border-bottom:0}
+.services>.wrap,.packages>.wrap,article.case>.wrap,
+section:not(.hero):not(.page-hero):not(.final)>.wrap{
+  background:linear-gradient(90deg,#06151ce0,#06151cb3);border:1px solid var(--line-soft);border-radius:18px;
+  padding-top:48px;padding-bottom:48px;padding-left:40px;padding-right:40px;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.services{padding:24px 0}
+.packages{padding:24px 0}
+section{padding:24px 0}
+.pain,.how{background:transparent}
+.final{background:transparent;border-top:0;padding:70px 0}
+.final>.wrap{background:linear-gradient(120deg,#12342de6,#0a222be6);border:1px solid var(--line);border-radius:18px;padding:56px 32px;box-shadow:0 0 70px #00ec9512}
+article.case{padding:24px 0 70px}
+article.case h2{color:var(--accent)}
+article.case p{color:#d6e6e2}
+@media (max-width:600px){
+  .services>.wrap,.packages>.wrap,article.case>.wrap,
+  section:not(.hero):not(.page-hero):not(.final)>.wrap{padding:30px 20px;border-radius:14px;margin:0 12px}
+}
+
+/* ---- Cards: homepage product-card treatment ---- */
+.service-panel,.pkg,.pain-card,.stack-card,.step,.compare-card,.price-card,.funnel,.cta-strip{
+  background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;box-shadow:none;
+  transition:transform .3s,border-color .3s,box-shadow .3s}
+.pkg:hover,.pain-card:hover,.stack-card:hover,.step:hover,.service-panel:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 18px 36px #0006;background:var(--panel)}
+.pkg.featured,.compare-card.win{border:1px solid var(--accent);box-shadow:0 0 50px #00ec9522}
+.price-card,.funnel,.cta-strip{background:linear-gradient(120deg,#12342de6,#0a222be6);border-color:var(--line);box-shadow:0 0 70px #00ec9512}
+.pkg h3,.stack-card h3,.service-panel h3,.funnel h3{color:var(--ink)}
+.pkg .pkg-price{color:var(--accent)}
+.step::before{background:var(--accent);color:var(--accent-ink);box-shadow:0 0 20px #00ec9566}
+.includes li,.example-list li,.pkg ul li,.price-card ul li,article.case ul li,.faq-item{border-color:var(--line-soft)}
+.includes li::before,.example-list li::before,.pkg ul li::before,.price-card ul li::before,article.case ul li::before{color:var(--accent);text-shadow:none}
+.upsell{border-color:var(--line);background:#00ec950a}
+
+/* ---- Buttons: homepage style ---- */
+.btn{border-radius:7px;font-weight:750;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:12px}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:none;border:1px solid var(--accent)}
+.btn-primary:hover{background:#65ffbe;box-shadow:0 10px 30px #00ec9533}
+.btn-ghost{border:1px solid var(--line);color:var(--ink);background:#06151c99}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+
+/* ---- Footer: the homepage footer ---- */
+.site-footer{max-width:1180px;margin:30px auto 0;padding:45px 0 20px;border-top:1px solid var(--line-soft);color:var(--muted);font-size:13px;text-align:left;background:transparent}
+.site-footer .footer-top{display:flex;justify-content:space-between;gap:35px}
+.site-footer .footer-top strong{font-size:22px;color:var(--ink)}
+.site-footer .footer-top p{margin:12px 0}
+.site-footer a{color:var(--ink)}
+.site-footer a:hover{color:var(--accent)}
+.site-footer .newsletter h2{font-size:20px;color:var(--ink);margin-bottom:8px}
+.site-footer .newsletter form{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.site-footer .newsletter input{border:1px solid var(--line-soft);border-radius:6px;padding:12px;background:var(--bg-3);color:var(--ink);min-width:0;font:inherit}
+.site-footer .newsletter button{background:var(--accent);color:var(--accent-ink);border:0;padding:12px 18px;border-radius:6px;font-weight:700;font:inherit;font-weight:700;cursor:pointer}
+.site-footer .footer-bottom{border-top:1px solid var(--line-soft);margin-top:30px;padding-top:20px;display:flex;gap:24px;flex-wrap:wrap}
+.site-footer .footer-bottom span{margin-right:auto}
+@media (max-width:1240px){.site-footer{margin-left:28px;margin-right:28px}}
+@media (max-width:600px){.site-footer{margin-left:20px;margin-right:20px}.site-footer .footer-top{flex-direction:column}
+  .site-footer .newsletter{width:100%}.site-footer .newsletter input{flex:1;width:160px}.site-footer .footer-bottom span{width:100%}}
+
+.skip-link{position:absolute;top:-70px;left:12px;padding:12px;background:var(--accent);color:var(--accent-ink);z-index:100}
+.skip-link:focus{top:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-orbits i{animation:none}
+  .pkg,.pain-card,.stack-card,.step,.service-panel{transition:none}}
+
+/* Pause/Play motion button (same as the homepage) */
+.motion-toggle{position:absolute;right:24px;bottom:22px;z-index:2;border:1px solid #55766c;border-radius:24px;background:#06151ccc;color:#d2e9e0;padding:8px 14px;font-size:12px;font-family:inherit;cursor:pointer}
+@media (max-width:600px){.motion-toggle{right:16px;bottom:14px}}
+
+/* Tighter headings and panel spacing */
+h2,h3{line-height:1.15;letter-spacing:-.025em}
+.services .service-block:first-child{padding-top:12px}
+.services .service-block:last-child{padding-bottom:12px}
+.service-block{border-color:var(--line-soft)}
+article.case>.wrap>h2:first-child{margin-top:0}

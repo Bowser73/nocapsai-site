@@ -71,8 +71,13 @@
   footer .meta strong{color:var(--green-soft)}
 </style>
 <link rel="stylesheet" href="/assets/site-header.css">
+<link rel="stylesheet" href="/assets/site-theme.css?v=20261114">
+<link rel="stylesheet" href="/assets/site-fx.css?v=20261114">
+<script src="/assets/js/newsletter.js" defer></script>
+<script src="/assets/js/site-fx.js?v=20261114" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
   <a class="site-identity" href="/" aria-label="NoCapsAI Home">
@@ -84,15 +89,16 @@
     <span class="site-name">NoCapsAI</span>
   </a>
   <nav class="site-nav" aria-label="Main navigation">
-    <a href="/">Home</a>
+    <a href="/#funding-tools">Shop tools</a>
+    <a href="/#grantflow">GrantFlow</a>
     <a href="/services/">Services</a>
-    <a href="/marketing/">Marketing</a>
-    <a href="/#pricing">Pricing</a>
+    <a href="/#proof" aria-current="page">Our work</a>
     <a href="/#contact">Contact</a>
   </nav>
 </header>
 
-<section class="page-hero">
+<section class="page-hero" id="main">
+  <div class="hero-orbits" aria-hidden="true"><i></i><i></i><i></i></div><button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
   <div class="wrap">
     <span class="eyebrow">Nonprofit Case Study</span>
     <h1>Twizted Journeys Case Study</h1>
@@ -138,16 +144,7 @@
   </div>
 </article>
 
-<footer>
-  <div class="wrap">
-    <div class="meta">
-      <strong>NoCapsAI LLC · Rushville, Indiana</strong><br>
-      Websites · QR Campaigns · Donation Pages · Grant Readiness · Automation Support<br>
-      Serving small nonprofits and mission-driven organizations across Indiana.
-    </div>
-    <a href="/">← Back to nocapsai.com</a> · <a href="mailto:info@nocapsai.com">info@nocapsai.com</a>
-  </div>
-</footer>
+<footer class="site-footer"><div class="footer-top"><div><strong>NoCapsAI LLC</strong><p>Practical tools. Personal support.<br>Rushville, Indiana</p><a href="mailto:info@nocapsai.com">info@nocapsai.com</a></div><div class="newsletter"><h2>Stay in the Loop</h2><p>New tools and practical updates.</p><form><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" type="email" placeholder="Your email address" required><button type="submit">Sign Up</button></form></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> NoCapsAI LLC</span><a href="/">Home</a><a href="/services/">Services</a><a href="/marketing/">Marketing</a><a href="/#payment">Client payments</a></div></footer>
 
 </body>
 </html>
