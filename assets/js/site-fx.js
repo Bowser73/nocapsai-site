@@ -49,7 +49,7 @@
 
   // 2. Spotlight cards
   var cardSel = '.product-card,.service-card,.proof-card,.subscription-card,.grantflow-section,.contact-strip,' +
-    '.pkg,.service-panel,.pain-card,.stack-card,.step,.compare-card,.price-card,.funnel,.cta-strip';
+    '.pkg,.service-panel,.pain-card,.stack-card,.step,.compare-card,.price-card,.funnel,.cta-strip,.card';
   if (canHover) {
     document.querySelectorAll(cardSel).forEach(function (card) {
       if (getComputedStyle(card).position === 'static') card.style.position = 'relative';

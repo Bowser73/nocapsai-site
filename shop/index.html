@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Funding Tools & Grant Trackers | NoCapsAI</title>
+<meta name="description" content="Funding guides, grant trackers and follow-up toolkits for Indiana nonprofits and small businesses. One-time purchases from $27.">
+<link rel="canonical" href="https://nocapsai.com/shop/">
+<meta property="og:title" content="Shop Funding Tools & Grant Trackers | NoCapsAI">
+<meta property="og:description" content="Funding guides, grant trackers and follow-up toolkits for Indiana nonprofits and small businesses. One-time purchases from $27.">
+<meta property="og:url" content="https://nocapsai.com/shop/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://nocapsai.com/assets/nocapsai-social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/assets/logo-1.png">
+<link rel="stylesheet" href="/assets/page-base.css?v=20261114c">
+<link rel="stylesheet" href="/assets/site-header.css">
+<link rel="stylesheet" href="/assets/site-theme.css?v=20261114c">
+<link rel="stylesheet" href="/assets/site-fx.css?v=20261114c">
+<link rel="stylesheet" href="/assets/site-nav.css?v=20261114c">
+<script src="/assets/js/newsletter.js" defer></script>
+<script src="/assets/js/site-fx.js?v=20261114c" defer></script>
+<script src="/assets/js/site-nav.js?v=20261114c" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var btns=document.querySelectorAll('[data-filter]'),cards=document.querySelectorAll('#products [data-category]'),count=document.getElementById('product-count');
+  function apply(cat){
+    if(!['all','nonprofit','business','bundle'].includes(cat))cat='all';
+    var n=0;btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.filter===cat));});
+    cards.forEach(function(c){c.hidden=cat!=='all'&&c.dataset.category!==cat;if(!c.hidden)n++;});
+    count.textContent=n+' products shown';
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.filter);history.replaceState(null,'',b.dataset.filter==='all'?'#tools':'#'+b.dataset.filter);});});
+  function fromHash(){var h=location.hash.slice(1);if(['nonprofit','business','bundle'].includes(h)){apply(h);document.getElementById('tools').scrollIntoView();}else apply('all');}
+  window.addEventListener('hashchange',fromHash);fromHash();
+});
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="site-identity" href="/" aria-label="NoCapsAI home"><span class="site-logos" aria-hidden="true"><img src="/assets/logo-3.png" alt=""><img src="/assets/logo-1.png" alt=""><img src="/assets/logo-2.png" alt=""></span><span class="site-name">NoCapsAI</span></a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><i aria-hidden="true"></i><span>Menu</span></button>
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul class="nav-list"><li class="nav-item"><a class="nav-link" href="/">Home</a></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/shop/" aria-current="page">Shop tools</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-shop" aria-label="Shop tools menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-shop"><li><a href="/shop/">All tools<small>Guides, trackers and bundles from $27</small></a></li><li><a href="/shop/#nonprofit">Nonprofit tools<small>Grant guides, trackers and workspaces</small></a></li><li><a href="/shop/#business">Small business tools<small>Funding and lead follow-up kits</small></a></li><li><a href="/shop/#bundle">Bundles<small>Save when you buy together</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/grantflow/">GrantFlow</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-grantflow" aria-label="GrantFlow menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-grantflow"><li><a href="/grantflow/">What GrantFlow does<small>Find funding, draft, track deadlines</small></a></li><li><a href="/grantflow/#start">How to get started<small>Three simple steps</small></a></li><li><a href="/grantflow/#pricing">Pricing<small>GrantFlow Pro: $29/month</small></a></li><li><a href="https://nocapsai-grantflow.vercel.app/auth/login" target="_blank" rel="noopener noreferrer">Log in<small>Already a member?</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/services/">Services</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-services" aria-label="Services menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-services"><li><a href="/services/">All services<small>Everything we build for you</small></a></li><li><a href="/services/#websites">Websites & donations<small>From $750</small></a></li><li><a href="/services/#campaigns">QR campaigns & events<small>Flyers and events into action</small></a></li><li><a href="/services/#grant-support">Grant support & automation<small>Custom quote</small></a></li><li><a href="/services/#nonprofit-packages">Packages & pricing<small>Nonprofit and small business</small></a></li><li><a href="/marketing/">Monthly Outreach Boost<small>$297/month</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/work/">Our work</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-work" aria-label="Our work menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-work"><li><a href="/work/">All our work<small>Real organizations we have built for</small></a></li><li><a href="/case-studies/twizted-journeys/">Twizted Journeys<small>Nonprofit launch</small></a></li><li><a href="/case-studies/we-help-dads/">We Help Dads<small>Community impact</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/contact/">Contact</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-contact" aria-label="Contact menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-contact"><li><a href="/contact/">Contact us<small>info@nocapsai.com</small></a></li><li><a href="/contact/#start">Start a project<small>Get a quote before you pay</small></a></li><li><a href="/contact/#payment">Make a payment<small>For existing clients</small></a></li></ul></li></ul></nav>
+</header>
+<section class="page-hero" id="main">
+  <div class="hero-orbits" aria-hidden="true"><i></i><i></i><i></i></div><button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
+  <div class="wrap">
+    <span class="eyebrow">Download. Organize. Get moving.</span>
+    <h1>Find your next tool.</h1>
+    <p class="sub">Funding guides, grant trackers and follow-up toolkits for nonprofits and small businesses. One-time purchases with secure Gumroad checkout and instant digital delivery.</p>
+    <div class="cta-row"><a class="btn btn-primary" href="#tools">Browse the tools ↓</a><a class="btn btn-ghost" href="/grantflow/">Need ongoing grant software? See GrantFlow →</a></div>
+  </div>
+</section>
+<section id="tools">
+  <div class="wrap">
+    <h2>All tools</h2>
+    <p class="lede">Filter by who it's for. Every product page explains exactly what's included before you buy.</p>
+    <div class="filters" role="group" aria-label="Filter products"><button type="button" data-filter="all" aria-pressed="true">All tools</button><button type="button" data-filter="nonprofit" aria-pressed="false">Nonprofits</button><button type="button" data-filter="business" aria-pressed="false">Small business</button><button type="button" data-filter="bundle" aria-pressed="false">Bundles</button></div>
+    <p class="sr-only" id="product-count" aria-live="polite"></p>
+    <div class="product-grid" id="products"><article class="product-card" data-category="bundle">
+      <img src="/assets/products/cover-veteran-small-business-bundle.webp" alt="Veteran and Small Business Funding Toolkit Bundle cover" loading="lazy">
+      <div class="product-copy">
+        <span class="product-label">Bundle · Save $9</span>
+        <h3>Veteran &amp; Business Funding Bundle</h3>
+        <p>Two funding kits. One organized starting point.</p>
+        <p class="product-price"><s>$78</s> $69</p>
+        <a class="product-button" href="https://mrmojo73.gumroad.com/l/veteran-small-business-funding-bundle" target="_blank" rel="noopener noreferrer">Buy now · $69</a>
+      </div>
+    </article>
+<article class="product-card" data-category="bundle">
+      <img src="/assets/products/cover-indiana-starter-kit.webp" alt="Indiana Recovery Nonprofit Starter Kit cover" loading="lazy">
+      <div class="product-copy">
+        <span class="product-label">Recovery bundle · Save $15</span>
+        <h3>Indiana Recovery Starter Kit</h3>
+        <p>The recovery funding guide + grant tracker.</p>
+        <p class="product-price"><s>$94</s> $79</p>
+        <a class="product-button" href="https://mrmojo73.gumroad.com/l/indiana-recovery-starter-kit" target="_blank" rel="noopener noreferrer">Buy now · $79</a>
+      </div>
+    </article>
+<article class="product-card" data-category="nonprofit"><img src="/assets/products/cover-indiana-grant-guide.webp" alt="Indiana Addiction Recovery Grant Guide 2026 cover" loading="lazy"><div class="product-copy"><span class="product-label">Indiana nonprofits</span><h3>Indiana Recovery Grant Guide</h3><p>Indiana funding sources and application guidance.</p><p class="product-price">$27</p><a class="product-button" href="https://mrmojo73.gumroad.com/l/vdcmtr" target="_blank" rel="noopener noreferrer">Buy now · $27</a></div></article>
+<article class="product-card" data-category="nonprofit"><img src="/assets/products/cover-veteran-funding-kit.webp" alt="Veteran Organization Funding Kit 2026 cover" loading="lazy"><div class="product-copy"><span class="product-label">Veteran-serving organizations</span><h3>Veteran Organization Funding Kit</h3><p>Funding pathways, checklists, and an offline tracker.</p><p class="product-price">$39</p><a class="product-button" href="https://mrmojo73.gumroad.com/l/veteran-organization-funding-kit" target="_blank" rel="noopener noreferrer">Buy now · $39</a></div></article>
+<article class="product-card" data-category="business"><img src="/assets/products/cover-small-business-kit.webp" alt="Small Business Funding Kit 2026 cover" loading="lazy"><div class="product-copy"><span class="product-label">Small businesses</span><h3>Small Business Funding Kit</h3><p>Explore loans, grants, and contracting opportunities.</p><p class="product-price">$39</p><a class="product-button" href="https://mrmojo73.gumroad.com/l/small-business-funding-kit" target="_blank" rel="noopener noreferrer">Buy now · $39</a></div></article>
+<article class="product-card" data-category="nonprofit"><img src="/assets/products/cover-recovery-grant-hub.webp" alt="Recovery Grant Hub cover" loading="lazy"><div class="product-copy"><span class="product-label">Interactive tracker</span><h3>Recovery Grant Hub</h3><p>Track 25 starter opportunities in your browser.</p><p class="product-price">$67</p><a class="product-button" href="https://mrmojo73.gumroad.com/l/recovery-grant-hub" target="_blank" rel="noopener noreferrer">Buy now · $67</a></div></article>
+<article class="product-card" data-category="nonprofit"><img src="/assets/products/cover-nonprofit-grant-workspace.webp" alt="Nonprofit Grant Readiness and Application Workspace 2026 cover" loading="lazy"><div class="product-copy"><span class="product-label">Nonprofit grant readiness</span><h3>Nonprofit Grant Workspace</h3><p>Keep applications, documents, and milestones together.</p><p class="product-price">$59</p><a class="product-button" href="https://mrmojo73.gumroad.com/l/nonprofit-grant-readiness-workspace-2026" target="_blank" rel="noopener noreferrer">Buy now · $59</a></div></article>
+<article class="product-card" data-category="business"><img src="/assets/products/cover-lead-recovery-toolkit.webp" alt="Small Business Lead Recovery and AI Receptionist Toolkit 2026 cover" loading="lazy"><div class="product-copy"><span class="product-label">Small-business follow-up</span><h3>Lead Recovery &amp; Receptionist Toolkit</h3><p>Organize missed inquiries and your next follow-up.</p><p class="product-price">$49</p><a class="product-button" href="https://mrmojo73.gumroad.com/l/small-business-lead-recovery-ai-receptionist-toolkit-2026" target="_blank" rel="noopener noreferrer">Buy now · $49</a></div></article></div>
+    <p class="fine">Funding tools help you research and organize. Eligibility and awards are never guaranteed.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap faq">
+    <h2>A few quick answers.</h2>
+    <details><summary>How do I get my digital product?</summary><p>Complete your purchase through Gumroad for digital delivery. Each product page explains what is included.</p></details>
+    <details><summary>Is GrantFlow one of these downloads?</summary><p>No. GrantFlow Pro is online grant software at $29 per month. The tools on this page are separate, one-time purchases. <a href="/grantflow/">Learn about GrantFlow →</a></p></details>
+    <details><summary>Can you help me choose?</summary><p>Email <a href="mailto:info@nocapsai.com">info@nocapsai.com</a> with what you're trying to do. We'll point you toward a suitable tool or service.</p></details>
+  </div>
+</section>
+<footer class="site-footer"><div class="footer-top"><div><strong>NoCapsAI LLC</strong><p>Practical tools. Personal support.<br>Rushville, Indiana</p><a href="mailto:info@nocapsai.com">info@nocapsai.com</a></div><div class="newsletter"><h2>Stay in the Loop</h2><p>New tools and practical updates.</p><form><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" type="email" placeholder="Your email address" required><button type="submit">Sign Up</button></form></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> NoCapsAI LLC</span><a href="/">Home</a><a href="/shop/">Shop tools</a><a href="/grantflow/">GrantFlow</a><a href="/services/">Services</a><a href="/marketing/">Marketing</a><a href="/work/">Our work</a><a href="/contact/">Contact</a></div></footer>
+</body>
+</html>
