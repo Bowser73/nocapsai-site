@@ -6,7 +6,7 @@ const RAW = fs.readFileSync('assets/js/newsletter.js', 'utf8');
 const withKey = RAW.replace(/const TURNSTILE_SITE_KEY = "[^"]*";/, 'const TURNSTILE_SITE_KEY = "1x00000000000000000000AA";');
 const noKey = RAW.replace(/const TURNSTILE_SITE_KEY = "[^"]*";/, 'const TURNSTILE_SITE_KEY = "";');
 
-function setup(fetch, { source = withKey, token = 'tok-123' } = {}) {
+function setup(fetch, { source = withKey, token = 'tok-123', inquiryFields, consent = true } = {}) {
   const placed = [];
   function element(textContent = '') {
     return { textContent, style: {}, attrs: {}, handlers: {}, value: '',
@@ -31,10 +31,16 @@ function setup(fetch, { source = withKey, token = 'tok-123' } = {}) {
   const ts = { resets: 0, rendered: null,
     render(box, opts) { this.rendered = opts; if (token) opts.callback(token); return 'w1'; },
     reset() { this.resets++; if (token) this.rendered.callback(token + '-' + this.resets); } }; // real widget re-issues a token after reset
+  if (inquiryFields) {
+    form.parentElement = root;
+    form.querySelector = () => button;
+    form.reportValidity = () => consent;
+    form.reset = () => { form.wasReset = true; };
+  }
   vm.runInNewContext(source, {
-    document: { querySelectorAll: () => [heading], createElement: () => element(), head: element() },
-    window: { location: { href: 'https://nocapsai.com/' }, turnstile: ts },
-    URLSearchParams, fetch, console: { warn() {}, error() {} }, Date
+    document: { getElementById: () => inquiryFields ? form : null, querySelectorAll: () => [heading], createElement: () => element(), head: element() },
+    window: { location: { href: 'https://nocapsai.com/', origin: 'https://nocapsai.com', pathname: '/contact/' }, turnstile: ts },
+    FormData: class { get(key) { return inquiryFields[key]; } }, URLSearchParams, fetch, console: { warn() {}, error() {} }, Date
   });
   root.status = placed.concat(appended).find(e => e.className === 'newsletter-status');
   root.placed = placed;
@@ -120,4 +126,31 @@ test('network failure keeps the address and allows retry', async () => {
 test('widget and status are placed right after the form, not at the end of the footer', () => {
   const ui = setup(() => {});
   assert.deepEqual(ui.root.placed.map(e => e.className), ['newsletter-turnstile', 'newsletter-status']);
+});
+
+const inquiryFields = { name: 'QA Visitor', company: 'Example Shop', interest: 'AI receptionist and missed-call recovery', message: 'I would like a quote.' };
+
+test('service inquiry records permission, service and source, without newsletter enrollment', async () => {
+  let payload;
+  const ui = setup((url, options) => { payload = new URLSearchParams(options.body); return reply({ ok: true }); }, { inquiryFields });
+  ui.input.value = 'visitor@example.test';
+  ui.submit(); await settle();
+  assert.equal(payload.get('kind'), 'contact');
+  assert.equal(payload.get('source'), 'contact-service-inquiry');
+  assert.equal(payload.get('page'), 'https://nocapsai.com/contact/');
+  assert.equal(payload.get('name'), inquiryFields.name);
+  assert.match(payload.get('message'), /Consent: Store my request and email me about it/);
+  assert.match(payload.get('message'), /AI receptionist and missed-call recovery/);
+  assert.match(payload.get('message'), /I would like a quote/);
+  assert.match(ui.root.status.textContent, /Thank you/);
+});
+
+test('incomplete or unconsented inquiry cannot send; failed receipt keeps the email', async () => {
+  let n = 0;
+  const blocked = setup(() => { n++; }, { inquiryFields, consent: false });
+  blocked.input.value = 'visitor@example.test'; blocked.submit(); assert.equal(n, 0);
+  const failed = setup(() => reply({ ok: false, error: 'server error' }), { inquiryFields });
+  failed.input.value = 'visitor@example.test'; failed.submit(); await settle();
+  assert.equal(failed.input.value, 'visitor@example.test');
+  assert.match(failed.root.status.textContent, /could not be confirmed/);
 });
