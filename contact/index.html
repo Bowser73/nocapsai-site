@@ -18,7 +18,8 @@
 <link rel="stylesheet" href="/assets/site-theme.min.css?v=20261119">
 <link rel="stylesheet" href="/assets/site-fx.min.css?v=20261119">
 <link rel="stylesheet" href="/assets/site-nav.min.css?v=20261119">
-<script src="/assets/js/newsletter.min.js?v=20261119" defer></script>
+<link rel="stylesheet" href="/assets/service-inquiry.css">
+<script src="/assets/js/newsletter.min.js?v=20261122" defer></script>
 <script src="/assets/js/site-fx.min.js?v=20261119" defer></script>
 <script src="/assets/js/site-nav.min.js?v=20261119" defer></script>
 </head>
@@ -33,19 +34,39 @@
   <div class="hero-orbits" aria-hidden="true"><i></i><i></i><i></i></div><button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
   <div class="wrap">
     <span class="eyebrow">Let's make your next move happen.</span>
-    <h1>Talk to <em>a real person.</em></h1>
+    <h1>Talk to <em>NoCapsAI.</em></h1>
     <p class="sub">Questions about a tool, GrantFlow, or a website project? Email us and you'll hear back from Nate, the founder, here in Rushville, Indiana.</p>
-    <div class="cta-row"><a class="btn btn-primary" href="mailto:info@nocapsai.com">info@nocapsai.com →</a></div>
+    <div class="cta-row"><a class="btn btn-primary" href="#start">Request a consultation</a><a class="btn" href="tel:+17658762590">Call Alex · (765) 876-2590</a></div>
+    <p>Alex is our AI receptionist. Call to ask a question or leave Nate a message.</p>
   </div>
 </section>
 <section id="start">
   <div class="wrap">
-    <h2>How can we help?</h2>
-    <p class="lede">Pick the closest match. Each one opens an email with the subject filled in.</p>
-    <div class="grid grid-3">
-      <a class="card" href="mailto:info@nocapsai.com?subject=Start%20a%20project"><div class="icon">🚀</div><h3>Start a project</h3><p>Website, donation page, QR campaign or launch package. You get the scope, timeline and total price before paying.</p><span class="more">Email us →</span></a>
-      <a class="card" href="mailto:info@nocapsai.com?subject=Help%20me%20choose%20a%20tool"><div class="icon">🧭</div><h3>Help me choose</h3><p>Tell us what you're trying to do and we'll point you to a suitable tool or service, or tell you if it's not a fit.</p><span class="more">Email us →</span></a>
-      <a class="card" href="mailto:info@nocapsai.com?subject=GrantFlow%20question"><div class="icon">⚡</div><h3>GrantFlow questions</h3><p>Questions about GrantFlow Pro, your account, or whether it's right for your organization.</p><span class="more">Email us →</span></a>
+    <div class="grid grid-2">
+      <div>
+        <h2>Request a consultation</h2>
+        <p>Tell Nate what you are trying to get done. You can request a quote or a booking by email.</p>
+        <form id="service-inquiry" class="service-inquiry" method="post">
+          <label>Your name<input name="name" maxlength="100" autocomplete="name" required></label>
+          <label>Business or organization (optional)<input name="company" maxlength="100" autocomplete="organization"></label>
+          <label>Your email<input name="email" type="email" maxlength="254" autocomplete="email" required></label>
+          <label>What would you like help with?
+            <select name="interest" required><option value="">Select a service</option>
+              <option>AI receptionist and missed-call recovery</option><option>Business website or automation</option>
+              <option>GrantFlow and nonprofit funding support</option><option>Digital tools and funding kits</option>
+            </select>
+          </label>
+          <label>What would you like to discuss?<textarea name="message" rows="3" maxlength="1200" required></textarea></label>
+          <label class="inquiry-consent"><input type="checkbox" name="consent" required> I agree that NoCapsAI may store my request and email me about it.</label>
+          <button class="btn btn-primary" type="submit" disabled>Send inquiry</button>
+        </form>
+        <p>For updates to a recent request, email <a href="mailto:info@nocapsai.com">info@nocapsai.com</a>.</p>
+      </div>
+      <div class="card">
+        <h3>Free AI Audit Checklist</h3><p>Use the one-page checklist to identify repetitive tasks, choose a first automation, and decide how to measure it.</p>
+        <a class="btn" href="/assets/ai-audit-checklist.pdf" download>Download checklist (PDF)</a>
+        <h3>Ready to talk?</h3><a href="tel:+17658762590">Call Alex at (765) 876-2590</a>
+      </div>
     </div>
   </div>
 </section>
@@ -65,6 +86,6 @@
     </div>
   </div>
 </section>
-<footer class="site-footer"><div class="footer-top"><div><strong>NoCapsAI LLC</strong><p>Practical tools. Personal support.<br>Rushville, Indiana</p><a href="mailto:info@nocapsai.com">info@nocapsai.com</a></div><div class="newsletter"><h2>Stay in the Loop</h2><p>New tools and practical updates.</p><form><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" type="email" placeholder="Your email address" required><button type="submit">Sign Up</button></form></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> NoCapsAI LLC</span><a href="/">Home</a><a href="/shop/">Shop tools</a><a href="/grantflow/">GrantFlow</a><a href="/services/">Services</a><a href="/marketing/">Marketing</a><a href="/work/">Our work</a><a href="/contact/">Contact</a></div></footer>
+<footer class="site-footer"><div class="footer-top"><div><strong>NoCapsAI LLC</strong><p>Practical tools. Personal support.<br>Rushville, Indiana</p><a href="mailto:info@nocapsai.com">info@nocapsai.com</a></div><div class="newsletter"><h2>Stay in the Loop</h2><a href="/#newsletter-email">Sign up for updates</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> NoCapsAI LLC</span><a href="/">Home</a><a href="/shop/">Shop tools</a><a href="/grantflow/">GrantFlow</a><a href="/services/">Services</a><a href="/marketing/">Marketing</a><a href="/work/">Our work</a><a href="/contact/">Contact</a></div></footer>
 </body>
 </html>

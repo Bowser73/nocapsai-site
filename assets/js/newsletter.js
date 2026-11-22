@@ -17,22 +17,23 @@ const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?
 const PAGE_LOADED_AT = Date.now();
 
 (() => {
+  const inquiry = document.getElementById("service-inquiry");
   const heading = Array.from(document.querySelectorAll("h1,h2,h3,h4"))
     .find(el => el.textContent.trim().toLowerCase() === "stay in the loop");
 
-  if (!heading) {
+  if (!inquiry && !heading) {
     console.warn("[newsletter] 'Stay in the Loop' heading not found.");
     return;
   }
 
-  const root = heading.closest("section, footer, div") || heading.parentElement;
+  const root = inquiry?.parentElement || heading.closest("section, footer, div") || heading.parentElement;
 
   const emailInput =
     root.querySelector('input[type="email"]') ||
     root.querySelector('input[placeholder*="email" i]') ||
     root.querySelector("input");
 
-  const signUpBtn =
+  const signUpBtn = inquiry?.querySelector('button[type="submit"]') ||
     Array.from(root.querySelectorAll("button,a"))
       .find(el => el.textContent.trim().toLowerCase() === "sign up");
 
@@ -92,6 +93,7 @@ const PAGE_LOADED_AT = Date.now();
   const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(String(s || "").trim());
 
   const unavailable = () =>
+    inquiry ? setStatus("The inquiry form is unavailable. Email info@nocapsai.com or call (765) 876-2590.", false) :
     setStatus("Newsletter signup is temporarily unavailable. Please email info@nocapsai.com to join.", false);
 
   function renderWidget() {
@@ -134,7 +136,7 @@ const PAGE_LOADED_AT = Date.now();
   };
 
   async function submitNewsletter() {
-    if (inFlight) return;
+    if (inFlight || (inquiry && !inquiry.reportValidity())) return;
     const email = String(emailInput.value || "").trim();
     emailInput.value = email;
 
@@ -148,14 +150,14 @@ const PAGE_LOADED_AT = Date.now();
 
     if (!TURNSTILE_SITE_KEY) { unavailable(); return; }
     if (!token) {
-      setStatus("Please complete the verification check above, then press Sign Up.", false);
+      setStatus("Please complete the verification check and submit again.", false);
       return;
     }
 
     inFlight = true;
     signUpBtn.setAttribute("aria-disabled", "true");
     root.setAttribute("aria-busy", "true");
-    setStatus("Sending signup request...");
+    setStatus(inquiry ? "Sending your inquiry…" : "Sending signup request...");
     const oldText = signUpBtn.textContent;
     signUpBtn.style.pointerEvents = "none";
     signUpBtn.style.opacity = "0.75";
@@ -173,6 +175,20 @@ const PAGE_LOADED_AT = Date.now();
         source: "website"
       });
 
+      if (inquiry) {
+        const fields = new FormData(inquiry);
+        payload.set("kind", "contact");
+        payload.set("name", fields.get("name"));
+        payload.set("source", "contact-service-inquiry");
+        payload.set("page", window.location.origin + window.location.pathname);
+        payload.set("message", [
+          "Service: " + fields.get("interest"),
+          "Consent: Store my request and email me about it (2026-11-22).",
+          "Company: " + (fields.get("company") || ""),
+          "Request: " + fields.get("message")
+        ].join("\n"));
+      }
+
       // A simple (form-encoded) POST: no preflight. Apps Script answers with JSON and
       // Access-Control-Allow-Origin: *, so the result can be shown honestly.
       const response = await fetch(APPS_SCRIPT_ENDPOINT, {
@@ -182,13 +198,18 @@ const PAGE_LOADED_AT = Date.now();
       });
       const result = await response.json().catch(() => ({}));
 
-      if (result.ok === true) {
-        setStatus(result.duplicate ? MESSAGES.duplicate : MESSAGES.subscribed);
+      if (response.ok && result.ok === true) {
+        if (inquiry) {
+          inquiry.reset();
+          setStatus("Thank you. For a change to a recent inquiry, email info@nocapsai.com. To speak with Alex, call (765) 876-2590.");
+        } else {
+          setStatus(result.duplicate ? MESSAGES.duplicate : MESSAGES.subscribed);
+        }
         emailInput.value = "";
       } else {
         const key = { verification_failed: "verification", "invalid email": "invalid",
                       "server not configured": "unavailable" }[result.error] || "failed";
-        setStatus(MESSAGES[key], false);
+        setStatus(inquiry ? "Your inquiry could not be confirmed. Please retry or email info@nocapsai.com." : MESSAGES[key], false);
       }
     } catch (err) {
       console.error("[newsletter] request failed:", err);
@@ -205,6 +226,7 @@ const PAGE_LOADED_AT = Date.now();
     }
   }
 
+  if (inquiry) signUpBtn.disabled = false;
   const form = emailInput.closest("form");
   if (form) {
     form.addEventListener("submit", (e) => {
