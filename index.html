@@ -21,10 +21,14 @@
     <meta name="twitter:description" content="Shop funding guides and practical toolkits, organize grants with GrantFlow Pro, or get a website built for your nonprofit or small business.">
     <meta name="twitter:image" content="https://nocapsai.com/assets/nocapsai-social-preview.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="/assets/storefront.min.css?v=20261119">
     <link rel="stylesheet" href="/assets/site-header.min.css?v=20261119">
     <link rel="stylesheet" href="/assets/site-fx.min.css?v=20261119">
-<link rel="stylesheet" href="/assets/site-nav.min.css?v=20261119">
+    <link rel="stylesheet" href="/assets/site-nav.min.css?v=20261119">
+    <link rel="stylesheet" href="/assets/agency-visual.css?v=20261124">
     <script src="assets/js/newsletter.min.js?v=20261119" defer></script>
 
     <!-- Structured data: business -->
@@ -58,15 +62,37 @@
 
 
 <body class="sales-home">
+<div class="geo-bg" aria-hidden="true"><span></span><span></span><span></span></div>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <a class="site-identity" href="/" aria-label="NoCapsAI home"><span class="site-logos" aria-hidden="true"><img src="/assets/logo-3.png" alt=""><img src="/assets/logo-1.png" alt=""><img src="/assets/logo-2.png" alt=""></span><span class="site-name">NoCapsAI</span></a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><i aria-hidden="true"></i><span>Menu</span></button>
-  <nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul class="nav-list"><li class="nav-item"><a class="nav-link" href="/" aria-current="page">Home</a></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/shop/">Shop tools</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-shop" aria-label="Shop tools menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-shop"><li><a href="/shop/">All tools<small>Guides, trackers and bundles from $27</small></a></li><li><a href="/shop/#nonprofit">Nonprofit tools<small>Grant guides, trackers and workspaces</small></a></li><li><a href="/shop/#business">Small business tools<small>Funding and lead follow-up kits</small></a></li><li><a href="/shop/#bundle">Bundles<small>Save when you buy together</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/grantflow/">GrantFlow</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-grantflow" aria-label="GrantFlow menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-grantflow"><li><a href="/grantflow/">What GrantFlow does<small>Find funding, draft, track deadlines</small></a></li><li><a href="/grantflow/#start">How to get started<small>Three simple steps</small></a></li><li><a href="/grantflow/#pricing">Pricing<small>GrantFlow Pro: $29/month</small></a></li><li><a href="https://nocapsai-grantflow.vercel.app/auth/login" target="_blank" rel="noopener noreferrer">Log in<small>Already a member?</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/services/">Services</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-services" aria-label="Services menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-services"><li><a href="/services/">All services<small>Everything we build for you</small></a></li><li><a href="/services/#websites">Websites & donations<small>From $750</small></a></li><li><a href="/services/#campaigns">QR campaigns & events<small>Flyers and events into action</small></a></li><li><a href="/services/#grant-support">Grant support & automation<small>Custom quote</small></a></li><li><a href="/services/#nonprofit-packages">Packages & pricing<small>Nonprofit and small business</small></a></li><li><a href="/marketing/">Monthly Outreach Boost<small>$297/month</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/work/">Our work</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-work" aria-label="Our work menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-work"><li><a href="/work/">All our work<small>Real organizations we have built for</small></a></li><li><a href="/case-studies/twizted-journeys/">Twizted Journeys<small>Nonprofit launch</small></a></li><li><a href="/case-studies/we-help-dads/">We Help Dads<small>Community impact</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/contact/">Contact</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-contact" aria-label="Contact menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-contact"><li><a href="/contact/">Contact us<small>info@nocapsai.com</small></a></li><li><a href="/contact/#start">Start a project<small>Get a quote before you pay</small></a></li><li><a href="/contact/#payment">Make a payment<small>For existing clients</small></a></li></ul></li></ul></nav>
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul class="nav-list"><li class="nav-item"><a class="nav-link" href="/" aria-current="page">Home</a></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/shop/">Shop tools</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-shop" aria-label="Shop tools menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-shop"><li><a href="/shop/">All tools<small>Guides, trackers and bundles from $27</small></a></li><li><a href="/shop/#nonprofit">Nonprofit tools<small>Grant guides, trackers and workspaces</small></a></li><li><a href="/shop/#business">Small business tools<small>Funding and lead follow-up kits</small></a></li><li><a href="/shop/#bundle">Bundles<small>Save when you buy together</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/grantflow/">GrantFlow</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-grantflow" aria-label="GrantFlow menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-grantflow"><li><a href="/grantflow/">What GrantFlow does<small>Find funding, draft, track deadlines</small></a></li><li><a href="/grantflow/#start">How to get started<small>Three simple steps</small></a></li><li><a href="/grantflow/#pricing">Pricing<small>GrantFlow Pro: $29/month</small></a></li><li><a href="https://nocapsai-grantflow.vercel.app/auth/login" target="_blank" rel="noopener noreferrer">Log in<small>Already a member?</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/services/">Services</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-services" aria-label="Services menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-services"><li><a href="/services/">All services<small>Everything we build for you</small></a></li><li><a href="/services/#websites">Websites & donations<small>From $750</small></a></li><li><a href="/services/#campaigns">QR campaigns & events<small>Flyers and events into action</small></a></li><li><a href="/services/#grant-support">Grant support & automation<small>Custom quote</small></a></li><li><a href="/services/#nonprofit-packages">Packages & pricing<small>Nonprofit and small business</small></a></li><li><a href="/marketing/">Monthly Outreach Boost<small>$297/month</small></a></li></ul></li><li class="nav-item"><a class="nav-link" href="/pricing/">Pricing</a></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/work/">Our work</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-work" aria-label="Our work menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-work"><li><a href="/work/">All our work<small>Real organizations we have built for</small></a></li><li><a href="/case-studies/twizted-journeys/">Twizted Journeys<small>Nonprofit launch</small></a></li><li><a href="/case-studies/we-help-dads/">We Help Dads<small>Community impact</small></a></li></ul></li><li class="nav-item has-menu"><div class="nav-row"><a class="nav-link" href="/contact/">Contact</a><button class="nav-caret" type="button" aria-expanded="false" aria-controls="menu-contact" aria-label="Contact menu"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="nav-menu" id="menu-contact"><li><a href="/contact/">Contact us<small>info@nocapsai.com</small></a></li><li><a href="/contact/#start">Start a project<small>Get a quote before you pay</small></a></li><li><a href="/contact/#payment">Make a payment<small>For existing clients</small></a></li></ul></li></ul></nav>
 </header>
 <main id="main">
 <section class="shop-hero" id="home">
- <div class="hero-orbits" aria-hidden="true"><i></i><i></i><i></i></div><button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
+ <!-- Hero video background -->
+ <div class="hero-video-wrap" aria-hidden="true">
+  <video id="hero-video" autoplay loop muted playsinline preload="metadata">
+   <source src="/assets/video/hero-presentation.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
+ </div>
+ <!-- Subtle ambient canvas (particles only outside video area) -->
+ <canvas id="hero-canvas" aria-hidden="true"></canvas>
+ <div class="hero-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+ <!-- Video controls -->
+ <div class="hero-vid-controls" role="group" aria-label="Video controls">
+  <button class="hvid-btn hvid-playpause" type="button" aria-label="Pause video" data-state="playing">
+   <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16" fill="currentColor" stroke="none"/><rect x="14" y="4" width="4" height="16" fill="currentColor" stroke="none"/></svg>
+   <svg class="icon-play" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+  </button>
+  <button class="hvid-btn hvid-mute" type="button" aria-label="Unmute video" data-state="muted">
+   <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+   <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+  </button>
+ </div>
+ <button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
  <div class="hero-copy"><p class="eyebrow">Built for nonprofits &amp; small businesses</p><h1>Less busywork.<br>More forward motion.</h1><p class="hero-intro">Funding tools, grant software, and websites that help your next move happen.</p><div class="actions"><a class="button" href="#funding-tools">Shop tools from $27 <span aria-hidden="true">↗</span></a><a class="text-link" href="#grantflow">Explore GrantFlow Pro →</a></div><p class="quiet">Practical tools. Clear prices. Based in Indiana.</p></div>
 </section>
 <section class="shop-section" id="funding-tools" aria-labelledby="shop-heading">
@@ -113,6 +139,233 @@
  <p class="fine-print">Custom website projects start with an agreed scope and price before payment.</p>
 </section>
 <section class="shop-section proof-section" id="proof" aria-labelledby="proof-heading"><div class="section-heading"><div><p class="eyebrow">Real organizations. Real work.</p><h2 id="proof-heading">See what we’ve built.</h2></div></div><div class="proof-grid"><a class="proof-card" href="/case-studies/twizted-journeys/"><span class="eyebrow">Nonprofit launch</span><h3>Twizted Journeys</h3><p>Website, donations, events, and QR campaigns.</p><span class="text-link">See the build ↗</span></a><a class="proof-card" href="/case-studies/we-help-dads/"><span class="eyebrow">Community impact</span><h3>We Help Dads</h3><p>A clear home for the mission and Dedicated Dads program.</p><span class="text-link">See the build ↗</span></a></div></section>
+
+<!-- Stats Bar -->
+<div class="stats-bar" aria-label="NoCapsAI by the numbers">
+  <div class="stat-item av-reveal">
+    <span class="stat-num" data-count="3" data-suffix="+">3+</span>
+    <span class="stat-label">Nonprofits Launched</span>
+  </div>
+  <div class="stat-item av-reveal av-reveal-delay-1">
+    <span class="stat-num" data-count="10" data-suffix="+">10+</span>
+    <span class="stat-label">Digital Products</span>
+  </div>
+  <div class="stat-item av-reveal av-reveal-delay-2">
+    <span class="stat-num" data-count="4" data-suffix="">4</span>
+    <span class="stat-label">SaaS Applications</span>
+  </div>
+  <div class="stat-item av-reveal av-reveal-delay-3">
+    <span class="stat-num" data-count="24" data-suffix="/7">24/7</span>
+    <span class="stat-label">AI Receptionist</span>
+  </div>
+</div>
+
+<!-- Capability Showcase -->
+<section class="capability-section" id="capabilities" aria-labelledby="cap-heading">
+  <span class="section-label">What we build</span>
+  <h2 id="cap-heading" class="av-reveal">Technology that works for real people.</h2>
+  <p class="sub av-reveal av-reveal-delay-1">From AI-powered phone receptionists to custom grant management software — here’s what NoCapsAI actually builds.</p>
+  <div class="capability-grid">
+    <div class="capability-tile av-reveal av-reveal-delay-1">
+      <div class="cap-icon" aria-hidden="true">📞</div>
+      <h3 class="cap-title">AI Phone Receptionists</h3>
+      <p class="cap-desc">24/7 intelligent call handling. Schedules appointments, answers questions, captures leads — no staff required.</p>
+      <a class="cap-link" href="/services/">See Alex in action →</a>
+    </div>
+    <div class="capability-tile av-reveal av-reveal-delay-2">
+      <div class="cap-icon" aria-hidden="true">⚡</div>
+      <h3 class="cap-title">Automated Workflows</h3>
+      <p class="cap-desc">Connect your tools and eliminate repetitive tasks. Lead capture, email sequences, follow-up — running automatically.</p>
+      <a class="cap-link" href="/services/">Explore automation →</a>
+    </div>
+    <div class="capability-tile av-reveal av-reveal-delay-3">
+      <div class="cap-icon" aria-hidden="true">🌐</div>
+      <h3 class="cap-title">Professional Websites</h3>
+      <p class="cap-desc">Mobile-first, fast-loading sites that convert visitors. Built for nonprofits, small businesses, and mission-driven organizations.</p>
+      <a class="cap-link" href="/services/#websites">View packages →</a>
+    </div>
+    <div class="capability-tile av-reveal av-reveal-delay-4">
+      <div class="cap-icon" aria-hidden="true">📊</div>
+      <h3 class="cap-title">Custom Dashboards</h3>
+      <p class="cap-desc">Business intelligence tools tailored to your operations. Track grants, leads, and KPIs in one place.</p>
+      <a class="cap-link" href="/grantflow/">See GrantFlow →</a>
+    </div>
+    <div class="capability-tile av-reveal av-reveal-delay-5">
+      <div class="cap-icon" aria-hidden="true">📱</div>
+      <h3 class="cap-title">Mobile-First Design</h3>
+      <p class="cap-desc">Every project is built for the phone first. Responsive, touch-friendly, and tested across all screen sizes.</p>
+      <a class="cap-link" href="/work/">See our work →</a>
+    </div>
+    <div class="capability-tile av-reveal av-reveal-delay-6">
+      <div class="cap-icon" aria-hidden="true">🏆</div>
+      <h3 class="cap-title">Grant Management SaaS</h3>
+      <p class="cap-desc">GrantFlow Pro — find funding, draft applications with your org’s facts, track deadlines, store documents.</p>
+      <a class="cap-link" href="/grantflow/">Try GrantFlow →</a>
+    </div>
+    <div class="capability-tile av-reveal av-reveal-delay-7">
+      <div class="cap-icon" aria-hidden="true">🎬</div>
+      <h3 class="cap-title">Video &amp; Content Production</h3>
+      <p class="cap-desc">Social Hub and Video Studio: short-form content, campaigns, and digital assets for nonprofits and small businesses.</p>
+      <a class="cap-link" href="/services/">Learn more →</a>
+    </div>
+    <div class="capability-tile av-reveal av-reveal-delay-8">
+      <div class="cap-icon" aria-hidden="true">📦</div>
+      <h3 class="cap-title">Digital Products</h3>
+      <p class="cap-desc">Ready-to-download funding guides, grant trackers, and business toolkits. One-time purchase, instant delivery.</p>
+      <a class="cap-link" href="/shop/">Browse the shop →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Client Work Portfolio -->
+<section class="portfolio-section" id="client-work" aria-labelledby="portfolio-heading">
+  <span class="section-label">Selected client work</span>
+  <h2 id="portfolio-heading" class="av-reveal">Built by NoCapsAI. <em style="color:var(--green);font-style:normal">For real organizations.</em></h2>
+  <p class="sub av-reveal av-reveal-delay-1">Every project below was designed, developed, and launched by NoCapsAI. These are client organizations — not NoCapsAI businesses.</p>
+  <div class="attribution-badge" aria-label="All projects designed and developed by NoCapsAI">✦ Designed &amp; Developed by NoCapsAI</div>
+
+  <div class="client-projects-grid">
+
+    <!-- Twizted Journeys -->
+    <article class="client-project-card av-reveal av-reveal-delay-1">
+      <div class="device-mockup-wrap">
+        <div class="device-browser">
+          <div class="device-browser-bar">
+            <div class="device-dots"><span></span><span></span><span></span></div>
+            <div class="device-url-bar">twiztedjourneys.org</div>
+          </div>
+          <div class="device-screen">
+            <img src="/assets/portfolio/twizted-home.webp" alt="Twizted Journeys homepage screenshot" loading="lazy">
+          </div>
+        </div>
+        <div class="device-phone-sm" aria-hidden="true">
+          <div class="device-phone-notch"></div>
+          <div class="device-phone-screen">
+            <img src="/assets/portfolio/twizted-events.webp" alt="Twizted Journeys mobile view" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge-type">Nonprofit Website</span>
+          <span class="badge-status-live">● Live</span>
+        </div>
+        <h3>Twizted Journeys</h3>
+        <p class="card-desc">Full nonprofit launch: website, donation flows, event pages, and QR campaign kit. Twizted Journeys Ltd is an Indiana-based organization supporting youth and community programs.</p>
+        <p class="card-contrib">↳ Design · Development · Donations · QR Campaigns · Event Pages</p>
+        <a class="card-link" href="https://twiztedjourneys.org" target="_blank" rel="noopener noreferrer">Visit site ↗</a>
+      </div>
+    </article>
+
+    <!-- We Help Dads -->
+    <article class="client-project-card av-reveal av-reveal-delay-2">
+      <div class="device-mockup-wrap">
+        <div class="device-browser">
+          <div class="device-browser-bar">
+            <div class="device-dots"><span></span><span></span><span></span></div>
+            <div class="device-url-bar">wehelpdads.org</div>
+          </div>
+          <div class="device-screen">
+            <img src="/assets/portfolio/wehelpdads-home.webp" alt="We Help Dads homepage screenshot" loading="lazy">
+          </div>
+        </div>
+        <div class="device-phone-sm" aria-hidden="true">
+          <div class="device-phone-notch"></div>
+          <div class="device-phone-screen">
+            <div class="device-screen-placeholder">
+              <span class="placeholder-logo" style="font-size:11px;color:rgba(0,236,149,0.6)">WeHelpDads</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge-type">Community Platform</span>
+          <span class="badge-status-live">● Live</span>
+        </div>
+        <h3>We Help Dads</h3>
+        <p class="card-desc">A clear home for the mission and Dedicated Dads program. We Help Dads connects fathers with resources, community, and support — built for maximum clarity and mobile accessibility.</p>
+        <p class="card-contrib">↳ Design · Development · Mobile Layout · Mission Page · Program Pages</p>
+        <a class="card-link" href="https://wehelpdads.org" target="_blank" rel="noopener noreferrer">Visit site ↗</a>
+      </div>
+    </article>
+
+    <!-- T.O.A. -->
+    <article class="client-project-card av-reveal av-reveal-delay-3">
+      <div class="device-mockup-wrap">
+        <div class="device-browser">
+          <div class="device-browser-bar">
+            <div class="device-dots"><span></span><span></span><span></span></div>
+            <div class="device-url-bar">teenoverdoseawareness.org</div>
+          </div>
+          <div class="device-screen">
+            <img src="/assets/portfolio/toa-website.webp" alt="T.O.A. Teen Overdose Awareness website homepage design" loading="lazy">
+          </div>
+        </div>
+        <div class="device-phone-sm" aria-hidden="true">
+          <div class="device-phone-notch"></div>
+          <div class="device-phone-screen">
+            <img src="/assets/portfolio/toa-website-mobile.webp" alt="T.O.A. mobile homepage design" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-badges">
+          <span class="badge-type">Nonprofit Website</span>
+          <span class="badge-status-live">● Live</span>
+        </div>
+        <h3>T.O.A. — Teen Overdose Awareness Inc.</h3>
+        <p class="card-desc">A fully custom nonprofit website for a Summitville, Indiana organization raising funds for a teen recovery center. Features a cinematic parallax frame-hero, animated fundraiser countdown, photo gallery, and comprehensive overdose prevention resources.</p>
+        <p class="card-contrib">↳ Full Design · Development · Cinematic Hero · Animations · Prevention Resources · Events</p>
+        <a class="card-link" href="https://teenoverdoseawareness.org" target="_blank" rel="noopener noreferrer">Visit site ↗</a>
+      </div>
+    </article>
+
+  </div><!-- /.client-projects-grid -->
+
+  <!-- NoCapsAI Products -->
+  <h2 class="products-section-heading av-reveal" style="margin-top:60px">Our own products &amp; applications.</h2>
+  <p class="products-sub av-reveal av-reveal-delay-1">Platforms, SaaS tools, and digital products built and owned by NoCapsAI LLC.</p>
+  <div class="products-showcase-grid">
+    <div class="product-showcase-card av-reveal av-reveal-delay-1">
+      <span class="product-icon" aria-hidden="true">🌱</span>
+      <h3>GrantFlow Pro</h3>
+      <p>Nonprofit grant management SaaS. Find funding, draft applications, track deadlines, store documents. $29/month.</p>
+      <a class="ps-link" href="/grantflow/">Explore GrantFlow →</a>
+    </div>
+    <div class="product-showcase-card av-reveal av-reveal-delay-2">
+      <span class="product-icon" aria-hidden="true">📞</span>
+      <h3>Alex — AI Receptionist</h3>
+      <p>24/7 AI-powered phone receptionist for small businesses. Answers calls, captures leads, schedules appointments. Powered by Speko.</p>
+      <a class="ps-link" href="tel:+17658762590" aria-label="Call Alex at 765-876-2590">Call Alex: (765) 876-2590 →</a>
+    </div>
+    <div class="product-showcase-card av-reveal av-reveal-delay-3">
+      <span class="product-icon" aria-hidden="true">👨‍👩‍👧</span>
+      <h3>Family Hub</h3>
+      <p>Family organization and coordination platform. Built for busy families who need to stay connected and on track.</p>
+      <a class="ps-link" href="/contact/">Inquire →</a>
+    </div>
+    <div class="product-showcase-card av-reveal av-reveal-delay-4">
+      <span class="product-icon" aria-hidden="true">🎥</span>
+      <h3>Social Hub / Video Studio</h3>
+      <p>Content creation and social media management tools for nonprofits and small businesses. Create, schedule, and publish.</p>
+      <a class="ps-link" href="/contact/">Learn more →</a>
+    </div>
+    <div class="product-showcase-card av-reveal av-reveal-delay-5">
+      <span class="product-icon" aria-hidden="true">📦</span>
+      <h3>Digital Product Library</h3>
+      <p>10+ downloadable funding guides, grant trackers, and business toolkits. From $27. One-time purchase, instant delivery via Gumroad.</p>
+      <a class="ps-link" href="/shop/">Browse the shop →</a>
+    </div>
+    <div class="product-showcase-card av-reveal av-reveal-delay-6">
+      <span class="product-icon" aria-hidden="true">📡</span>
+      <h3>Revenue Hub</h3>
+      <p>Business intelligence and revenue operations platform. Track sales, leads, and business KPIs in a unified dashboard.</p>
+      <a class="ps-link" href="/contact/">Request access →</a>
+    </div>
+  </div>
+</section>
+
 <section class="shop-section quick-answers" id="faq"><h2>A few quick answers.</h2><details><summary>How do I get my digital product?</summary><p>Complete your purchase through Gumroad for digital delivery. Each product page explains what is included.</p></details><details><summary>Is GrantFlow a one-time purchase?</summary><p>GrantFlow Pro is $29 per month. The downloadable tools above are separate, one-time purchases.</p></details><details><summary>Can you help me choose?</summary><p>Email <a href="mailto:info@nocapsai.com">info@nocapsai.com</a> with what you’re trying to do. We’ll point you toward a suitable tool or service.</p></details></section>
 <section class="contact-strip" id="contact"><div><p class="eyebrow">Let’s make your next move happen.</p><h2>Need something custom?</h2></div><a class="button" href="mailto:info@nocapsai.com?subject=Start%20a%20project">Talk about your project →</a></section>
 <section class="payment-strip" id="payment"><div><strong>Already working with NoCapsAI?</strong><p>Pay your agreed invoice or deposit.</p></div><a class="text-link" href="https://buy.stripe.com/7sYcN65VQ3KX0Eac8H48005">Make a payment →</a></section>
@@ -121,4 +374,5 @@
 <script src="/assets/js/storefront.min.js?v=20261119" defer></script>
 <script src="/assets/js/site-fx.min.js?v=20261119" defer></script>
 <script src="/assets/js/site-nav.min.js?v=20261119" defer></script>
+<script src="/assets/js/agency-visual.js?v=20261124" defer></script>
 </body></html>
