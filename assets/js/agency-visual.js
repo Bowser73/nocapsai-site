@@ -27,6 +27,9 @@
       ctx.scale(dpr, dpr);
     }
 
+    // Dimensions must be known before constructing particles/streams
+    resize();
+
     var COUNT = Math.min(55, Math.floor(window.innerWidth / 22));
     var particles = [];
     var mouse = { x: -9999, y: -9999 };
@@ -178,10 +181,13 @@
         }
       }
 
-      raf = requestAnimationFrame(draw);
+      // Respect the site-wide motion pause toggle (body.motion-paused)
+      if (!document.body.classList.contains('motion-paused')) {
+        raf = requestAnimationFrame(draw);
+      }
     }
 
-    resize();
+    // resize() was already called above before constructing particles/streams
     draw();
 
     var scrollPaused = false;

@@ -236,9 +236,15 @@ h1, h2, h3, h4, .eyebrow, .product-label { font-family: var(--font-heading); }
   transform: translateY(4px);
   transition: opacity 0.2s, transform 0.2s;
 }
-.capability-tile:hover .cap-link {
+.capability-tile:hover .cap-link,
+.capability-tile:focus-within .cap-link {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* No hover capability — keep links always visible */
+@media (hover: none) {
+  .cap-link { opacity: 1; transform: translateY(0); }
 }
 @media (max-width: 1024px) {
   .capability-grid { grid-template-columns: repeat(2, 1fr); }
@@ -753,6 +759,9 @@ h1, h2, h3, h4, .eyebrow, .product-label { font-family: var(--font-heading); }
 @media (prefers-reduced-motion: reduce) {
   .shop-hero::before, .shop-hero::after { animation: none; }
 }
+/* Honor the site-wide motion-pause toggle */
+body.motion-paused .shop-hero::before,
+body.motion-paused .shop-hero::after { animation-play-state: paused; }
 
 /* --- Portfolio: cinematic screenshot pan-on-hover ----------- */
 /* Hovering a portfolio card slowly pans the screenshot top→bottom
