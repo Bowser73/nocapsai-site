@@ -287,12 +287,66 @@
     });
   }
 
+  // ---- Hero video controls ------------------------------------
+  function initVideoControls() {
+    var video = document.getElementById('hero-video');
+    if (!video) return;
+
+    var btnPlay  = document.querySelector('.hvid-playpause');
+    var btnMute  = document.querySelector('.hvid-mute');
+
+    // Play/Pause
+    if (btnPlay) {
+      btnPlay.addEventListener('click', function () {
+        if (video.paused) {
+          video.play();
+          btnPlay.dataset.state = 'playing';
+          btnPlay.setAttribute('aria-label', 'Pause video');
+        } else {
+          video.pause();
+          btnPlay.dataset.state = 'paused';
+          btnPlay.setAttribute('aria-label', 'Play video');
+        }
+      });
+    }
+
+    // Mute/Unmute
+    if (btnMute) {
+      btnMute.addEventListener('click', function () {
+        video.muted = !video.muted;
+        btnMute.dataset.state = video.muted ? 'muted' : 'unmuted';
+        btnMute.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
+      });
+    }
+
+    // Sync play button state with actual video state
+    video.addEventListener('play',  function () {
+      if (btnPlay) { btnPlay.dataset.state = 'playing'; btnPlay.setAttribute('aria-label', 'Pause video'); }
+    });
+    video.addEventListener('pause', function () {
+      if (btnPlay) { btnPlay.dataset.state = 'paused'; btnPlay.setAttribute('aria-label', 'Play video'); }
+    });
+
+    // Motion-pause toggle also pauses/resumes video
+    var motionBtn = document.querySelector('.motion-toggle');
+    if (motionBtn) {
+      motionBtn.addEventListener('click', function () {
+        // The storefront.js toggles body.motion-paused; check after toggle settles
+        setTimeout(function () {
+          var paused = document.body.classList.contains('motion-paused');
+          if (paused) { video.pause(); } else { video.play(); }
+        }, 0);
+      });
+    }
+  }
+
   // ---- Init ---------------------------------------------------
   function init() {
     initParticles();
     initTilt();
     initCounters();
     initScrollReveal();
+    initVideoControls();
   }
 
   if (document.readyState === 'loading') {
