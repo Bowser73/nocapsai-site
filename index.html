@@ -139,14 +139,14 @@
       <h3>Free Readiness Snapshot</h3>
       <p>A quick first look at your website messaging and customer intent, with the top clarity gaps to fix next.</p>
       <p><strong>$0 – Free Readiness Snapshot</strong></p>
-      <a href="#contact" class="plan-cta">Book My Free Snapshot</a>
+      <a href="#" class="plan-cta" data-inquiry="Free Readiness Snapshot">Book My Free Snapshot</a>
     </div>
 
     <div class="plan">
       <h3>Readiness Audit + Action Plan</h3>
       <p>A deeper review with a clear scorecard and a practical 30-day plan. Built to improve clarity, trust signals, and conversion.</p>
       <p><strong>From $297 (one-time)</strong></p>
-      <a href="#contact" class="plan-cta">Talk to Us</a>
+      <a href="#" class="plan-cta" data-inquiry="Readiness Audit + Action Plan ($297+)">Talk to Us</a>
     </div>
 
     <div class="plan featured">
@@ -192,6 +192,125 @@ document.addEventListener('DOMContentLoaded', () => {
   const y = new Date().getFullYear();
   document.querySelectorAll('[data-year]').forEach(el => el.textContent = y);
 });
+</script>
+
+<!-- INQUIRY MODAL -->
+<div id="inquiry-modal" class="inquiry-overlay" hidden>
+  <div class="inquiry-box" role="dialog" aria-modal="true" aria-labelledby="inquiry-modal-title">
+    <button class="inquiry-close" id="inquiry-close" aria-label="Close">×</button>
+    <h3 class="inquiry-title" id="inquiry-modal-title">Get in Touch</h3>
+    <p class="inquiry-sub">Tell us what you need — Nate will follow up within one business day.</p>
+    <form id="inquiry-form" novalidate>
+      <div class="inquiry-row">
+        <label for="inq-name">Your Name *</label>
+        <input id="inq-name" name="name" type="text" required placeholder="Jane Smith" autocomplete="name">
+      </div>
+      <div class="inquiry-row">
+        <label for="inq-email">Email *</label>
+        <input id="inq-email" name="email" type="email" required placeholder="jane@example.com" autocomplete="email">
+      </div>
+      <div class="inquiry-row">
+        <label for="inq-phone">Phone (optional)</label>
+        <input id="inq-phone" name="phone" type="tel" placeholder="(765) 555-0100" autocomplete="tel">
+      </div>
+      <div class="inquiry-row">
+        <label for="inq-service">I'm interested in</label>
+        <select id="inq-service" name="service">
+          <option value="">Select a service…</option>
+          <option value="Free Readiness Snapshot">Free Readiness Snapshot</option>
+          <option value="Readiness Audit + Action Plan ($297+)">Readiness Audit + Action Plan ($297+)</option>
+          <option value="Golden Ongoing Awareness ($997/mo)">Golden Ongoing Awareness ($997/mo)</option>
+          <option value="Website Build ($1,000+)">Website Build ($1,000+)</option>
+          <option value="App or Automation (custom quote)">App or Automation (custom quote)</option>
+          <option value="Done-for-You Content ($297/mo)">Done-for-You Content ($297/mo)</option>
+          <option value="Not sure yet — let's talk">Not sure yet — let's talk</option>
+        </select>
+      </div>
+      <div class="inquiry-row">
+        <label for="inq-message">What can we help with? *</label>
+        <textarea id="inq-message" name="message" required rows="4" placeholder="Tell us about your business and what you're trying to solve…"></textarea>
+      </div>
+      <button type="submit" class="inquiry-submit" id="inquiry-submit">Send Inquiry</button>
+      <div id="inquiry-status" class="inquiry-status" hidden></div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('inquiry-modal');
+  var form    = document.getElementById('inquiry-form');
+  var status  = document.getElementById('inquiry-status');
+  var btn     = document.getElementById('inquiry-submit');
+  var closeEl = document.getElementById('inquiry-close');
+  var svc     = document.getElementById('inq-service');
+
+  function open(preset) {
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (preset && svc) svc.value = preset;
+    document.getElementById('inq-name').focus();
+  }
+  function close() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) close(); });
+  closeEl.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (!overlay.hidden && e.key === 'Escape') close(); });
+
+  document.querySelectorAll('[data-inquiry]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      open(el.dataset.inquiry);
+    });
+  });
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var name    = document.getElementById('inq-name').value.trim();
+    var email   = document.getElementById('inq-email').value.trim();
+    var phone   = document.getElementById('inq-phone').value.trim();
+    var message = document.getElementById('inq-message').value.trim();
+    var service = svc ? svc.value : '';
+
+    if (!name || !email || !message) {
+      showStatus('Please fill in name, email, and message.', false);
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    status.hidden = true;
+
+    try {
+      var res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, message, service, source: 'website' })
+      });
+      if (res.ok) {
+        showStatus('✅ Got it! Nate will follow up within one business day.', true);
+        form.reset();
+        setTimeout(close, 3500);
+      } else {
+        throw new Error('server error');
+      }
+    } catch(err) {
+      showStatus('Something went wrong. Email njwhitt@nocapsai.com directly.', false);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send Inquiry';
+    }
+  });
+
+  function showStatus(msg, ok) {
+    status.textContent = msg;
+    status.className = 'inquiry-status ' + (ok ? 'ok' : 'err');
+    status.hidden = false;
+  }
+})();
 </script>
 </body>
 </html>
