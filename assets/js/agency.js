@@ -19,7 +19,7 @@
     '/services/':{websites:'/services/pricing/web.html',campaigns:'/marketing/','nonprofit-packages':'/services/pricing/nonprofit.html','small-business':'/services/pricing/web.html'}
   };
   function followLegacyLink() {
-    const destination = legacyRoutes[location.pathname]?.[location.hash.slice(1)];
+    const destination = legacyRoutes[location.pathname.replace(/index\.html$/, "")]?.[location.hash.slice(1)];
     if (typeof destination === 'string') location.replace(destination);
   }
   followLegacyLink();
