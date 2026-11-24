@@ -1,7 +1,11 @@
 /* ============================================================
-   NoCapsAI — Agency Visual Enhancement Layer
+   NoCapsAI — Agency Visual Enhancement Layer v2
    Loaded after storefront.css; enhances without replacing.
    ============================================================ */
+
+/* --- Remove horse/elephant brand-hero.png from fixed background --- */
+body::before { background: var(--navy-deep, #021018) !important; }
+html::before { display: none !important; }
 
 /* --- Fonts -------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
@@ -19,11 +23,26 @@
 body { font-family: var(--font-body); }
 h1, h2, h3, h4, .eyebrow, .product-label { font-family: var(--font-heading); }
 
-/* --- Hero video background ---------------------------------- */
+/* === HERO: STACKED LAYOUT (video first, copy below) === */
+/* Override storefront.min.css flex/grid hero layout */
+.shop-hero {
+  display: block !important;
+  min-height: unset !important;
+  padding: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  text-align: left;
+}
+
+/* --- Hero video background (now a contained block, not absolute fill) --- */
 .hero-video-wrap {
-  position: absolute;
-  inset: 0;
+  position: relative !important;
+  inset: auto !important;
   z-index: 0;
+  width: 100%;
+  height: 70vh;
+  min-height: 420px;
+  max-height: 760px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,22 +133,37 @@ h1, h2, h3, h4, .eyebrow, .product-label { font-family: var(--font-heading); }
 .hvid-mute[data-state="muted"]   .icon-sound  { display: none; }
 .hvid-mute[data-state="unmuted"] .icon-muted  { display: none; }
 
-/* Canvas sits above video but below controls/copy */
-/* --- Hero canvas -------------------------------------------- */
+/* Canvas stays inside hero-video-wrap (now its containing block) */
 #hero-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 2;   /* above video overlay, below copy */
-  opacity: 0.45; /* reduced — ambient accent only */
+  z-index: 2;
+  opacity: 0.45;
 }
-.shop-hero { overflow: hidden; }
-.hero-copy { position: relative; z-index: 5; }
-.hero-orbits { z-index: 3; }
+/* Orbits inside video-wrap */
+.hero-orbits { z-index: 3; position: absolute; inset: 0; }
+/* Controls inside video-wrap */
 .hero-vid-controls { z-index: 6; }
 .motion-toggle { z-index: 7; }
+
+/* Hero copy: flows BELOW the video, full width */
+.hero-copy {
+  position: relative !important;
+  z-index: 5 !important;
+  padding: 56px max(24px, calc((100vw - 820px)/2)) 60px !important;
+  text-align: center !important;
+  max-width: none !important;
+  margin: 0 !important;
+  background: linear-gradient(to bottom, var(--navy-deep) 0%, var(--navy-mid) 100%);
+  border-bottom: 1px solid rgba(0,236,149,0.1);
+}
+.hero-copy h1 { margin-bottom: 20px; }
+.hero-copy .hero-intro { margin-left: auto; margin-right: auto; }
+.hero-copy .actions { justify-content: center !important; }
+.shop-hero { overflow: visible !important; }
 
 /* Pause video when motion is paused */
 body.motion-paused #hero-video { animation-play-state: paused; }
@@ -143,16 +177,16 @@ body.motion-paused #hero-video { animation-play-state: paused; }
 
 /* --- Hero h1 gradient text ---------------------------------- */
 .shop-hero h1 {
-  font-size: clamp(44px, 5.5vw, 80px);
+  font-size: clamp(40px, 5vw, 72px);
   font-weight: 700;
   letter-spacing: -0.04em;
-  line-height: 1.05;
-  background: linear-gradient(135deg, #ffffff 0%, var(--green) 60%, #7affca 100%);
+  line-height: 1.08;
+  background: linear-gradient(135deg, #ffffff 0%, var(--green) 65%, #7affca 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 24px;
-  filter: drop-shadow(0 0 24px rgba(0,236,149,0.3));
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 32px rgba(0,236,149,0.25));
 }
 .shop-hero .hero-intro {
   font-size: 20px;
@@ -870,6 +904,141 @@ body.motion-paused #hero-video { animation-play-state: paused; }
 /* Honor the site-wide motion-pause toggle */
 body.motion-paused .shop-hero::before,
 body.motion-paused .shop-hero::after { animation-play-state: paused; }
+
+/* === CINEMATIC VIDEO SECTION === */
+.cine-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 72px 24px 60px;
+  border-top: 1px solid rgba(0,236,149,0.1);
+}
+.cine-header {
+  margin-bottom: 36px;
+}
+.cine-header h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.5vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 0;
+}
+.cine-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 14px;
+}
+.cine-cell {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--navy-mid);
+  border: 1px solid rgba(0,236,149,0.1);
+  aspect-ratio: 16/9;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.cine-cell-lg {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  aspect-ratio: unset;
+}
+.cine-cell:hover {
+  border-color: rgba(0,236,149,0.35);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.5), 0 0 30px rgba(0,236,149,0.07);
+}
+.cine-vid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cine-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(2,16,24,0.9) 0%, transparent 100%);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0,236,149,0.8);
+}
+@media (max-width: 1024px) {
+  .cine-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .cine-cell-lg { grid-column: 1 / 3; grid-row: 1; aspect-ratio: 16/9; }
+}
+@media (max-width: 600px) {
+  .cine-grid { grid-template-columns: 1fr; }
+  .cine-cell-lg { grid-column: 1; }
+}
+
+/* === SERVICE CARD VISUAL UPGRADE === */
+.service-card-visual {
+  padding: 0 !important;
+  overflow: hidden;
+}
+.svc-visual {
+  background: linear-gradient(145deg, rgba(8,22,30,0.95), rgba(4,14,20,0.95));
+  border-bottom: 1px solid rgba(0,236,149,0.1);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svc-visual svg {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+}
+.service-card-visual h3,
+.service-card-visual p,
+.service-card-visual strong,
+.service-card-visual .text-link {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.service-card-visual h3 { margin-top: 20px; }
+.service-card-visual .text-link { margin-bottom: 20px; display: block; }
+
+/* === PRODUCT ICON: SVG VERSION === */
+.product-icon {
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0,236,149,0.07) !important;
+  border-radius: 10px !important;
+  padding: 8px !important;
+  margin-bottom: 14px !important;
+  font-size: unset !important;
+}
+.product-icon svg { width: 100%; height: 100%; }
+
+/* === CAP ICON: SVG VERSION === */
+.cap-icon {
+  background: none !important;
+  padding: 0 !important;
+  font-size: unset !important;
+}
+.cap-icon svg { width: 48px; height: 48px; }
+
+/* === HERO MOBILE === */
+@media (max-width: 600px) {
+  .hero-video-wrap {
+    height: 55vw !important;
+    min-height: 220px !important;
+  }
+  .hero-copy {
+    padding: 40px 24px 44px !important;
+  }
+}
 
 /* --- Portfolio: cinematic screenshot pan-on-hover ----------- */
 /* Hovering a portfolio card slowly pans the screenshot top→bottom

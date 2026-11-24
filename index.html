@@ -71,29 +71,71 @@
 </header>
 <main id="main">
 <section class="shop-hero" id="home">
- <!-- Hero video background -->
- <div class="hero-video-wrap" aria-hidden="true">
+ <!-- Hero video — full-width, plays first -->
+ <div class="hero-video-wrap">
   <video id="hero-video" autoplay loop muted playsinline preload="metadata">
    <source src="/assets/video/hero-presentation.mp4" type="video/mp4">
   </video>
   <div class="hero-video-overlay"></div>
+  <!-- Canvas, orbits and controls all inside video-wrap -->
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="hero-vid-controls" role="group" aria-label="Video controls">
+   <button class="hvid-btn hvid-playpause" type="button" aria-label="Pause video" data-state="playing">
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16" fill="currentColor" stroke="none"/><rect x="14" y="4" width="4" height="16" fill="currentColor" stroke="none"/></svg>
+    <svg class="icon-play" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+   </button>
+   <button class="hvid-btn hvid-mute" type="button" aria-label="Unmute video" data-state="muted">
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+   </button>
+  </div>
+  <button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
  </div>
- <!-- Subtle ambient canvas (particles only outside video area) -->
- <canvas id="hero-canvas" aria-hidden="true"></canvas>
- <div class="hero-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
- <!-- Video controls -->
- <div class="hero-vid-controls" role="group" aria-label="Video controls">
-  <button class="hvid-btn hvid-playpause" type="button" aria-label="Pause video" data-state="playing">
-   <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="4" width="4" height="16" fill="currentColor" stroke="none"/><rect x="14" y="4" width="4" height="16" fill="currentColor" stroke="none"/></svg>
-   <svg class="icon-play" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-  </button>
-  <button class="hvid-btn hvid-mute" type="button" aria-label="Unmute video" data-state="muted">
-   <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-   <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-  </button>
+ <!-- Hero copy lives BELOW the video, not on top of it -->
+ <div class="hero-copy">
+  <p class="eyebrow">AI Agency · Indiana</p>
+  <h1 class="scatter-title">Technology that works<br>for real people.</h1>
+  <p class="hero-intro">Websites, AI receptionists, grant software, and automation — built for nonprofits and small businesses that mean business.</p>
+  <div class="actions">
+   <a class="button" href="#capabilities">See what we build <span aria-hidden="true">↓</span></a>
+   <a class="text-link" href="#client-work">View our work →</a>
+  </div>
+  <p class="quiet">Practical tools. Clear prices. Based in Rushville, Indiana.</p>
  </div>
- <button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
- <div class="hero-copy"><p class="eyebrow">Built for nonprofits &amp; small businesses</p><h1>Less busywork.<br>More forward motion.</h1><p class="hero-intro">Funding tools, grant software, and websites that help your next move happen.</p><div class="actions"><a class="button" href="#funding-tools">Shop tools from $27 <span aria-hidden="true">↗</span></a><a class="text-link" href="#grantflow">Explore GrantFlow Pro →</a></div><p class="quiet">Practical tools. Clear prices. Based in Indiana.</p></div>
+</section>
+<!-- Cinematic Video Showcase -->
+<section class="cine-section" id="cine-reel" aria-label="NoCapsAI cinematic reel">
+  <div class="cine-header">
+    <span class="section-label">What we're capable of</span>
+    <h2 class="av-reveal">Built different. <em style="color:var(--green)">Looks like it too.</em></h2>
+  </div>
+  <div class="cine-grid">
+    <div class="cine-cell cine-cell-lg av-reveal">
+      <video class="cine-vid" autoplay loop muted playsinline preload="none">
+        <source src="/assets/video/cinematic-01.mp4" type="video/mp4">
+      </video>
+      <div class="cine-label">AI-Powered Technology</div>
+    </div>
+    <div class="cine-cell av-reveal av-reveal-delay-1">
+      <video class="cine-vid" autoplay loop muted playsinline preload="none">
+        <source src="/assets/video/cinematic-02.mp4" type="video/mp4">
+      </video>
+      <div class="cine-label">Mission-Driven Results</div>
+    </div>
+    <div class="cine-cell av-reveal av-reveal-delay-2">
+      <video class="cine-vid" autoplay loop muted playsinline preload="none">
+        <source src="/assets/video/cinematic-03.mp4" type="video/mp4">
+      </video>
+      <div class="cine-label">Digital Transformation</div>
+    </div>
+    <div class="cine-cell av-reveal av-reveal-delay-3">
+      <video class="cine-vid" autoplay loop muted playsinline preload="none">
+        <source src="/assets/video/cinematic-04.mp4" type="video/mp4">
+      </video>
+      <div class="cine-label">Innovative Solutions</div>
+    </div>
+  </div>
 </section>
 <section class="shop-section" id="funding-tools" aria-labelledby="shop-heading">
  <div class="section-heading"><div><p class="eyebrow">Download. Organize. Get moving.</p><h2 id="shop-heading">Find your next tool.</h2></div><p>One-time purchases.<br>Secure Gumroad checkout + digital delivery.</p></div>
@@ -135,7 +177,88 @@
 </section>
 <section class="shop-section" id="pricing" aria-labelledby="services-heading">
  <div class="section-heading"><div><p class="eyebrow">Want it built for you?</p><h2 id="services-heading">Bring the project. We’ll build it.</h2></div><a class="text-link" href="/services/">Compare service packages →</a></div>
- <div class="carousel-controls"><span>Built around your next move</span><div><button type="button" data-carousel-prev="services" aria-label="Previous services">←</button><button type="button" data-carousel-next="services" aria-label="Next services">→</button></div></div><div class="service-grid carousel-track" id="services" tabindex="0" role="region" aria-label="Services carousel"><article class="service-card" id="small-business"><h3>A website that works</h3><p>Mobile-friendly pages with a clear path to contact, book, or donate.</p><strong>From $750</strong><a class="text-link" href="/services/">Explore website packages →</a></article><article class="service-card"><h3>A complete launch</h3><p>Your website, campaign pages, QR kit, and 30 days of support.</p><strong>From $2,500</strong><a class="text-link" href="/services/">Explore launch packages →</a></article><article class="service-card"><h3>Keep showing up</h3><p>Monthly content and campaign support for your next promotion.</p><strong>$297<span>/month</span></strong><a class="text-link" href="/marketing/">See Outreach Boost →</a></article></div>
+ <div class="carousel-controls"><span>Built around your next move</span><div><button type="button" data-carousel-prev="services" aria-label="Previous services">←</button><button type="button" data-carousel-next="services" aria-label="Next services">→</button></div></div>
+ <div class="service-grid carousel-track" id="services" tabindex="0" role="region" aria-label="Services carousel">
+   <article class="service-card service-card-visual" id="small-business">
+     <div class="svc-visual" aria-hidden="true">
+       <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <rect x="10" y="10" width="100" height="60" rx="6" stroke="#00ec95" stroke-width="1.5" fill="rgba(0,236,149,0.04)"/>
+         <rect x="10" y="10" width="100" height="14" rx="6" fill="rgba(0,236,149,0.1)" stroke="none"/>
+         <circle cx="20" cy="17" r="2.5" fill="#ff6058"/><circle cx="27" cy="17" r="2.5" fill="#ffbe30"/><circle cx="34" cy="17" r="2.5" fill="#2aca4a"/>
+         <rect x="40" y="13" width="50" height="8" rx="3" fill="rgba(255,255,255,0.08)"/>
+         <rect x="18" y="32" width="35" height="6" rx="2" fill="rgba(0,236,149,0.3)"/>
+         <rect x="18" y="42" width="55" height="3" rx="1.5" fill="rgba(255,255,255,0.15)"/>
+         <rect x="18" y="48" width="45" height="3" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+         <rect x="18" y="56" width="30" height="8" rx="4" fill="#00ec95" opacity=".8"/>
+         <rect x="70" y="30" width="30" height="22" rx="3" stroke="rgba(0,236,149,0.4)" stroke-width="1" fill="rgba(0,236,149,0.05)"/>
+         <rect x="73" y="34" width="24" height="10" rx="2" fill="rgba(0,236,149,0.15)"/>
+         <rect x="73" y="47" width="16" height="2" rx="1" fill="rgba(255,255,255,0.2)"/>
+       </svg>
+     </div>
+     <h3>A website that works</h3>
+     <p>Mobile-friendly pages with a clear path to contact, book, or donate.</p>
+     <strong>From $750</strong>
+     <a class="text-link" href="/services/">Explore website packages →</a>
+   </article>
+   <article class="service-card service-card-visual">
+     <div class="svc-visual" aria-hidden="true">
+       <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <rect x="8" y="8" width="104" height="64" rx="6" stroke="#00ec95" stroke-width="1.5" fill="rgba(0,236,149,0.04)"/>
+         <rect x="8" y="8" width="104" height="14" rx="6" fill="rgba(0,236,149,0.1)"/>
+         <circle cx="18" cy="15" r="2.5" fill="#ff6058"/><circle cx="25" cy="15" r="2.5" fill="#ffbe30"/><circle cx="32" cy="15" r="2.5" fill="#2aca4a"/>
+         <!-- Mobile phone -->
+         <rect x="80" y="28" width="22" height="40" rx="3" stroke="#00ec95" stroke-width="1.2" fill="rgba(0,236,149,0.07)"/>
+         <rect x="85" y="32" width="12" height="18" rx="1" fill="rgba(0,236,149,0.15)"/>
+         <circle cx="91" cy="63" r="2" fill="rgba(0,236,149,0.3)"/>
+         <!-- Desktop content -->
+         <rect x="16" y="28" width="56" height="8" rx="2" fill="rgba(0,236,149,0.3)"/>
+         <rect x="16" y="40" width="56" height="3" rx="1" fill="rgba(255,255,255,0.12)"/>
+         <rect x="16" y="46" width="40" height="3" rx="1" fill="rgba(255,255,255,0.08)"/>
+         <rect x="16" y="56" width="20" height="7" rx="3.5" fill="#00ec95" opacity=".7"/>
+         <rect x="40" y="56" width="20" height="7" rx="3.5" stroke="rgba(0,236,149,0.5)" stroke-width="1" fill="transparent"/>
+         <!-- Star badge -->
+         <path d="M105 20L107 24L111 24L108 27L109 31L105 29L101 31L102 27L99 24L103 24L105 20Z" fill="#00ec95" opacity=".6"/>
+       </svg>
+     </div>
+     <h3>A complete launch</h3>
+     <p>Website, campaign pages, QR kit, and 30 days of dedicated support.</p>
+     <strong>From $2,500</strong>
+     <a class="text-link" href="/services/">Explore launch packages →</a>
+   </article>
+   <article class="service-card service-card-visual">
+     <div class="svc-visual" aria-hidden="true">
+       <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <!-- Calendar + megaphone -->
+         <rect x="12" y="14" width="44" height="52" rx="5" stroke="#00ec95" stroke-width="1.2" fill="rgba(0,236,149,0.04)"/>
+         <rect x="12" y="14" width="44" height="14" rx="5" fill="rgba(0,236,149,0.1)"/>
+         <rect x="17" y="10" width="4" height="8" rx="2" fill="#00ec95" opacity=".6"/>
+         <rect x="47" y="10" width="4" height="8" rx="2" fill="#00ec95" opacity=".6"/>
+         <!-- Calendar grid -->
+         <rect x="17" y="33" width="6" height="6" rx="1" fill="rgba(0,236,149,0.15)"/>
+         <rect x="26" y="33" width="6" height="6" rx="1" fill="rgba(0,236,149,0.3)"/>
+         <rect x="35" y="33" width="6" height="6" rx="1" fill="rgba(0,236,149,0.15)"/>
+         <rect x="17" y="43" width="6" height="6" rx="1" fill="rgba(0,236,149,0.15)"/>
+         <rect x="26" y="43" width="6" height="6" rx="1" fill="#00ec95" opacity=".5"/>
+         <rect x="35" y="43" width="6" height="6" rx="1" fill="rgba(0,236,149,0.15)"/>
+         <rect x="17" y="53" width="6" height="6" rx="1" fill="rgba(0,236,149,0.15)"/>
+         <rect x="26" y="53" width="6" height="6" rx="1" fill="rgba(0,236,149,0.15)"/>
+         <!-- Megaphone -->
+         <path d="M70 32L85 24V56L70 48V32Z" stroke="#00ec95" stroke-width="1.5" fill="rgba(0,236,149,0.08)" stroke-linejoin="round"/>
+         <rect x="62" y="34" width="10" height="14" rx="2" stroke="#00ec95" stroke-width="1.2" fill="rgba(0,236,149,0.1)"/>
+         <path d="M68 48l-3 10" stroke="#00ec95" stroke-width="1.5" stroke-linecap="round"/>
+         <path d="M88 32c3 2.5 5 5.5 5 8s-2 5.5-5 8" stroke="rgba(0,236,149,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+         <path d="M92 28c5 3.5 8 8 8 12s-3 8.5-8 12" stroke="rgba(0,236,149,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+         <!-- Loop arrows -->
+         <path d="M105 15c0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6-6-2.7-6-6z" stroke="rgba(0,236,149,0.5)" stroke-width="1.2" fill="none"/>
+         <path d="M111 10v3l3-1" stroke="#00ec95" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+       </svg>
+     </div>
+     <h3>Keep showing up</h3>
+     <p>Monthly content and campaign support for your next promotion.</p>
+     <strong>$297<span>/month</span></strong>
+     <a class="text-link" href="/marketing/">See Outreach Boost →</a>
+   </article>
+ </div>
  <p class="fine-print">Custom website projects start with an agreed scope and price before payment.</p>
 </section>
 <section class="shop-section proof-section" id="proof" aria-labelledby="proof-heading"><div class="section-heading"><div><p class="eyebrow">Real organizations. Real work.</p><h2 id="proof-heading">See what we’ve built.</h2></div></div><div class="proof-grid"><a class="proof-card" href="/case-studies/twizted-journeys/"><span class="eyebrow">Nonprofit launch</span><h3>Twizted Journeys</h3><p>Website, donations, events, and QR campaigns.</p><span class="text-link">See the build ↗</span></a><a class="proof-card" href="/case-studies/we-help-dads/"><span class="eyebrow">Community impact</span><h3>We Help Dads</h3><p>A clear home for the mission and Dedicated Dads program.</p><span class="text-link">See the build ↗</span></a></div></section>
@@ -167,49 +290,49 @@
   <p class="sub av-reveal av-reveal-delay-1">From AI-powered phone receptionists to custom grant management software — here’s what NoCapsAI actually builds.</p>
   <div class="capability-grid">
     <div class="capability-tile av-reveal av-reveal-delay-1">
-      <div class="cap-icon" aria-hidden="true">📞</div>
+      <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="rgba(0,236,149,0.1)"/><path d="M32 16c0-4.4-3.6-8-8-8s-8 3.6-8 8c0 2.8 1.4 5.2 3.6 6.7L16 36h16l-3.6-13.3C30.6 21.2 32 18.8 32 16z" stroke="#00ec95" stroke-width="2" fill="none"/><circle cx="24" cy="16" r="3" fill="#00ec95"/><path d="M20 36v4M28 36v4" stroke="#00ec95" stroke-width="1.5" stroke-linecap="round"/><path d="M34 20c2 1.5 3 3.5 3 6 0 4.5-3 7.5-7 8" stroke="rgba(0,236,149,0.5)" stroke-width="1.5" stroke-linecap="round"/><path d="M14 20c-2 1.5-3 3.5-3 6 0 4.5 3 7.5 7 8" stroke="rgba(0,236,149,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <h3 class="cap-title">AI Phone Receptionists</h3>
       <p class="cap-desc">24/7 intelligent call handling. Schedules appointments, answers questions, captures leads — no staff required.</p>
       <a class="cap-link" href="/services/">See Alex in action →</a>
     </div>
     <div class="capability-tile av-reveal av-reveal-delay-2">
-      <div class="cap-icon" aria-hidden="true">⚡</div>
+      <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="rgba(0,236,149,0.1)"/><path d="M24 8L28 20H40L30 27.6L34 40L24 32.4L14 40L18 27.6L8 20H20L24 8Z" stroke="#00ec95" stroke-width="2" fill="none" stroke-linejoin="round"/><circle cx="24" cy="24" r="4" fill="rgba(0,236,149,0.3)"/></svg></div>
       <h3 class="cap-title">Automated Workflows</h3>
       <p class="cap-desc">Connect your tools and eliminate repetitive tasks. Lead capture, email sequences, follow-up — running automatically.</p>
       <a class="cap-link" href="/services/">Explore automation →</a>
     </div>
     <div class="capability-tile av-reveal av-reveal-delay-3">
-      <div class="cap-icon" aria-hidden="true">🌐</div>
+      <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="rgba(0,236,149,0.1)"/><rect x="8" y="12" width="32" height="22" rx="3" stroke="#00ec95" stroke-width="2"/><path d="M17 38h14M24 34v4" stroke="#00ec95" stroke-width="2" stroke-linecap="round"/><path d="M13 18h6M13 22h10M13 26h8" stroke="rgba(0,236,149,0.5)" stroke-width="1.5" stroke-linecap="round"/><rect x="28" y="17" width="8" height="12" rx="2" fill="rgba(0,236,149,0.2)" stroke="#00ec95" stroke-width="1"/></svg></div>
       <h3 class="cap-title">Professional Websites</h3>
       <p class="cap-desc">Mobile-first, fast-loading sites that convert visitors. Built for nonprofits, small businesses, and mission-driven organizations.</p>
       <a class="cap-link" href="/services/#websites">View packages →</a>
     </div>
     <div class="capability-tile av-reveal av-reveal-delay-4">
-      <div class="cap-icon" aria-hidden="true">📊</div>
+      <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="rgba(0,236,149,0.1)"/><rect x="8" y="8" width="32" height="32" rx="3" stroke="#00ec95" stroke-width="2"/><path d="M14 32l6-8 5 6 4-5 5 7" stroke="#00ec95" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 20h32" stroke="rgba(0,236,149,0.3)" stroke-width="1"/><circle cx="20" cy="14" r="2" fill="rgba(0,236,149,0.4)"/><circle cx="28" cy="14" r="2" fill="rgba(0,236,149,0.4)"/></svg></div>
       <h3 class="cap-title">Custom Dashboards</h3>
       <p class="cap-desc">Business intelligence tools tailored to your operations. Track grants, leads, and KPIs in one place.</p>
       <a class="cap-link" href="/grantflow/">See GrantFlow →</a>
     </div>
     <div class="capability-tile av-reveal av-reveal-delay-5">
-      <div class="cap-icon" aria-hidden="true">📱</div>
+      <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="rgba(0,236,149,0.1)"/><rect x="14" y="8" width="20" height="32" rx="4" stroke="#00ec95" stroke-width="2"/><path d="M19 12h10M19 15h6" stroke="rgba(0,236,149,0.5)" stroke-width="1.5" stroke-linecap="round"/><rect x="17" y="20" width="14" height="14" rx="2" fill="rgba(0,236,149,0.1)" stroke="#00ec95" stroke-width="1"/><path d="M20 27l3 3 5-5" stroke="#00ec95" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="37" r="2" fill="#00ec95"/></svg></div>
       <h3 class="cap-title">Mobile-First Design</h3>
       <p class="cap-desc">Every project is built for the phone first. Responsive, touch-friendly, and tested across all screen sizes.</p>
       <a class="cap-link" href="/work/">See our work →</a>
     </div>
     <div class="capability-tile av-reveal av-reveal-delay-6">
-      <div class="cap-icon" aria-hidden="true">🏆</div>
+      <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="rgba(0,236,149,0.1)"/><path d="M24 10C16.3 10 10 16.3 10 24s6.3 14 14 14 14-6.3 14-14S31.7 10 24 10z" stroke="#00ec95" stroke-width="2"/><path d="M17 24l5 5 9-9" stroke="#00ec95" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <h3 class="cap-title">Grant Management SaaS</h3>
       <p class="cap-desc">GrantFlow Pro — find funding, draft applications with your org’s facts, track deadlines, store documents.</p>
       <a class="cap-link" href="/grantflow/">Try GrantFlow →</a>
     </div>
     <div class="capability-tile av-reveal av-reveal-delay-7">
-      <div class="cap-icon" aria-hidden="true">🎬</div>
+      <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="rgba(0,236,149,0.1)"/><rect x="8" y="12" width="32" height="22" rx="3" stroke="#00ec95" stroke-width="2"/><path d="M20 23l8-5v10l-8-5z" fill="#00ec95"/><circle cx="24" cy="40" r="2" fill="rgba(0,236,149,0.4)"/><path d="M18 40h12" stroke="rgba(0,236,149,0.3)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <h3 class="cap-title">Video &amp; Content Production</h3>
       <p class="cap-desc">Social Hub and Video Studio: short-form content, campaigns, and digital assets for nonprofits and small businesses.</p>
       <a class="cap-link" href="/services/">Learn more →</a>
     </div>
     <div class="capability-tile av-reveal av-reveal-delay-8">
-      <div class="cap-icon" aria-hidden="true">📦</div>
+      <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="rgba(0,236,149,0.1)"/><rect x="10" y="14" width="28" height="20" rx="3" stroke="#00ec95" stroke-width="2"/><path d="M14 22h8M14 26h12M14 30h6" stroke="rgba(0,236,149,0.5)" stroke-width="1.5" stroke-linecap="round"/><path d="M30 20v12M34 23v6M38 21v10" stroke="#00ec95" stroke-width="2" stroke-linecap="round"/></svg></div>
       <h3 class="cap-title">Digital Products</h3>
       <p class="cap-desc">Ready-to-download funding guides, grant trackers, and business toolkits. One-time purchase, instant delivery.</p>
       <a class="cap-link" href="/shop/">Browse the shop →</a>
@@ -328,37 +451,37 @@
   <p class="products-sub av-reveal av-reveal-delay-1">Platforms, SaaS tools, and digital products built and owned by NoCapsAI LLC.</p>
   <div class="products-showcase-grid">
     <div class="product-showcase-card av-reveal av-reveal-delay-1">
-      <span class="product-icon" aria-hidden="true">🌱</span>
+      <div class="product-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M18 4C10.3 4 4 10.3 4 18s6.3 14 14 14 14-6.3 14-14S25.7 4 18 4z" stroke="#00ec95" stroke-width="1.5"/><path d="M12 18l4 4 8-8" stroke="#00ec95" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 8v2M18 26v2M8 18h2M26 18h2" stroke="rgba(0,236,149,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <h3>GrantFlow Pro</h3>
       <p>Nonprofit grant management SaaS. Find funding, draft applications, track deadlines, store documents. $29/month.</p>
       <a class="ps-link" href="/grantflow/">Explore GrantFlow →</a>
     </div>
     <div class="product-showcase-card av-reveal av-reveal-delay-2">
-      <span class="product-icon" aria-hidden="true">📞</span>
+      <div class="product-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M22 4c0-3.3-2.7-6-6-6S10 0.7 10 4c0 2.1 1.1 3.9 2.7 5L10 27h16l-2.7-18C24.9 7.9 26 6.1 26 4" stroke="#00ec95" stroke-width="1.5" fill="none"/><circle cx="16" cy="4" r="2.5" fill="#00ec95" opacity=".5"/><path d="M22 20c3 1 5 3.5 5 6.5 0 3.5-2.5 6-5.5 6.5" stroke="rgba(0,236,149,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <h3>Alex — AI Receptionist</h3>
-      <p>24/7 AI-powered phone receptionist for small businesses. Answers calls, captures leads, schedules appointments. Powered by Speko.</p>
+      <p>24/7 AI-powered phone receptionist for small businesses. Answers calls, captures leads, schedules appointments.</p>
       <a class="ps-link" href="tel:+17658762590" aria-label="Call Alex at 765-876-2590">Call Alex: (765) 876-2590 →</a>
     </div>
     <div class="product-showcase-card av-reveal av-reveal-delay-3">
-      <span class="product-icon" aria-hidden="true">👨‍👩‍👧</span>
+      <div class="product-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="10" r="5" stroke="#00ec95" stroke-width="1.5"/><path d="M6 30c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke="#00ec95" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="13" r="3.5" stroke="rgba(0,236,149,0.5)" stroke-width="1.5"/><circle cx="28" cy="13" r="3.5" stroke="rgba(0,236,149,0.5)" stroke-width="1.5"/></svg></div>
       <h3>Family Hub</h3>
       <p>Family organization and coordination platform. Built for busy families who need to stay connected and on track.</p>
       <a class="ps-link" href="/contact/">Inquire →</a>
     </div>
     <div class="product-showcase-card av-reveal av-reveal-delay-4">
-      <span class="product-icon" aria-hidden="true">🎥</span>
+      <div class="product-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><rect x="4" y="8" width="28" height="18" rx="2.5" stroke="#00ec95" stroke-width="1.5"/><path d="M15 17l9-5v10l-9-5z" fill="#00ec95" opacity=".7"/><circle cx="18" cy="31" r="1.5" fill="rgba(0,236,149,0.4)"/><path d="M13 31h10" stroke="rgba(0,236,149,0.3)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <h3>Social Hub / Video Studio</h3>
       <p>Content creation and social media management tools for nonprofits and small businesses. Create, schedule, and publish.</p>
       <a class="ps-link" href="/contact/">Learn more →</a>
     </div>
     <div class="product-showcase-card av-reveal av-reveal-delay-5">
-      <span class="product-icon" aria-hidden="true">📦</span>
+      <div class="product-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><rect x="6" y="10" width="24" height="16" rx="2" stroke="#00ec95" stroke-width="1.5"/><path d="M10 18h4M10 22h8M10 26h5" stroke="rgba(0,236,149,0.5)" stroke-width="1.5" stroke-linecap="round"/><path d="M24 15v12M28 17v8M32 13v12" stroke="#00ec95" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <h3>Digital Product Library</h3>
-      <p>10+ downloadable funding guides, grant trackers, and business toolkits. From $27. One-time purchase, instant delivery via Gumroad.</p>
+      <p>10+ downloadable funding guides, grant trackers, and business toolkits. From $27. One-time purchase, instant delivery.</p>
       <a class="ps-link" href="/shop/">Browse the shop →</a>
     </div>
     <div class="product-showcase-card av-reveal av-reveal-delay-6">
-      <span class="product-icon" aria-hidden="true">📡</span>
+      <div class="product-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="13" stroke="#00ec95" stroke-width="1.5"/><path d="M18 5v2M18 29v2M5 18h2M29 18h2" stroke="rgba(0,236,149,0.4)" stroke-width="1.5" stroke-linecap="round"/><path d="M12 18h12M18 12v12" stroke="#00ec95" stroke-width="2" stroke-linecap="round"/></svg></div>
       <h3>Revenue Hub</h3>
       <p>Business intelligence and revenue operations platform. Track sales, leads, and business KPIs in a unified dashboard.</p>
       <a class="ps-link" href="/contact/">Request access →</a>
