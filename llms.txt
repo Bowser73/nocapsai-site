@@ -1,8 +1,10 @@
 # NoCapsAI LLC
 
-> NoCapsAI is based in Rushville, Indiana and provides funding tools, grant management software, and website services for nonprofits and small businesses.
+> NoCapsAI is based in Rushville, Indiana and provides AI, software, website development and digital marketing services for businesses and nonprofits.
 
 ## Products and services
+
+- [Agency pricing](https://nocapsai.com/services/pricing/): Fourteen services with project and monthly packages.
 
 - [Funding tools and templates](https://nocapsai.com/shop/): Downloadable guides, grant trackers, and toolkits.
 - [GrantFlow Pro](https://nocapsai.com/grantflow/): Grant discovery, application drafting, and deadline tracking.
