@@ -7,9 +7,6 @@
 body::before { background: var(--navy-deep, #021018) !important; }
 html::before { display: none !important; }
 
-/* --- Fonts -------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
-
 :root {
   --font-heading: 'Space Grotesk', Arial, Helvetica, sans-serif;
   --font-body: 'Inter', Arial, Helvetica, sans-serif;
@@ -21,6 +18,7 @@ html::before { display: none !important; }
 }
 
 body { font-family: var(--font-body); }
+.sales-home main { overflow-x: clip; }
 h1, h2, h3, h4, .eyebrow, .product-label { font-family: var(--font-heading); }
 
 /* === HERO: STACKED LAYOUT (video first, copy below) === */
