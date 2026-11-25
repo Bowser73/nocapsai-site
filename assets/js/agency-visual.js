@@ -299,7 +299,7 @@
     if (btnPlay) {
       btnPlay.addEventListener('click', function () {
         if (video.paused) {
-          video.play();
+          video.play().catch(function () {});
           btnPlay.dataset.state = 'playing';
           btnPlay.setAttribute('aria-label', 'Pause video');
         } else {
@@ -327,17 +327,29 @@
       if (btnPlay) { btnPlay.dataset.state = 'paused'; btnPlay.setAttribute('aria-label', 'Play video'); }
     });
 
-    // Motion-pause toggle also pauses/resumes video
-    var motionBtn = document.querySelector('.motion-toggle');
-    if (motionBtn) {
-      motionBtn.addEventListener('click', function () {
-        // The storefront.js toggles body.motion-paused; check after toggle settles
-        setTimeout(function () {
-          var paused = document.body.classList.contains('motion-paused');
-          if (paused) { video.pause(); } else { video.play(); }
-        }, 0);
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var visibleVideos = new Set();
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) visibleVideos.add(entry.target);
+        else visibleVideos.delete(entry.target);
+        syncMotion(entry.target);
       });
+    }, { rootMargin: '160px' });
+    var videos = document.querySelectorAll('.hero-video-wrap video, .hero-companion-vid, .cine-vid');
+    function syncMotion(clip) {
+      if (!visibleVideos.has(clip) || document.body.classList.contains('motion-paused')) {
+        clip.pause();
+      } else {
+        clip.play().catch(function () {});
+      }
     }
+    videos.forEach(function (clip) { observer.observe(clip); });
+    function refreshMotion() {
+      setTimeout(function () { videos.forEach(syncMotion); }, 0);
+    }
+    document.querySelector('.motion-toggle')?.addEventListener('click', refreshMotion);
+    motion.addEventListener('change', refreshMotion);
   }
 
   // ---- Init ---------------------------------------------------
